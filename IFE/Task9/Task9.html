@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task9</title>
+	<style>
+    *
+    {
+    	margin:0;padding:0;font-family: "微软雅黑";
+    }
+    body
+    {
+    	overflow-x:hidden;background:silver
+    }
+    span
+    {
+    	display: inline-block;
+    }
+    div.nav
+    {
+    	background-color:#477BCE;
+    	height:60px;
+    	line-height: 60px;
+    	width: 100%;
+    	position: relative;
+    }
+    span.logo
+    {
+    	width:40px;
+    	height:40px;
+    	background: #fff;
+    	margin-top:10px;
+    	margin-left: 60px;
+    	position: relative;
+    }
+    span.logo:after
+    {
+    content: '';
+    height: 17px;
+    width: 17px;
+    background: #fff;
+    display: block;
+    border: 3px solid #477BCE;
+    position: absolute;
+    top:20px;
+    left:20px;
+    }
+    input.seek
+    {
+    background: #fff;
+    height:30px;
+    width:200px;
+    border:0;
+    border-radius:50px;
+    position: absolute;
+    right: 160px;
+    bottom:15px;
+    transition:width 1s;
+    padding:0 10px 0 40px
+    }
+    div.seek
+    {
+    position: relative;
+    bottom:15px;
+    background: red;
+    height:60px;
+    width:30%;
+    left:70%;
+    bottom: 74px;
+    background-color:#477BCE
+    }
+    span.icon_seek
+    {
+    width:20px;
+    height: 20px;
+    position: absolute;
+    background:url(images/icons.png) no-repeat; 
+    background-position:-9px -738px;
+    top:20px;
+    left:10px;
+    }
+    span.icon_login
+    {
+    width:20px;
+    height:20px;
+    position: absolute;
+    background:url(images/icons.png) no-repeat; 
+    background-position:-11px -819px; 
+    right:127px;
+    bottom:20px;
+    }
+    span.login
+    {
+    position:absolute;
+    width:50px;
+    height:60px;
+    right:76px;
+    color:#fff;
+    font-size:12px;
+    }
+    div.sidebar
+    {
+    position:absolute;
+    top:60px;
+    background-color:#2a2e3d;
+    height:200%;
+    width: 275px;
+    color:#6e8095;
+    }
+    div.clientinfo
+    {
+    width: 100%;
+    height: 160px;
+    position:absolute;
+    }
+    div.clientinfo span.avatar
+    {
+    position: absolute;
+    background: gray;
+    border:25px solid #fff;
+    border-radius:50%;
+    left:50px;
+    top:30px;
+    }
+    div.clientinfo span.avatar:before
+    {
+    content: "";
+    position: absolute;
+    width:55px;
+    height:55px;
+    border:1px solid #fff;
+    border-radius: 50%;
+    right:-28.4px;
+    top:-28.5px;
+    }
+    div.clientinfo h3.name
+    {
+    position: absolute;
+    color:#fff;
+    left:130px;
+    top:45px;
+    }
+    ul.detail
+    {
+    margin-left:55px;
+    width:120px;
+    font-size:15px;
+    margin-top:110px;
+    }
+    ul.detail li.item_1
+    {
+    display: table-cell; 
+    float:left;
+    height: 37px;
+    padding-right:38px;
+    border-right: 1px solid #6e8095;
+    }
+    ul.detail li.item_1:after
+    {
+    content: "收藏";
+    position: absolute;
+    left:56px;
+    font-size:10px;
+    }
+    ul.detail li.item_2
+    {
+    list-style-type: none;
+    float:right;
+    }
+    ul.detail li.item_2:after
+    {
+    content: "粉丝";
+    position: absolute;
+    left:150px;
+    font-size: 10px;
+    }
+    div.project
+    {
+    width:100%;
+    position: absolute;
+    top:160px;
+    font-size:14px;
+    }
+    div.project dl
+    {
+    padding:10px 0px 10px 70px;
+    }
+    div.project dl dt,div.project dl dd
+    {
+    padding-top: 20px;
+    }
+    dl.current
+    {
+    background-color:#383d4e;
+    padding-top:20px;
+    padding-bottom:20px;
+    }
+    dl.current dt
+    {
+    padding-left: 25px;
+    }
+    dl.current dd
+    {
+    margin-left:70px;
+    }
+    .opened
+    {
+    color:#fff;
+    }
+    b[class^="icon_"]
+    {
+    background: url(images/icons.png) no-repeat;
+    position:absolute;
+    width:18px;height: 14px;
+    left:45px;
+    opacity: .5;
+    }
+    b.icon_table
+    {
+    	background-position:-7px -11px;
+    	opacity: 1;
+    }
+    b.icon_file
+    {
+    	background-position:-7px -52px;
+    	left:77px;
+    }
+    b.icon_doc
+    {
+    	background-position:-7px -93px;
+    	left:120px;
+    }
+    b.icon_star
+    {
+    	background-position:-7px -133px;
+    }
+    b.icon_share
+    {
+    	background-position:-7px -170px;
+    }
+    b.icon_count_info
+    {
+    	background-position:-7px -212px;
+    }
+    b.opened
+    {
+    	opacity: 1;
+    }
+    b.icon_arrow
+    {
+    	background-position:-7px -528px;
+    	left:58px;
+    }
+    dt:hover
+    {
+    	color:#fff;
+    }
+    dl:not(.current):hover
+    {
+    	background:#383d4e;opacity: 1;
+    	color:#fff;
+    }
+    div.navbar
+    {
+    position: absolute;
+    height:30px;
+    padding-left: 300px;
+    width:100%;
+    top:60px;
+    z-index: -1;
+    line-height: 30px;
+    }
+    div.navbar span
+    {
+    font-size:12px;
+    color:gray;
+    padding:0 3px;
+    margin:3px;
+    cursor: pointer;
+    }
+    div.navbar span.pos
+    {
+    	color:red;
+    }
+    div.navbar span:hover
+    {
+    	color:red;
+    }
+    div.navbar span:not(.pos):after
+    {
+    content: "/";
+    position:relative;
+    left:5px;
+    font-size:16px;
+    }
+    div.content
+    {
+    position:absolute;
+    top:95px;
+    width:100%;
+    height:100%;
+    padding-left:275px;
+    z-index: -1;
+    }
+    div.content>div
+    {
+    position:relative;
+    left:65px;
+    width:70%;
+    margin-top:20px;
+    }
+    div.search
+    {
+    	height:90px;background: #fff
+    }
+    div.search select,div.search input
+    {
+    	position: absolute;
+    }
+    div.search span,div.search select,div.search input
+    {
+    	font-size:12px;position:absolute;
+    }
+    div.search span
+    {
+    	color:gray
+    }
+    span.span1
+    {
+    	left:35px;top:20px;
+    }
+    span.span2
+    {
+    	left:200px;top:20px;
+    }
+    span.span3
+    {
+    	left:200px;top:50px;
+    }
+    span.span4
+    {
+    	left:430px;top:20px;
+    }
+    span.span5
+    {
+    	left:430px;top:50px;
+    }
+    span.span6
+    {
+    	left:610px;top:20px;
+    }
+    span.span7
+    {
+    	left:610px;top:50px;
+    }
+    select.items
+    {
+    	left:80px;top:20px;
+    }
+    select.buyer
+    {
+    	left:240px;
+    	top:20px;
+    	width:110px;
+    }
+    select.solder
+    {
+    	left:240px;
+    	top:50px;
+    	width:110px;
+    }
+    b.icon_exc
+    {
+    	position: absolute;
+    	background-position: -5px -914px;
+    	width:41px;
+    	height:63px;
+    	left:355px;
+    	top:16px;
+    }
+    span.font
+    {
+    	left:369px;
+    	top:35px;
+    }
+    input.date
+    {
+    	left:470px;
+    	top:20px;
+    	width:100px;
+    }
+    select.population
+    {
+    	left:470px;
+    	top:50px;
+    }
+    select.consume
+    {
+    	left:660px;
+    	top:20px;
+    	width:100px;
+    }
+    select.doneItems
+    {
+    	left:660px;
+    	top:50px;width:100px;
+    }
+    input.btn
+    {
+    	left:825px;
+    	width:55px;
+    	height:30px;
+    	top:30px;
+    	line-height:30px;
+    	border:none;
+    	background:#477BCE;
+    	color:#fff;
+    }
+
+    div.content div.timeprice
+    {
+    	height:70px;
+    	background:
+    	transparent;
+    }
+    span.goBack,span.goAhead{
+    	height:70px;
+    	width:30px;
+    	background:#fff;
+    }
+    span.goBack
+    {
+    	float:left;
+    }
+    span.goAhead
+    {
+    	position: absolute; 
+    	right:142px;
+    	margin-left:3px;
+    }
+    div.price
+    {
+    	width:120px;
+    	margin-left:3px;
+    	background:#fff;
+    	height:70px;
+    	float: left;
+    }
+    div.now
+    {
+    	border-top:3px solid #477BCE;
+    	height:67px;
+    }
+    div.price:hover
+    {
+    	border-top:3px solid #477BCE;
+    	height:67px
+    }
+    div.history
+    {
+    	float:right;
+    	height: 70px;
+    	width:118px;
+    	background:#fff;
+    }
+    div.price span[class^="time"],div.price span[class^="rmb"],div.price b
+    {
+    	position: absolute;
+    }
+    div.price span[class^="time"]
+    {
+    	font-size:14px;
+    	left:60px;
+    	top:10px;
+    }
+    div.price span[class^="rmb"]
+    {
+    	font-size:25px;
+    	color:#EA7111;
+    	bottom:7px;
+    }
+    b.sig
+    {
+    	font-size:17px;
+    	color:gray;
+    	margin-right:20px;
+    	bottom:0;
+    }
+    span[class^="rmb"]:before
+    {
+    content: "￥";
+    font-size:15px;
+    color:gray;
+    position: absolute;
+    left:-10px;
+    bottom:5px;
+}
+    div.price span.time1{left:65px;}
+    div.price span.time2{left:190px;}
+    div.price span.time3{left:310px;}
+    div.price span.time4{left:430px;}
+    div.price span.time5{left:550px;}
+    div.price span.time6{left:670px;}
+    div.price span.rmb1{left:65px;}
+    div.price span.rmb2{left:195px;}
+    div.price span.rmb3{left:315px;}
+    div.price span.rmb4{left:435px;}
+    div.price span.rmb5{left:555px;}
+    div.price span.rmb6{left:675px;}
+    div.history
+    {
+    	text-align:right;
+    	line-height:70px;
+    	font-size:17px;
+    	padding-right:20px
+    }
+    b.icon_date
+    {
+    	background-position: 0 -447px;
+    	width:34px;
+    	height:34px;
+    	bottom:18px;
+    	left:810px;
+    }
+    b.icon_pre
+    {
+    	background-position: 0 -264px;
+    	width:30px;
+    	height:65px;
+    	left:0;
+    }
+    b.icon_next
+    {
+    	background-position:1px -342px;
+    	width:30px;
+    	height:65px;
+    	top:5px;
+    	left:0;
+    }
+    div.summary
+    {
+    	display: flex;
+    	flex-direction:row;
+    	flex-wrap: nowrap;
+    	justify-content: space-between;
+    	background:transparent;
+    }
+    div[class^="num"]
+    {
+    	width:208px;
+    	height:75px;
+    	background:#fff;
+    	position: relative;
+    }
+    div.num1
+    {
+    	border-left:3px solid #43b29e;
+    }
+    div.num2
+    {
+    	border-left:3px solid #2189bf;
+    }
+    div.num3
+    {
+    	border-left:3px solid #d04a36;
+    }
+    div.num4
+    {
+    	border-left:3px solid #e2cd46;
+    }
+    div.num1 span.inside
+    {
+    	width:60px;
+    	height:51px;
+    	background:#43b29e;
+    	position: absolute;
+    	top:12px;
+    	right:20px
+    }
+    div.num2 span.inside
+    {
+    	width:60px;
+    	height:51px;
+    	background:#2189bf;
+    	position: absolute;
+    	top:12px;
+    	right:20px
+    }
+    div.num3 span.inside
+    {
+    	width:60px;
+    	height:51px;
+    	background:#d04a36;
+    	position: absolute;
+    	top:12px;
+    	right:20px;
+    }
+    div.num4 span.inside
+    {
+    	width:60px;
+    	height:51px;
+    	background:#e2cd46;
+    	position: absolute;
+    	top:12px;
+    	right:20px
+    }
+    div[class^="num"] b
+    {
+    	position: absolute;
+    	top:20px;
+    	font-size:12px;
+    	font-weight: normal;
+    	left:15px;
+    }
+    div[class^="num"] b:after
+    {
+    	content:"成交量";
+    	float:right;
+    	font-size:8px;
+    	color:gray;
+    	margin-top:10px;
+    	margin-right:157px;
+    }
+    div.items
+    {
+    	position:relative;
+    	height:380px;
+    	width:100%;
+    	background:transparent;
+    }
+    div.item1
+    {
+    	position:absolute; 
+    	width:560px;
+    	height:380px;
+    	background:#fff;
+    	border: 1px solid #aaa;
+    	border-radius:10px;
+    }
+    div.title
+    {
+    	width:100%;
+    	height:50px;
+    	line-height:50px;
+    	background:#f4f5f6;
+    	color:#aaa;
+    	font-size:12px;
+    	font-weight: thin;
+    	border-top-left-radius:10px;
+    	border-top-right-radius:10px;
+    	border-bottom: 1px solid #aaa;
+    }
+    div.title h3
+    {
+    	padding-left:20px
+    }
+    ul.pro
+    {
+    	position: absolute; 
+    	height:30px;
+    	margin-left: 18px;
+    	margin-top: 15px;
+    	z-index: 1
+    }
+    ul.pro li
+    {
+    	width:90px;
+    	display:inline-block;
+    	margin-left:2px;
+    	background:#cdcacd;
+    	text-align:center;line-height: 30px;
+    	border-radius:4px;
+    	border-bottom: 1px solid #aaa;
+    }
+    ul.pro li.present
+    {
+    	border:1px solid #aaa;
+    	border-bottom:1px solid #fff;
+    	background: #fff;
+    }
+    div.things
+    {
+    	position: absolute; 
+    	width:520px;
+    	left:20px;
+    	border:1px solid #aaa;
+    	height:265px;
+    	top:97px;
+    }
+    div.item2
+    {
+    	position: absolute;
+    	height:380px;
+    	width:360px;
+    	right:0;
+    	border:1px solid #aaa;
+    	border-radius:4px;
+    	background: #fff;
+    }
+    table.all
+    {
+    	position:absolute;
+    	left:52px;
+    	top:40px;
+    	border-collapse: collapse;
+    }
+    table.all td
+    {
+    	width:105px;
+    	height:30px;
+    	line-height:30px;
+    	text-align: center;
+    	border:1px solid #aaa;
+    }
+    div.info
+    {
+    	margin-left:45px
+    }
+    div.info span
+    {
+    	font-size:12px;
+    	color:gray;
+    }
+    div.info span.span1
+    {
+    	margin-top:10px
+    }
+    div.info h3
+    {
+    	font-size:14px;
+    	font-weight: normal;
+    }
+    div.info ul
+    {
+    	width:85%;
+    	border-top:1px solid #aaa;
+    	border-bottom: 1px solid #aaa;
+    	margin-top:10px;
+    }
+    div.info ul li
+    {
+    	height:50px;
+    	list-style-type: none
+    }
+    div.info ul li:first-of-type
+    {
+    	padding-right:50px;
+    	border-right:1px solid #aaa;
+    	float: left;
+    }
+    div.info div.final
+    {
+    	position: absolute;
+    	height:60px;
+    	left:45px;
+    	width:75%;
+    	border-top:1px solid #aaa;
+    	bottom:20px;
+    }
+    div.info input.check
+    {
+    	position: absolute;
+    	top:15px;
+    }
+    div.info b
+    {
+    	position: absolute;
+    	top:10px;
+    	font-weight: normal;
+    	font-size:15px;
+    	color:gray;left:20px;
+    }
+    div.info #btn
+    {
+    	position: absolute;
+    	 right:20px;
+    	 width:50px;
+    	 height:30px;
+    	 line-height:30px;
+    	 background:#5163E2;
+    	 color:#fff;
+    	 border: none;
+    	 top:10px;
+    }
+    div.last
+    {
+    	position:relative; 
+    	width:100%;
+    	height:380px;
+    	background:transparent;
+    	margin-bottom:200px;
+    }
+    div.date
+    {
+    	position:absolute;
+    	width:370px;
+    	height:100%;
+    	border:1px solid #aaa;
+    	border-radius:10px;
+    	background:#fff;
+    }
+    div.date ul.choose
+    {
+    	margin-top:10px;
+    	margin-left:25px; 
+    	padding-bottom: 30px;
+    	width:320px;
+    }
+    div.date ul.choose li
+    {
+    	float:left;
+    	list-style-type: none;
+    	margin-right:6px;
+    }
+    div.date ul.choose select.month
+    {
+    	width:60px;
+    }
+    div.date ol.week
+    {
+    	display:flex;
+    	flex-wrap:nowrap;
+    	justify-content: space-around;
+    	width:316px;
+    	padding-top: 10px;
+    	border-top:1px solid #1B66CB;
+    	padding-bottom:10px; 
+    	border-bottom: 1px solid #aaa;
+    	margin-left:23px;
+    }
+    div.date ol.week li
+    {
+    	list-style-type: none;
+    }
+    div.date table
+    {
+    	position: relative;
+    	margin-left:20px;
+    	width:315px;
+    } 
+    div.date table td
+    {
+    	position:relative;
+    	padding:0 2px 13px 2px;
+    	font-size:10px;
+    	width:45px;
+    	height:30px;
+    	text-align:center;
+    }
+    div.date table td span
+    {
+    	position: absolute;
+    	font-size:12px;
+    	left:9px;
+    	top:28px;
+    }
+    div.last div.rank
+    {
+    	position:absolute;
+    	right:0;
+    	width:560px;
+    	height: 100%;
+    	border-radius:10px;
+    	background: #fff
+    }
+    div.last div.rank table
+    {
+    	position: absolute; 
+    	border-collapse:collapse;
+    	width:495px;
+    	left:32px;
+    	font-size:13px;
+    	bottom:21px;
+    }
+    div.last div.rank table td,div.rank table th
+    {
+    	border:1px solid #aaa;
+    }
+    div.last div.rank table th,div.rank table td
+    {
+    	position: relative; 
+    	width:30px;
+    	height:25px;
+    	text-align:center;
+    }
+    div.last div.rank table th:last-of-type
+    {
+    	text-align:left;
+    	padding-left:20px;
+    }
+    div.last div.rank table td:last-of-type
+    {
+    	text-align:left;
+    	padding-left:20px;
+    }
+    div.last div.rank table tr:hover{background: gray}
+    div.last div.rank table span.trend
+    {
+    	position: absolute;
+    	width:160px;
+    	background:#aaa;
+    	height:3px;
+    	right:10px;
+    	top:11px;
+    }
+    div.last div.rank table b
+    {
+    	display:inline-block;
+    	position: absolute;
+    	height: 3px
+    }
+    div.date span.holiday{left:6px;color:red;}
+    div.date td.imp{border:1px solid yellow;}
+    div.date tr td:nth-of-type(6) b{color:red;}
+    div.date tr td:last-of-type b{color:red;}
+    div.last div.rank table span.no1 b{width:80%;background:red;}
+    div.last div.rank table span.no2 b{width:70%;background:#CB6161;}
+    div.last div.rank table span.no3 b{width:60%;background:#EA512A;}
+    div.last div.rank table span.no4 b{width:50%;background:#56B9C0;}
+    div.last div.rank table span.no5 b{width:40%;background:#56B9C0;}
+    div.last div.rank table span.no6 b{width:35%;background:#56B9C0;}
+    div.last div.rank table span.no7 b{width:30%;background:#56B9C0;}
+    div.last div.rank table span.no8 b{width:25%;background:#56B9C0;}
+    div.last div.rank table span.no9 b{width:20%;background:#56B9C0;}
+    div.last div.rank table span.no10 b{width:10%;background:#56B9C0;}
+
+    </style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="nav">
+			<span class="logo"></span>
+			<div class="seek">
+				<input type="text" class="seek">
+				<span class="icon_seek"></span>
+				<span class="icon_login"></span>
+				<span class="login">登录</span>
+			</div>
+		</div>
+
+		<!-->
+		侧栏
+		<!-->
+		<div class="sidebar">
+			<div class="clientinfo">
+				<span class="avatar"></span>
+				<h3 class="name">万珂</h3>
+				<ul class="detail">
+					<li class="item_1">110</li>
+					<li class="item_2">313</li>
+				</ul>
+			</div>
+			<div class="project">
+				<dl class="current"> <b class="icon_table"></b>
+					<span class="opened">个人报表</span>
+
+					<dt> <b class="icon_file"></b>
+						<b class="icon_arrow"></b>
+						<span>文件一</span>
+					</dt>
+					<dt class="opened">
+						<b class="icon_file opened"></b>
+						<b class="icon_arrow opened"></b>
+						<span>文件二</span>
+						<dd class="opened">
+							<b class="icon_doc opened"></b>
+							<span class="opened">文档1</span>
+						</dd>
+						<dd>
+							<b class="icon_doc"></b>
+							<span>文档2</span>
+						</dd>
+					</dt>
+					<dt>
+						<b class="icon_arrow"></b>
+						<b class="icon_file"></b>
+						<span>文件三</span>
+					</dt>
+				</dl>
+				<dl>
+					<b class="icon_star"></b>
+					<span>个人收藏</span>
+				</dl>
+				<dl>
+					<b class="icon_share"></b>
+					<span>我的分享</span>
+				</dl>
+				<dl>
+					<b class="icon_star"></b>
+					<span>图库</span>
+				</dl>
+				<dl>
+					<b class="icon_star"></b>
+					<span>成长记录</span>
+				</dl>
+				<dl>
+					<b class="icon_count_info"></b>
+					<span>账户信息</span>
+				</dl>
+			</div>
+		</div>
+		<div class="navbar">
+			<span>blibili</span>
+			<span>个人报表</span>
+			<span>文件二</span>
+			<span class="pos">文档1</span>
+		</div>
+
+		<div class="content">
+
+			<div class="search">
+				<span class="span1">查询项</span>
+				<select name="items" class="items">
+					<option value="one">第一项</option>
+				</select>
+				<div class="trade">
+					<b class="icon_exc"></b>
+					<span class="font">换</span>
+					<span class="span2">买方</span>
+					<select name="buyer" class="buyer">
+						<option value="one">小A</option>
+					</select>
+					<span class="span3">卖方</span>
+					<select name="solder" class="solder">
+						<option value="one">小C</option>
+					</select>
+					<b class="icon_change"></b>
+					<span class="span4">日期</span>
+					<input type="text" class="date" value="2016-4-17">
+					<span class="span5">人数</span>
+					<select name="population" class="population">
+						<option value="one">10人</option>
+					</select>
+					<span class="span6">总耗时</span>
+					<select name="consume" class="consume">
+						<option value="one">6天</option>
+					</select>
+					<span class="span7">成交项</span>
+					<select name="doneItems" class="doneItems">
+						<option value="one">7项</option>
+					</select>
+					<input type="button" value="搜索" class="btn"></div>
+			</div>
+
+			<div class="timeprice">
+				<span class="goBack">
+					<b class="icon_pre"></b>
+				</span>
+				<div class="price now">
+					<span class="time1">
+						<time>10:00</time>
+						am
+					</span>
+					<span class="rmb1">1200</span>
+				</div>
+				<div class="price">
+					<span class="time2">10:00 am</span>
+					<span class="rmb2">1200</span>
+				</div>
+				<div class="price">
+					<span class="time3">10:00 am</span>
+					<span class="rmb3">1200</span>
+				</div>
+				<div class="price">
+					<span class="time4">10:00 am</span>
+					<span class="rmb4">1200</span>
+				</div>
+				<div class="price">
+					<span class="time5">10:00 am</span>
+					<span class="rmb5">1200</span>
+				</div>
+				<div class="price">
+					<span class="time6">10:00 am</span>
+					<span class="rmb6">1200</span>
+				</div>
+				<span class="goAhead">
+					<b class="icon_next"></b>
+				</span>
+				<div class="history">
+					<b class="icon_date"></b>
+					<span>历史查询</span>
+				</div>
+			</div>
+			<div class="summary">
+				<div class="num1">
+					<b>10010</b>
+					<span class="inside"></span>
+				</div>
+				<div class="num2">
+					<b>10010</b>
+					<span class="inside"></span>
+				</div>
+				<div class="num3">
+					<b>10010</b>
+					<span class="inside"></span>
+				</div>
+				<div class="num4">
+					<b>10010</b>
+					<span class="inside"></span>
+				</div>
+			</div>
+
+			<div class="items">
+				<div class="item1">
+					<div class="title">
+						<h3>第一组项目</h3>
+					</div>
+					<ul class="pro">
+						<li class="present">项目一</li>
+						<li>项目二</li>
+						<li>项目三</li>
+						<li>项目四</li>
+						<li>项目五</li>
+					</ul>
+					<div class="things">
+						<table class="all">
+							<tr>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+								<td>8</td>
+							</tr>
+							<tr>
+								<td>9</td>
+								<td>10</td>
+								<td>11</td>
+								<td>12</td>
+							</tr>
+							<tr>
+								<td>13</td>
+								<td>14</td>
+								<td>15</td>
+								<td>16</td>
+							</tr>
+							<tr>
+								<td>17</td>
+								<td>18</td>
+								<td>19</td>
+								<td>20</td>
+							</tr>
+							<tr>
+								<td>21</td>
+								<td>22</td>
+								<td>23</td>
+								<td>24</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="item2">
+					<div class="title">
+						<h3>第二组项目</h3>
+					</div>
+					<div class="info">
+						<span class="span1">标题</span>
+						<h3>项目报表三</h3>
+						<ul>
+							<li>
+								<span class="span2">价格</span>
+								<h3>￥158</h3>
+							</li>
+							<li>
+								<span class="span3">负责人</span>
+								<h3>小A</h3>
+							</li>
+						</ul>
+						<span class="span4">详细描述</span>
+						<h3>该项目目前的负责人是....</h3>
+						<div class="final">
+							<input type="checkbox" checked class="check">
+							<b>遵守保密协议</b>
+							<input type="button" value="搜索" id="btn"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="last">
+				<div class="date">
+					<div class="title">
+						<h3>日历</h3>
+					</div>
+					<ul class="choose">
+						<li>
+							<select name="year" class="year">
+								<option value="2016年">2016年</option>
+							</select>
+						</li>
+						<li>
+							<select name="month" class="month">
+								<option value="4月">4月</option>
+							</select>
+						</li>
+						<li>
+							<select name="mark" class="mark">
+								<option value="标注日期">标注日期</option>
+							</select>
+						</li>
+						<li>
+							<select name="backTo" class="backTo">
+								<option value="返回今天">返回今天</option>
+							</select>
+						</li>
+					</ul>
+					<ol class="week">
+						<li>一</li>
+						<li>二</li>
+						<li>三</li>
+						<li>四</li>
+						<li>五</li>
+						<li>六</li>
+						<li>日</li>
+					</ol>
+					<table>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>
+								<b>1</b>
+								<span class="holiday">愚人节</span>
+							</td>
+							<td>
+								<b>2</b>
+								<span class="normal">廿五</span>
+							</td>
+							<td>
+								<b>3</b>
+								<span class="normal">廿六</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b>4</b>
+								<span class="normal">廿七</span>
+							</td>
+							<td>
+								<b>5</b>
+								<span class="holiday">清明</span>
+							</td>
+							<td>
+								<b>6</b>
+								<span class="normal">廿九</span>
+							</td>
+							<td>
+								<b>7</b>
+								<span class="normal">三月</span>
+							</td>
+							<td>
+								<b>8</b>
+								<span class="normal">初二</span>
+							</td>
+							<td class="imp">
+								<b>9</b>
+								<span class="normal">初三</span>
+							</td>
+							<td>
+								<b>10</b>
+								<span class="normal">初四</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b>11</b>
+								<span class="normal">初五</span>
+							</td>
+							<td class="imp">
+								<b>12</b>
+								<span class="normal">初六</span>
+							</td>
+							<td class="imp">
+								<b>13</b>
+								<span class="normal">初七</span>
+							</td>
+							<td>
+								<b>14</b>
+								<span class="normal">初八</span>
+							</td>
+							<td>
+								<b>15</b>
+								<span class="normal">初九</span>
+							</td>
+							<td>
+								<b>16</b>
+								<span class="normal">初十</span</td>
+								<td>
+									<b>17</b>
+									<span class="normal">十一</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>18</b>
+									<span class="normal">十二</span>
+								</td>
+								<td>
+									<b>19</b>
+									<span class="normal">十三</span>
+								</td>
+								<td>
+									<b>20</b>
+									<span class="normal">十四</span>
+								</td>
+								<td>
+									<b>21</b>
+									<span class="normal">十五</span>
+								</td>
+								<td>
+									<b>22</b>
+									<span class="normal">十六</span>
+								</td>
+								<td>
+									<b>23</b>
+									<span class="normal">十七</span>
+								</td>
+								<td>
+									<b>24</b>
+									<span class="normal">十八</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>25</b>
+									<span class="normal">十九</span>
+								</td>
+								<td>
+									<b>26</b>
+									<span class="normal">廿十</span>
+								</td>
+								<td>
+									<b>27</b>
+									<span class="normal">廿一</span>
+								</td>
+								<td>
+									<b>28</b>
+									<span class="normal">廿二</span>
+								</td>
+								<td>
+									<b>29</b>
+									<span class="normal">廿三</span>
+								</td>
+								<td>
+									<b>30</b>
+									<span class="normal">廿四</span>
+								</td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="rank">
+						<div class="title">
+							<h3>汽车品牌排行榜</h3>
+						</div>
+						<table>
+							<tr>
+								<th>排名</th>
+								<th>品牌</th>
+								<th>搜索指数</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>大众</td>
+								<td>
+									99999
+									<span class="trend no1">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>大众</td>
+								<td>
+									88888
+									<span class="trend no2">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>大众</td>
+								<td>
+									66666
+									<span class="trend no3">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>大众</td>
+								<td>
+									45678
+									<span class="trend no4">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>大众</td>
+								<td>
+									34567
+									<span class="trend no5">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>大众</td>
+								<td>
+									12345
+									<span class="trend no6">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>大众</td>
+								<td>
+									7883
+									<span class="trend no7">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td>大众</td>
+								<td>
+									6722
+									<span class="trend no8">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>9</td>
+								<td>大众</td>
+								<td>
+									4827
+									<span class="trend no9">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>10</td>
+								<td>大众</td>
+								<td>
+									3629
+									<span class="trend no10">
+										<b></b>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+</body>
+			</html>
