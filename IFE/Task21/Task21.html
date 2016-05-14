@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task21</title>
+	<style>
+	html{font-family: "微软雅黑";}
+	div#tags,div#hobby{position: relative; width:80%;margin:0 auto;font-family:"微软雅黑";top:50px;}
+    div#tags span,div#hobby span{display: inline-block; text-align: center;padding:10px;color:#fff;height:25px;line-height:25px;margin:5px;transition:1s all}
+    div#tags span{background: #5BA7F8}
+    div#hobby span{background:#C69D25;}
+    #input{margin-top:100px;}
+    button{display: block;margin-left:60px;}
+	</style>
+</head>
+<body>
+<b>Tag:</b>
+<input type="text" id="data" placeholder="在此输入您的tag">
+<div id="tags">
+</div>
+<textarea name="hobby" id="input" cols="30" rows="10"></textarea>
+<button id="insert">确认兴趣爱好</button>
+<div id="hobby">
+</div>
+<script>
+//tag部分
+var tagWrapper=document.getElementById("tags");
+var inputBox=document.getElementById("data");
+var spans=tagWrapper.getElementsByTagName("span");
+function isNull( str ){
+if ( str == "" ) return true;
+var regu = "^[ ]+$";
+var re = new RegExp(regu);
+return re.test(str);
+}
+inputBox.addEventListener("keyup",function(){
+   var data=inputBox.value.trim();
+   var value=data.split(/[,，;；、。.\s\n]+/)[0];
+   //isNull函数解决输入空格字符串的bug
+   if (!isNull(value)&&(/[,，;；、\s\n]+/.test(data) || event.keyCode == 13||event.keyCode==32)){
+   	//忽略重复
+   	for(var i=0;i<spans.length;i++){
+   		if(spans[i].innerText==value){
+   			inputBox.value="";
+   			return;
+   		}
+   	 }
+   	    	//控制数量
+   	if(spans.length==10){
+   		var firstChild=spans[0];
+   		tagWrapper.removeChild(firstChild);
+   		alert("已删除第一个tag!");
+   	}
+   	 tagWrapper.innerHTML+="<span>"+value+"</span>";
+   	 inputBox.value="";
+   }
+})
+//hover事件
+	tagWrapper.addEventListener("mouseover",function(event){
+		if(event.target.nodeName.toLowerCase()=="span"){
+		   event.target.firstChild.insertData(0,"删除");
+		   event.target.style.backgroundColor="red";
+		}
+	})
+	tagWrapper.addEventListener("mouseout",function(event){
+		if(event.target.nodeName.toLowerCase()=="span"){
+		   var protoValue=event.target.innerText;
+		   event.target.firstChild.deleteData(0,2);
+		   event.target.style.backgroundColor="#5BA7F8";
+		}
+	})
+  //点击删除
+tagWrapper.onclick=function(e){
+  if(e.target.nodeName=="SPAN"){
+      this.removeChild(e.target);
+    }
+}
+//Textarea部分
+var insert=document.getElementById("insert");
+var input=document.getElementById("input");
+var parentNode=document.getElementById("hobby");
+var Data=[];
+//去重复函数
+function unique(arr){
+// 遍历arr，把元素分别放入tmp数组(不存在才放)
+var tmp = new Array();
+for(var i in arr){
+//该元素在tmp内部不存在才允许追加
+if(tmp.indexOf(arr[i])==-1){
+tmp.push(arr[i]);
+}
+}
+return tmp;
+}
+insert.onclick = function() {
+        var str = input.value.trim();
+        var arr = str.split(/[^0-9a-zA-Z\u4e00-\u9fa5]+/).filter(function(e) {
+            if (e != null && e.length > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+       Data = unique(Data.concat(arr));
+
+
+       if(Data.length>10){
+         var x=Data.length-10;
+         Data.splice(0,x);
+        }
+      render(str);
+   } 
+
+    function render(str) {
+        parentNode.innerHTML = Data.map(function(d) {
+            return '<span>' + d + '</span>';
+        }).join('');
+    }
+</script>
+</body>
+</html>
