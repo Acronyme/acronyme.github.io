@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task25</title>
+	<style type="text/css">	
+	*{margin:0;padding:0;font-family: "微软雅黑";}
+    div#parent {
+    	border:2px solid #1FF0A2;
+        width: 30%;
+        margin:10px;
+        padding:10px; 
+    }
+    div#parent div{margin:10px;padding:5px;border:1px solid #C9EA2B;}
+    div#parent span[class^="fold"]{margin:10px;padding:2px;border:1px solid #2A7EF0;background-color: #EA552F;color:#fff;}
+    section.control{position: absolute;left:45%;top:3%;}
+    div#parent div.display{display:none}
+    div.selected{background-color:#35D81F !important;}
+    div.found{background-color: #ECEE22 !important;}
+	</style>
+<body>
+
+	<div id="parent">
+		<span class="foldAll">叠起所有</span>
+		<div>
+			<span class="fold">叠起</span>
+			<span>BlackBerry</span>
+			<div>
+				<span>Priv</span>
+			</div>
+			<div>
+				<span>Passport</span>
+			</div>
+			<div>
+				<span>Z10</span>
+			</div>
+		</div>
+		<div>
+			<span class="fold">叠起</span>
+			<span>Nokia</span>
+			<div>
+				<span>Lumia 1520</span>
+			</div>
+			<div>
+				<span>Lumia 920</span>
+			</div>
+			<div>
+				<span>Lumia 1020</span>
+			</div>
+		</div>
+		<div>
+			<span class="fold">叠起</span>
+			<span>Apple</span>
+			<div>
+				<span>iPhone6s Plus</span>
+			</div>
+			<div>
+				<span>iPhone6s</span>
+			</div>
+			<div>
+				<span>iPhone SE</span>
+			</div>
+		</div>
+		<div>
+			<span class="fold">叠起</span>
+			<span>SAMSUNG</span>
+			<div>
+				<span>Galaxy S7 Edge</span>
+			</div>
+			<div>
+				<span>Galaxy S6 Edge Plus</span>
+			</div>
+			<div>
+				<span>Galaxy S6</span>
+			</div>
+		</div>
+	</div>
+	<section class="control">
+		<input type="text" id="input" placeholder="在此输入查询或添加内容">
+		<button class="btn">查找</button>
+		<button class="btn">删除</button>
+		<button class="btn">添加</button>
+	</section>
+	<script>
+	window.onload=function(){
+    var treeRoot=document.getElementById("parent");
+    var foldAllBtn=document.getElementsByClassName("foldAll")[0];
+    var inputObj=document.getElementById("input");
+    var controlBtn=document.getElementsByClassName("btn");
+    var foldBtn=document.getElementsByClassName("fold");
+    var searchBtn=controlBtn[0];
+    var delBtn=controlBtn[1];
+    var addBtn=controlBtn[2];
+
+    //整体折叠与展开
+    function foldAll(){
+    foldAllBtn.onclick=function(e){
+    	//阻止事件冒泡
+       e.stopPropagation();
+       //根据情况改变按钮内容
+       if(foldAllBtn.innerText=="叠起所有"){
+       	foldAllBtn.innerText="展开所有";
+       }else{
+       	foldAllBtn.innerText="叠起所有";
+       }
+       //为每个子元素设置显示或隐藏
+         var childList=treeRoot.childNodes;
+         for(var i=0;i<childList.length;i++){
+         if(childList[i].nodeName=="DIV"){
+       	 childList[i].classList.toggle("display");
+         }
+       }
+    }
+};
+//部分折叠与展开
+function foldPart(){
+for(var i=0;i<foldBtn.length;i++){
+	foldBtn[i].onclick=function(e){
+		e.stopPropagation();
+	    if(this.innerText=="叠起"){
+        	this.innerText="展开";
+            }else{
+       	    this.innerText="叠起";
+           }
+		var childList=this.parentNode.childNodes;
+		for(var j=0;j<childList.length;j++){
+			if(childList[j].nodeName=="DIV"){
+			   childList[j].classList.toggle("display");
+		}
+      }
+    } 
+  }
+};
+//节点选取
+var allDiv=document.getElementsByTagName("div");
+for(var i=0;i<allDiv.length;i++){
+	allDiv[i].onclick=function(e){
+		  e.stopPropagation();
+		  var exer=e.target;
+		  if(exer.nodeName=="DIV"){
+		  if(!exer.classList.contains("found")){
+		  exer.classList.toggle("selected");
+		  reset();
+		}else{
+		//修正选取查询元素时无法改变颜色的Bug
+		  exer.classList.remove("found");
+		  exer.classList.toggle("selected");
+		  reset();
+		}
+		}
+	  }
+	}
+//防止子元素背景变化
+function reset(){
+	for(var i=0;i<allDiv.length;i++){
+		if(!allDiv[i].classList.contains("selected")){
+             allDiv[i].style.backgroundColor="#fff";
+		}
+	}
+}
+//为增加了子节点的div增加按钮
+function needBtn(ele) {
+   if(ele.nodeName=="DIV"&&!ele.querySelector("span.fold")&&ele.querySelector("div")){
+     var firstEle=ele.firstElementChild;
+     var newEle=document.createElement("span");
+     newEle.innerText="叠起";
+     newEle.classList.add("fold");
+     ele.insertBefore(newEle,firstEle);
+     //改变DOM结构，重新获取一遍按钮并触发函数。
+     foldBtn=document.getElementsByClassName("fold");
+     foldPart();
+   }
+}
+//增加节点
+foldAll();
+foldPart();
+addBtn.onclick=function(){
+    var inputValue=inputObj.value.trim();
+  	var selectedDiv=document.getElementsByClassName("selected");
+  	if(inputValue&&selectedDiv.length){
+  	for(var i=0;i<selectedDiv.length;i++){
+  		//若选中div是根节点,额外插入一个叠起按钮
+  		if(selectedDiv[i]==treeRoot&&selectedDiv[i].querySelector("span.foldAll").innerText.indexOf("展开")==-1){
+  		  selectedDiv[i].innerHTML+='<div><span class="fold">叠起</span><span>'+inputValue+'</span></div>';
+     	}
+     	//如果选中了父节点并且处于叠起状态，先触发一次click事件再去添加节点。
+     	else if(selectedDiv[i]==treeRoot&&selectedDiv[i].querySelector("span.foldAll").innerText.indexOf("叠起")==-1){
+            selectedDiv[i].querySelector("span.foldAll").click();
+  		    selectedDiv[i].innerHTML+='<div><span class="fold">叠起</span><span>'+inputValue+'</span></div>';
+     	}
+  		//若选中的div是叠起状态，需要先触发一次展开按钮的click事件展开再添加节点
+  		else if(selectedDiv[i].querySelector("span[class^='fold']")&&!(selectedDiv[i].querySelector("span[class^='fold']").innerText.indexOf("展开")==-1)){
+            selectedDiv[i].querySelector("span[class^='fold']").click();
+  		    selectedDiv[i].innerHTML+='<div><span>'+inputValue+'</span></div>';
+    }else{
+  		selectedDiv[i].innerHTML+='<div><span>'+inputValue+'</span></div>';
+    }
+        foldAllBtn=document.getElementsByClassName("foldAll")[0];
+  		foldAll();
+  		foldPart();
+  		reset();
+  		needBtn(selectedDiv[i]);
+  	  }
+  }else{
+  	alert("请输入添加值并选中节点!")
+}
+}
+//删除节点
+delBtn.onclick=function(){
+  var selectedDiv=document.getElementsByClassName("selected");
+  for(var i=selectedDiv.length;i--;){
+  	if(selectedDiv[i]==treeRoot){
+  		alert("请不要删除父节点!")
+  	}else{
+  	selectedDiv[i].parentNode.removeChild(selectedDiv[i]); 
+      }
+    }
+  }
+
+//查询内容
+searchBtn.onclick=function(){
+ var searchValue=inputObj.value.trim();
+if(searchValue){
+var allSpans=document.getElementsByTagName("span");
+for(var i=0;i<allSpans.length;i++){
+	if(allSpans[i].innerText==searchValue){
+	   allSpans[i].parentNode.classList.add("found");
+	}
+}
+var foundList=document.getElementsByClassName("found");
+ if(foundList.length){
+ alert("已找到");
+ return;
+}else{
+	alert("抱歉，未找到该字符");
+}
+}else{
+	alert("请输入字符");
+}
+}
+}
+</script>
+</body>
+</html>
