@@ -1,4 +1,3 @@
- window.onload=function(){
   var wrapper=document.getElementsByClassName("page-header")[0];
   var content=document.getElementsByClassName("main-content")[0];
    (function changeColor(){
@@ -30,4 +29,3 @@
         })(i);
       }
 })();
-}
