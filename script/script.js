@@ -4,17 +4,19 @@
    (function changeColor(){
          var degs=360*Math.random();
          var core=navigator.userAgent.toLowerCase();
-         var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1 
- //        //为content和页面分别设置不同的随机背景色
-           //电脑端
-          if(isChrome){
+         var isChrome = Boolean(window.navigator.userAgent.indexOf("Chrome")!=-1);
+         alert(core);
+          //为content和页面分别设置不同的随机背景色
+          //判断手机端
+          if(core.indexOf('Mobile')!=-1){
+         content.style.background="-webkit-gradient(linear, left top, left bottom, from(#00abeb), to(#fff))";
+         wrapper.style.background="-webkit-gradient(linear,"+degs+"deg,"+"from(#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+"),to(#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+")";
+          }
+          //判断电脑端
+          else if(isChrome){
          content.style.background="-webkit-linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
          wrapper.style.background="-webkit-linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
-          }//判断电脑端
-          else if(core.indexOf('Mobile')!=-1){
-          content.style.background="-webkit-gradient(linear, left top, left bottom, from(#00abeb), to(#fff))";
-          wrapper.style.background="-webkit-gradient(linear,"+degs+"deg,"+"from(#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+"),to(#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+")";
-         }
+          }
            var bgColor1=wrapper.style.background;
            var bgColor2=content.style.background;
            content.style.opacity=0.4;
