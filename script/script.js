@@ -4,8 +4,8 @@
    (function changeColor(){
          var degs=360*Math.random();
          //为content和页面分别设置不同的随机背景色
-         content.style.background="linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
-         wrapper.style.background="linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
+         content.style.background="-webkit-linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
+         wrapper.style.background="-webkit-linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
          var bgColor1=wrapper.style.background;
          var bgColor2=content.style.background;
          content.style.opacity=0.4;
