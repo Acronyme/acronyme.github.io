@@ -1,13 +1,23 @@
   var wrapper=document.getElementsByClassName("page-header")[0];
   var content=document.getElementsByClassName("main-content")[0];
+ 
    (function changeColor(){
          var degs=360*Math.random();
-         //为content和页面分别设置不同的随机背景色
+         var core=navigator.userAgent.toLowerCase();
+         var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1 
+ //        //为content和页面分别设置不同的随机背景色
+           //电脑端
+          if(isChrome){
          content.style.background="-webkit-linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
          wrapper.style.background="-webkit-linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
-         var bgColor1=wrapper.style.background;
-         var bgColor2=content.style.background;
-         content.style.opacity=0.4;
+          }//判断电脑端
+          else if(core.indexOf('Mobile')!=-1){
+          content.style.background="-webkit-gradient(linear, left top, left bottom, from(#00abeb), to(#fff))";
+          wrapper.style.background="-webkit-gradient(linear,"+degs+"deg,"+"from(#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+"),to(#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+")";
+         }
+           var bgColor1=wrapper.style.background;
+           var bgColor2=content.style.background;
+           content.style.opacity=0.4;
          if(!bgColor1||bgColor1=="#fff"||!bgColor2||bgColor2=="#fff"||bgColor1==bgColor2){
           changeColor();
          }
@@ -23,7 +33,7 @@
             tasks[i].onmouseover=function(){
             task_text[i].classList.add("display");
           };
-          tasks[i].onmouseout=function(){
+            tasks[i].onmouseout=function(){
             task_text[i].classList.remove("display");
           };
         })(i);
