@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task30</title>
+	<style>
+  html{font-size:62.5%;font-family: "微软雅黑";}
+  table{position:relative;padding:3rem;margin:5% auto;}
+  table td{padding:.2rem;font-weight: bold;text-align:right;}
+  input{font-size: 3rem}
+  td.tip{color:#aaa;font-size:1rem;opacity:0;font-weight:lighter; text-align: left;transition: opacity .5s;}
+  .btn{position:absolute;right:3rem;bottom:0; background:linear-gradient(145deg,#3B13F1,#fff);width:5rem;height:3rem;text-align: center;font-size:3rem;color:#fff;font-weight: bold;}
+	</style>
+</head>
+<body>
+<table>
+  <tbody>
+    <tr>
+      <td>名称:</td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="tip">必填，长度4~16字符</td>
+    </tr>
+    <tr>
+      <td>密码:</td>
+      <td><input type="password"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="tip">输入您的密码</td>
+    </tr>
+    <tr>
+      <td>密码确认:</td>
+      <td><input type="password"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="tip password">再次输入相同密码</td>
+    </tr>
+    <tr>
+      <td>邮箱:</td>
+      <td><input type="text"></td>
+    <tr>
+      <td></td>
+      <td class="tip">输入您的邮箱</td>
+    </tr>
+    </tr>
+    <tr>
+      <td>手机:</td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="tip">输入手机号码</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button class="btn">提交</button></td>
+    </tr>
+  </tbody>
+</table>
+<script>
+window.onload=function(){
+  var tips=document.querySelectorAll(".tip");
+  var input=document.getElementsByTagName("input");
+  var tips=document.getElementsByClassName("tip");
+  var btn=document.getElementsByClassName("btn")[0];
+
+
+//  function valid(){
+//  var inputText=this.value.trim();
+//  for(var i=0;i<input.length;i++){
+//    if(input[i]==this){
+//        if(inputText==""){
+//          tips[i].innerText="此项不可忽略!";
+//          tips[i].style.color="red";
+//        }else{
+//          tips[i].innerText="验证通过";
+//          tips[i].style.color="#1EDB22";
+//       }
+//     }
+//   }
+//}
+  //规则提示
+  for(var i=0;i<input.length;i++){
+    (function(i){
+         input[i].onfocus=function(){
+          tips[i].style.opacity=1;
+       }
+     })(i);
+    }
+//input[0].onblur=valid;
+//
+//input[1].onblur=function(){
+//  var str=this.value;
+//  validPassword(str);
+//  valid();
+//}
+//
+//input[2].onblur=function(){
+//  var str=this.value;
+//  validAnotherPassword(str);
+//  valid();
+//}
+//
+//input[3].onblur=function(){
+//  var str=this.value.trim();
+//  validMail(str);
+//  valid();
+//}
+//
+//input[4].onblur=function(){
+//  var str=this.value.trim();
+//  validPhone(str);
+//  valid();
+//}
+   //校验长度与名称函数
+   function validName(str){
+    var countLen=0;
+    for(var i=0;i<str.length;i++){
+    var countCode = str.charCodeAt(i);
+      if (countCode >= 0 && countCode <=128) {
+        countLen += 1;
+      } else {
+        countLen += 2;
+      }
+  }
+  if(countLen>16||countLen<4){
+    return false;
+  }else{
+    return true;
+  }
+  }
+  //验证密码
+  function validPassword(str){
+    var len=str.length;
+    if(len>5&&len<14){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  //验证再次输入密码
+  function validAnotherPassword(str){
+    var originalPsw=input[1].value;
+    if(str!==originalPsw){
+      return false;
+    }else{
+      return true;
+    }
+  }
+ //验证邮箱
+ function validMail(str){
+  var flag=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}/;
+  if(flag.test(str)){
+    return true;
+  }else{
+    return false;
+  }
+ }
+ //验证手机
+ function validPhone(str){
+  var  flag=/^[1][0-9]{10}$/;
+  if(flag.test(str)){
+    return true;
+  }else{
+    return false;
+  }
+ }
+
+  //名称框函数
+  input[0].onblur=function(){
+    var text=this.value.trim();
+    if(text==""){
+      tips[0].innerText="名称不能为空";
+      tips[0].style.color="red";
+  
+    }else if(text&&!validName(text)){
+      tips[0].innerText="请输入4~16位字符";
+      tips[0].style.color="red";
+    }
+     else{
+      tips[0].innerText="验证通过";
+      tips[0].style.color="green";
+     }
+  }
+  input[1].onblur=function(){
+    var password=this.value;
+    if(password==""){
+      tips[1].innerText="密码不能为空";
+      tips[1].style.color="red";
+    }else if(password&&!validPassword(password)){
+      tips[1].innerText="请输入有效密码";
+      tips[1].style.color="red";
+    }else{
+      tips[1].innerText="密码设置正确";
+      tips[1].style.color="green";
+    }
+  }
+    input[2].onblur=function(){
+    var password=this.value;
+    if(password==""){
+      tips[2].innerText="密码不能为空";
+      tips[2].style.color="red";
+    }else if(password&&!validAnotherPassword(password)){
+      tips[2].innerText="请输入一致密码";
+      tips[2].style.color="red";
+    }else{
+      tips[2].innerText="密码验证成功";
+      tips[2].style.color="green";
+    }
+  }
+
+  input[3].onblur=function(){
+    var mail=this.value;
+    if(password==""){
+      tips[3].innerText="邮箱不能为空";
+      tips[3].style.color="red";
+    }else if(password&&!validMail(mail)){
+      tips[3].innerText="请输入有效密码";
+      tips[3].style.color="red";
+    }else{
+      tips[3].innerText="密码设置正确";
+      tips[3].style.color="green";
+    }
+  }
+
+  input[4].onblur=function(){
+    var phoneNum=this.value;
+    if(phoneNum==""){
+      tips[4].innerText="手机号码不能为空";
+      tips[4].style.color="red";
+    }else if(password&&!validPhone(phoneNum)){
+      tips[4].innerText="请输入有效手机号码";
+      tips[4].style.color="red";
+    }else{
+      tips[4].innerText="手机号码格式正确";
+      tips[4].style.color="green";
+    }
+  }
+
+}
+
+//    var inputText=input.value.trim();
+//    var len=inputText.length;
+//    var followText=follow.innerText;
+//    if(inputText==""){
+//    	input.style.border="1px solid red";
+//    	follow.innerText="姓名不能为空";
+//    	follow.style.color="red";
+//    }else if(!valid(inputText)){  
+//      input.style.border="1px solid red";
+//    	follow.innerText="请输入4~16位字符";
+//    	follow.style.color="red";
+//    	}else{
+//      input.style.border="1px solid green";
+//    	follow.innerText="名称格式正确";
+//    	follow.style.color="green";
+//    	}
+</script>
+</body>
+</html>
