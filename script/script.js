@@ -1,10 +1,8 @@
-  var wrapper=document.getElementsByClassName("page-header")[0];
+  var wrapper=document.getElementsByClassName("page-main")[0];
   var content=document.getElementsByClassName("main-content")[0];
- 
    (function changeColor(){
          var degs=360*Math.random();
          var core=navigator.userAgent.toLowerCase();
-         var isChrome = Boolean(window.navigator.userAgent.indexOf("Chrome")!=-1);
           //为content和页面分别设置不同的随机背景色
           //判断手机端
           if(core.indexOf('mobile')!=-1){
@@ -12,7 +10,7 @@
          wrapper.style.background="-webkit-gradient(linear, left top,left bottom,from(#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+"),to(#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+"))";
           }
           //判断电脑端
-          else if(isChrome){
+          else{
          content.style.background="-webkit-linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
          wrapper.style.background="-webkit-linear-gradient("+degs+"deg,#"+Math.floor(Math.random()*0xFFFFFF).toString(16)+",#"+Math.floor(Math.random()*0xFFFFFF).toString(16);
         
@@ -24,7 +22,8 @@
           changeColor();
          }
     })();
-
+    
+//显示与隐藏任务介绍
   (function display(){
   var tasks=document.getElementsByClassName("items");
   var text_parent=document.querySelector("section.intro");
@@ -41,3 +40,15 @@
         })(i);
       }
 })();
+//动画与音乐控制
+  var musicIcon=document.getElementById("music");
+    musicIcon.onclick=function(){
+    var music=document.getElementById("audio");
+      if(this.style.animationPlayState!="paused"){
+      music.pause();
+      this.style.animationPlayState="paused";
+    }else{
+      this.style.animationPlayState="running";
+      music.play();
+    }
+  }
