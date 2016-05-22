@@ -81,7 +81,32 @@ a:hover {
     max-width: 80%;
     margin:0 auto;
    }
+ .loading{
+  position: absolute;
+  z-index: 100;
+  background:linear-gradient(60deg,#7983CA,#7CD574);
+  width:100%;
+  height: 100%;
+  animation:fadein 3s linear 1; 
+  animation-fill-mode: forwards;
+}
+.loading h1{
+  font-family:"Arial";
+  font-weight:530;
+  color:#827D7D;
+  opacity: .8;
+  text-align: center;
+  margin:0 auto;
 
+}
+@keyframes fadein{
+
+0%{height:100%;}
+25%{height:100%;}
+50%{height:100%;}
+75%{height:100%;}
+100%{height:0;}
+}
 @keyframes loop{
   0%{transform:rotate(0deg);box-shadow:0 0 30px #fff;opacity:.6;}
   25%{transform:rotate(90deg);box-shadow:0 0 50px #fff;opacity:.8;}
@@ -93,42 +118,45 @@ a:hover {
    position: fixed;
    border-radius: 50%;
    color:#fff;
-   background:#ffffcc;
+   background:;
    box-shadow: 0 0 30px #fff;
    animation: loop 3s linear infinite;
    opacity:.6;
 }
-section.menu ul li{
+.menu ul li{
   list-style-type: none;
   border-radius:50%;
   color:#fff;
   opacity: .6;
   transition:all .3s;
 }
-section.menu ul li a:visited{
+.menu ul li a:visited{
   color:#fff;
 }
-section.menu li:nth-of-type(1){
+.menu li:nth-of-type(1){
   background: #D84444;
 }
-section.menu li:nth-of-type(2){
+.menu li:nth-of-type(2){
   background: #E92909;
 }
-section.menu li:nth-of-type(3){
+.menu li:nth-of-type(3){
   background: #ECEA12;
 }
-section.menu li:nth-of-type(4){
+.menu li:nth-of-type(4){
   background: #2DEA21;
 }
-section.menu li:nth-of-type(5){
+.menu li:nth-of-type(5){
   background: #25B6BE;
 }
-section.menu li:hover{
+.menu li:hover{
   background:transparent;
   transform: rotate(360deg);
 }
 
 @media screen and (min-width: 64em) {
+  .loading h1{
+  margin-top:2em;font-size:1.5em;line-height:1.9em;
+   }
   .page-main{
     padding: 3em 5em; }
   .project-name {
@@ -149,35 +177,37 @@ section.menu li:hover{
    top:1em;
    font-size: 3em;
     }
-  section.menu ul{
+  .menu ul{
   position:fixed;
   top:50%;
   transform: translateY(-50%);
   }
- section.menu ul li{
+ .menu ul li{
    width:5em;
    height:5em;
    text-align: center; 
    line-height:5em;
    font-size:.7em;
  }
- 
- section.menu li:nth-of-type(2){
+ .menu li:nth-of-type(2){
    margin-left:5em;
  }
- section.menu li:nth-of-type(3){
+ .menu li:nth-of-type(3){
    margin-left:7em;
  }
- section.menu li:nth-of-type(4){
+ .menu li:nth-of-type(4){
    margin-left:5em;
  }
- section.menu li:hover{
+ .menu li:hover{
    font-size:.9em;
  }
 }
 
 
 @media screen and (min-width: 42em) and (max-width: 64em) {
+    .loading h1{
+    margin-top:2em;font-size:1.4em;line-height:1.8em;
+   }
   .page-main {
     padding: 1em 2em;
      } 
@@ -206,14 +236,14 @@ section.menu li:hover{
     top:.6em;
     font-size: 3em;
 }
-  section.menu ul{
+  .menu ul{
     position:fixed;
     width: 100%;
     bottom: 0;
     display: flex;
     justify-content: space-around;
   }
- section.menu ul li{ 
+ .menu ul li{ 
    width:5em;
    height:5em;
    text-align: center; 
@@ -221,14 +251,17 @@ section.menu li:hover{
    font-size:.7em;
  }
  
- section.menu li:nth-of-type(2){
+ .menu li:nth-of-type(2){
  }
- section.menu li:nth-of-type(3){
+ .menu li:nth-of-type(3){
  }
- section.menu li:nth-of-type(4){
+ .menu li:nth-of-type(4){
  }
 }
   @media screen and (max-width: 42em){
+      .loading h1{
+    margin-top:4em;font-size:1em;line-height:2em; 
+   }
   .project-name {
     font-size: 1.4em;
     padding: .7em;
@@ -258,14 +291,14 @@ section.menu li:hover{
     top:.2em;
     font-size: 3em;
  }
-   section.menu ul{
+   .menu ul{
     position: absolute;
     display: flex;
     width: 100%;
     bottom: 0;
     justify-content: space-between;
   }
- section.menu ul li{
+ .menu ul li{
    float:left;
    margin:0;
    width:4em;
@@ -275,11 +308,11 @@ section.menu li:hover{
    font-size:.5em;
  }
  
- section.menu li:nth-of-type(2){
+ .menu li:nth-of-type(2){
  }
- section.menu li:nth-of-type(3){
+ .menu li:nth-of-type(3){
  }
- section.menu li:nth-of-type(4){
+ .menu li:nth-of-type(4){
  }
  }
    @media screen and (max-width: 26em){
