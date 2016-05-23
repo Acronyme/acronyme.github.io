@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task31</title>
+	<style>
+	 form{position: relative;width:50%;margin:20% auto;text-align: center;font-size:2em;}
+	 form section{position:absolute;left:21%;top:-2em;}
+	 input{margin-left:5em;}
+	 select{width:20%;height:2em;}
+	 .school{position: absolute;right:20%; display: none;}
+	 #city{position:absolute;left:30%;}
+	 .display{display: block;}
+	 #company{width:50%;margin-left:30%;display: none}
+	</style>
+
+</head>
+<body>
+<form>
+<section>
+<input type="radio" name="studentOrNot" class="studentOrNot" checked>在校生
+<input type="radio" name="studentOrNot" class="studentOrNot">非在校生
+</section>
+<article>
+   <select name="city" id="city">
+   <option value="北京">北京</option>
+   <option value="上海">上海</option>
+   </select>
+   <select name="school" class="school  display">
+   <option value="PKU">北京大学</option>		
+   <option value="TSU">清华大学</option>		
+   </select>
+   <select name="school" class="school">
+   <option value="PKU">上海交通大学</option>		
+   <option value="TSU">复旦大学</option>	
+</select>
+</article>
+<input type="text" placeholder="在此输入公司信息" id="company">	
+</form>
+	<script>
+	var choose=document.getElementsByClassName("studentOrNot");
+	var stu=choose[0];
+	var notStu=choose[1];
+	notStu.onclick=function(){
+		var article=document.getElementsByTagName("article")[0];
+        var company=document.getElementById("company");
+		article.style.display="none";
+		company.style.display="block";
+	}
+    stu.onclick=function(){
+        var article=document.getElementsByTagName("article")[0];
+        var company=document.getElementById("company");
+        article.style.display="block";
+		company.style.display="none";
+    }
+    var citySel=document.getElementById("city");
+    citySel.onchange=function(){
+       var options=this.getElementsByTagName("option");
+       var schools=document.getElementsByClassName("school");
+       for(var i=0;i<options.length;i++){
+           if(options[i].selected==true){
+           	 schools[i].classList.add("display");
+           	 for(var j=0;j<schools.length;j++){
+           	 	if(j!=i&&schools[j].classList.contains("display")){
+           	 		schools[j].classList.remove("display");
+           	 	}
+           	 }
+           }
+       }
+    }
+	</script>
+</body>
+</html>
