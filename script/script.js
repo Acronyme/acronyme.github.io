@@ -2,6 +2,7 @@
   var content = document.getElementsByClassName("main-content")[0];
   var core = navigator.userAgent.toLowerCase();
   var musicIcon=document.getElementById("music");
+  
   (function changeColor() {
     var degs = 360 * Math.random();
     //为content和页面分别设置不同的随机背景色
@@ -43,6 +44,7 @@
   //动画与音乐控制
   musicIcon.onclick = function() {
     var music = document.getElementById("audio");
+    if (core.indexOf('mobile') == -1){
     if (this.style.animationPlayState != "paused") {
       music.pause();
       this.style.animationPlayState = "paused";
@@ -50,4 +52,13 @@
       this.style.animationPlayState = "running";
       music.play();
     }
+  }else{
+     if (this.style.webkitAnimationPlayState != "paused") {
+      music.pause();
+      this.style.webkitAnimationPlayState = "paused";
+    } else {
+      this.style.webkitAnimationPlayState = "running";
+      music.play();
   }
+}
+}
