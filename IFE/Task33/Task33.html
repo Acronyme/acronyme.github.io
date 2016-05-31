@@ -4,8 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Task33</title>
 </head>
-<script>
-</script>
+	<script src="script.js"></script>
 <style>
   table{border-collapse: collapse;}
   tbody td{position:relative;width:2em;height:2em; border:0;text-align: center;vertical-align: center}
@@ -95,7 +94,7 @@
     	<td></td>
     	<td></td>
     	<td class="current">	
-    	<div class="bottom">
+    	<div class="right">
     	</div>		
     	</td>
     	<td></td>
@@ -168,87 +167,5 @@
 
 <input type="text" id="cmd" placeholder="在此输入指令">
 <button id="exe">执行</button>
-<script>
-//上→ 上一tr的同一个index
-//下→ 下一tr的同一个index
-//左→ 同一tr的上一个index
-//右→ 同一tr的下一个index
-window.onload=function(){
-	var command=document.getElementById('cmd');
-	var execution=document.getElementById("exe");
-	function go(){
-	var headstock=document.getElementsByTagName("div")[0];
-	var direction=headstock.classList[0];
-	var target;
-	function  goTop(){
-  
-
-	}
-	function  goBack(){
-	var current=document.getElementsByClassName("current")[0];
-	target=current.parentNode.nextElementSibling.childNodes;
-	for(var i=0,nodes=current.parentNode.childNodes;i<nodes.length;i++){
-		  //改变current节点后重新获取 
-	      current=document.getElementsByClassName("current")[0];
-		if(nodes[i]===current){
-			current.innerHTML="";
-			current.classList.remove("current");
-			target[i].classList.add("current");
-			target[i].innerHTML+="<div class='bottom'></div>"
-		}
-	}
-	
-	target=current.parentNode.childNodes;
-		}
-	function  goRight(){
-	target=headstock.parentNode.previousSibling;
- 
-}
-	function  goLeft(){previousSibling }
-	switch (direction){
-		case "top":
-		goTop();
-		break;
-		case "bottom":
-		goBack();
-		break;
-		case "right":
-		goRight();
-		break;
-		case "left":
-		goLeft();
-		break;
-	}
-    }
-	function turnLeft(){
-
-	}
-    function turnRight(){
-
-    }
-    function turnBack(){
-
-    }
-	execution.onclick=function(){
-		var commandValue=command.value.trim();
-		switch(commandValue){
-			case "GO":
-			go();
-			break;
-			case "TUN LEF":
-			turnLeft();
-			break;
-			case "TUN RIG":
-			turnRight();
-			break;
-			case "TUN BAC":
-			turnBack();
-			break;
-            default:
-            alert("您输入的指令无效！请参阅右方说明输入")
-			}
-		}
-	}
-</script>
 </body>
 </html>
