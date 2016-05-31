@@ -1,7 +1,6 @@
 window.onload=function(){
 	var command=document.getElementById('cmd');
 	var execution=document.getElementById("exe");
-
 	//指令GO
 	function go(){
 	var direction=document.getElementsByTagName("div")[0].classList[0];
@@ -14,6 +13,10 @@ window.onload=function(){
 	      current=document.getElementsByClassName("current")[0];
 	    //目标行中与当前节点位置相同的节点
 		if(nodes[i]===current){
+			if(target[i].parentNode.classList.contains("outside")||target[i].parentNode.firstElementChild===target[i]){
+		       alert("上边没路啦");
+		          return;
+	           }
 			current.innerHTML="";
 			current.classList.remove("current");
 			target[i].classList.add("current");
@@ -24,7 +27,9 @@ window.onload=function(){
 	}
 	function  goBack(){
 	var current=document.getElementsByClassName("current")[0];
-	target=current.parentNode.nextElementSibling.childNodes;
+	var nextTr=current.parentNode.nextElementSibling;
+	if(nextTr===null){alert("下边没路啦");return}
+	target=nextTr.childNodes;
 	for(var i=0,nodes=current.parentNode.childNodes;i<nodes.length;i++){
 		  //改变current节点后重新获取 
 	      current=document.getElementsByClassName("current")[0];
@@ -39,6 +44,7 @@ window.onload=function(){
 	function  goRight(){
 	        var current=document.getElementsByClassName("current")[0];
 	        target=current.nextElementSibling;
+	        if(target===null){alert("右边没路啦");return}
 			current.innerHTML="";
 			current.classList.remove("current");
 			target.classList.add("current");
