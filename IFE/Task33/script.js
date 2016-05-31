@@ -1,11 +1,3 @@
-//上→ 上一tr的同一个index
-//下→ 下一tr的同一个index
-//左→ 同一tr的上一个index
-//右→ 同一tr的下一个index
-
-
-
-//以为turn left后车向左就好了，然后发现并不是这样的，哭晕，脑残一个
 window.onload=function(){
 	var command=document.getElementById('cmd');
 	var execution=document.getElementById("exe");
@@ -81,11 +73,23 @@ window.onload=function(){
 	var current=document.getElementsByClassName("current")[0];
 	var headstock=document.getElementsByTagName("div")[0];
     var direction=headstock.classList[0];
-    if(direction==="left"){
-    	go();
-    }else{
+    switch(direction){
+    	case "top":
     	headstock.classList.remove(direction);
     	headstock.classList.add("left");
+    	break;
+    	case "bottom":
+    	headstock.classList.remove(direction);
+    	headstock.classList.add("right");
+    	break;
+    	case "left":
+    	headstock.classList.remove(direction);
+    	headstock.classList.add("bottom");
+    	break;
+    	case "right":
+    	headstock.classList.remove(direction);
+    	headstock.classList.add("top");
+    	break;
 
     }
 	}
@@ -94,11 +98,23 @@ window.onload=function(){
     var current=document.getElementsByClassName("current")[0];
 	var headstock=document.getElementsByTagName("div")[0];
     var direction=headstock.classList[0];
-    if(direction==="right"){
-    	go();
-    }else{
+    switch(direction){
+    	case "top":
     	headstock.classList.remove(direction);
     	headstock.classList.add("right");
+    	break;
+    	case "bottom":
+    	headstock.classList.remove(direction);
+    	headstock.classList.add("left");
+    	break;
+    	case "left":
+    	headstock.classList.remove(direction);
+    	headstock.classList.add("top");
+    	break;
+    	case "right":
+    	headstock.classList.remove(direction);
+    	headstock.classList.add("bottom");
+    	break;
 
     }
     }
@@ -127,7 +143,7 @@ window.onload=function(){
     }
 }
 	execution.onclick=function(){
-		var commandValue=command.value.trim();
+		var commandValue=command.value.trim().toUpperCase();
 		switch(commandValue){
 			case "GO":
 			go();
