@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Task9</title>
 	<style>
     *
@@ -75,7 +74,7 @@
     width:20px;
     height: 20px;
     position: absolute;
-    background:url(icons.png) no-repeat; 
+    background:url(images/icons.png) no-repeat; 
     background-position:-9px -738px;
     top:20px;
     left:10px;
@@ -85,7 +84,7 @@
     width:20px;
     height:20px;
     position: absolute;
-    background:url(icons.png) no-repeat; 
+    background:url(images/icons.png) no-repeat; 
     background-position:-11px -819px; 
     right:127px;
     bottom:20px;
@@ -150,8 +149,8 @@
     }
     ul.detail li.item_1
     {
-    display: table-cell; 
-    float:left;
+    list-style-type: none;
+    position: absolute;
     height: 37px;
     padding-right:38px;
     border-right: 1px solid #6e8095;
@@ -160,19 +159,22 @@
     {
     content: "收藏";
     position: absolute;
-    left:56px;
+    left:1px;
+    top:20px;
     font-size:10px;
     }
     ul.detail li.item_2
     {
     list-style-type: none;
-    float:right;
+    position: absolute;
+    left:150px;
     }
     ul.detail li.item_2:after
     {
     content: "粉丝";
     position: absolute;
-    left:150px;
+    left:0px;
+    top:20px;
     font-size: 10px;
     }
     div.project
@@ -418,7 +420,7 @@
     	color:#fff;
     }
 
-    div.content div.timeprice
+    .timeprice
     {
     	height:70px;
     	background:
@@ -441,7 +443,8 @@
     }
     div.price
     {
-    	width:120px;
+
+    	width:13%;
     	margin-left:3px;
     	background:#fff;
     	height:70px;
@@ -461,7 +464,7 @@
     {
     	float:right;
     	height: 70px;
-    	width:118px;
+    	width:12%;
     	background:#fff;
     }
     div.price span[class^="time"],div.price span[class^="rmb"],div.price b
@@ -469,9 +472,9 @@
     	position: absolute;
     }
     div.price span[class^="time"]
-    {
+    {   
+
     	font-size:14px;
-    	left:60px;
     	top:10px;
     }
     div.price span[class^="rmb"]
@@ -499,15 +502,15 @@
     div.price span.time1{left:65px;}
     div.price span.time2{left:190px;}
     div.price span.time3{left:310px;}
-    div.price span.time4{left:430px;}
-    div.price span.time5{left:550px;}
-    div.price span.time6{left:670px;}
+    div.price span.time4{left:440px;}
+    div.price span.time5{left:560px;}
+    div.price span.time6{left:685px;}
     div.price span.rmb1{left:65px;}
     div.price span.rmb2{left:195px;}
     div.price span.rmb3{left:315px;}
-    div.price span.rmb4{left:435px;}
-    div.price span.rmb5{left:555px;}
-    div.price span.rmb6{left:675px;}
+    div.price span.rmb4{left:445px;}
+    div.price span.rmb5{left:565px;}
+    div.price span.rmb6{left:690px;}
     div.history
     {
     	text-align:right;
