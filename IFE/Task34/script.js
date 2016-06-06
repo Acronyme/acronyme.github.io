@@ -1,15 +1,3 @@
-//GO：向蓝色边所面向的方向前进一格（一格等同于正方形的边长）
-//TUN LEF：向左转（逆时针旋转90度）
-//TUN RIG：向右转（顺时针旋转90度）
-//TUN BAC：向右转（旋转180度）
-//TRA LEF：向屏幕的左侧移动一格，方向不变
-//TRA TOP：向屏幕的上面移动一格，方向不变
-//TRA RIG：向屏幕的右侧移动一格，方向不变
-//TRA BOT：向屏幕的下面移动一格，方向不变
-//MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格
-//MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格
-//MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格
-//MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格
 var car=document.getElementById('car');
 var command=document.getElementById('cmd');
 var execution=document.getElementById('exe');
@@ -28,25 +16,20 @@ var dir=config.direction;
 switch(dir){
   case 'top':
   config.y-=2.3;
-  style.top=config.y+'em';
   break;
   case 'bottom':
   config.y+=2.3;
-  style.top=config.y+'em';
   break;
   case 'right':
   config.x+=2.3;
-  style.x=config.x+'em';
   break;
   case 'left':
   config.x-=2.3;
-  style.x=config.x+'em';
   break;
 }
 }
 function turnLeft(){
   config.angle-=90;
-  style.transform='rotate('+config.angle+'deg)';
   switch(config.direction){
   	case 'top':
   	config.direction='left';
@@ -61,7 +44,72 @@ function turnLeft(){
     config.direction='bottom';
     break;
   }
-  alert(config.direction);
+}
+function turnRight(){
+  config.angle+=90;
+  switch(config.direction){
+  	case 'top':
+  	config.direction='right';
+    break;
+    case 'bottom':
+    config.direction='left';
+    break;
+    case 'right':
+    config.direction='bottom';
+    break;
+    case 'left':
+    config.direction='top';
+    break;
+  }
+}
+function turnBack(){
+  config.angle+=180;
+  switch(config.direction){
+  	case 'top':
+  	config.direction='bottom';
+    break;
+    case 'bottom':
+    config.direction='top';
+    break;
+    case 'right':
+    config.direction='left';
+    break;
+    case 'left':
+    config.direction='right';
+    break;
+  }
+}
+function traLeft(){
+ config.x-=2.3;
+}
+function traRight(){
+ config.x+=2.3;
+}
+function traTop(){
+ config.y-=2.3;
+}
+function traBottom() {
+ config.y+=2.3;
+}
+function moveLeft(){
+ config.angle=-90;
+ config.direction='left';
+ config.x-=2.3;
+}
+function moveRight(){
+ config.angle=90;
+ config.direction='right';
+ config.x+=2.3;
+}
+function moveTop(){
+ config.angle=0;
+ config.direction='top';
+ config.y-=2.3;
+}
+function moveBottom(){
+ config.angle=180;
+ config.direction='bottom';
+ config.y+=2.3;
 }
 execution.onclick=function(){
  var cmd=command.value.trim().toLowerCase();
@@ -108,4 +156,7 @@ execution.onclick=function(){
     default:
     alert("指令不正确，请重新输入");
   }
+  style.left=config.x+'em';
+  style.top=config.y+'em';
+  style.transform='rotate('+config.angle+'deg)';
 }
