@@ -4,27 +4,27 @@ var execution=document.getElementById('exe');
 var style=car.style;
 var config=
 {
-x:2.8,
-y:2.8,
+x:44.5,
+y:44.5,
 angle:0,
 direction:'top',
 }
-style.left=config.x+'em';
-style.top=config.y+'em';
+style.left=config.x+'px';
+style.top=config.y+'px';
 function go(){
 var dir=config.direction;
 switch(dir){
   case 'top':
-  config.y-=2.3;
+  traTop();
   break;
   case 'bottom':
-  config.y+=2.3;
+  traBottom();
   break;
   case 'right':
-  config.x+=2.3;
+  traRight();
   break;
   case 'left':
-  config.x-=2.3;
+  traLeft();
   break;
 }
 }
@@ -80,42 +80,78 @@ function turnBack(){
   }
 }
 function traLeft(){
- config.x-=2.3;
+ if(config.x==44.5){
+  alert('左边没路了。');
+   return;
+}
+ config.x-=37;
 }
 function traRight(){
- config.x+=2.3;
+if(Math.floor(config.x)==377){
+  alert('右边没路了。');
+  return;
+}
+ config.x+=37;
 }
 function traTop(){
- config.y-=2.3;
+if(config.y==44.5){
+ alert('上边没路了。');
+  return;
+}
+ config.y-=37;
 }
 function traBottom() {
- config.y+=2.3;
+if(Math.floor(config.y)==377){
+ alert('下边没路了。');
+  return;
+}
+ config.y+=37;
 }
 function moveLeft(){
+if(config.x==44.5){
+   alert('左边没路了。');
+   return;
+}
  config.angle=-90;
  config.direction='left';
- config.x-=2.3;
+ config.x-=37;
+
 }
 function moveRight(){
+ if(Math.floor(config.x)==44.5){
+ alert('右边没路了。');
+  return;
+}
  config.angle=90;
  config.direction='right';
- config.x+=2.3;
+ config.x+=37;
 }
 function moveTop(){
+if(config.y==44.5){
+ alert('上边没路了。');
+  return;
+}
  config.angle=0;
  config.direction='top';
- config.y-=2.3;
+ config.y-=37;
 }
 function moveBottom(){
+if(Math.floor(config.y)==377){
+ alert('下边没路了。');
+  return;
+}
  config.angle=180;
  config.direction='bottom';
- config.y+=2.3;
+ config.y+=37;
 }
 execution.onclick=function(){
  var cmd=command.value.trim().toLowerCase();
  if(config.angle==-360||config.angle==360){
   	config.angle=0;
   }
+ if(Math.floor(config.x)==0){
+
+ }
   switch(cmd){
   	case 'go':
   	go();
@@ -156,7 +192,7 @@ execution.onclick=function(){
     default:
     alert("指令不正确，请重新输入");
   }
-  style.left=config.x+'em';
-  style.top=config.y+'em';
+  style.left=config.x+'px';
+  style.top=config.y+'px';
   style.transform='rotate('+config.angle+'deg)';
 }
