@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0}
+	textarea{background:#4C4A4A;color:#17EB4A;font-weight: bold;margin-left:20px;font-size:1.5em}
+	#ctrl{position: relative;}
+	#rows,textarea{position: absolute;}
+	#rows{left:5px;list-style-type: none;height:110px;padding-top:2px;}
+	#wrapper{position: relative; height:110px;width:30px;top:101px;left:10px;overflow: hidden;}
+	textarea{left:20px;top:100px;}
+	#rows li{width:20px;height:19px;text-align: center;margin-bottom:3px;}
+	</style>
+</head>
+<body>
+
+<div id="ctrl">
+<div id="wrapper">
+<ul id="rows">	
+<li>1</li>
+</ul>
+</div>
+<textarea name="text" id="a" cols="20" rows="5"></textarea>
+</div>
+</body>
+<script>
+var textarea=document.getElementById('a');
+var rows=document.getElementById('rows');
+var i=1;
+textarea.onkeyup=function(){
+   if(event.keyCode==13){
+   	i++;
+	rows.innerHTML+='<li>'+i+'</li>';
+}
+}
+textarea.onscroll=function(){
+  rows.style.bottom=this.scrollTop+'px';
+}
+
+</script>
+</html>
