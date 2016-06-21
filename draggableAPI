@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>exechangePos</title>
+	<style>
+	html{font-size:10px;}
+	#wrapper
+	{
+		display: flex;
+		flex-flow:row wrap;
+		justify-content: space-between;
+		width:20rem;
+		margin:10rem auto;
+	}
+	#wrapper div{
+		width:2.4rem;
+		height:2.4rem;
+		border:.3rem solid red;
+		border-radius:.5rem;
+		margin:1rem;
+		text-align: center;
+		line-height:2.4rem;
+	}
+	div.passed{
+		opacity: .5;
+	}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<div></div>
+	<div class="colsCtrl">A</div>
+	<div class="colsCtrl">B</div>
+	<div class="colsCtrl">C</div>
+	<div class="rowsCtrl">X</div>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div class="rowsCtrl">Y</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+	<div class="rowsCtrl">Z</div>
+	<div>7</div>
+	<div>8</div>
+	<div>9</div>
+</div>
+<script>
+//为每个元素设置draggable属性为true
+var wrapper=document.getElementById("wrapper");
+var divList=wrapper.querySelectorAll('div');
+[].forEach.call(divList,function(item){
+   item.draggable='true';
+})
+var dragEle=null;
+
+
+Array.prototype.forEach.call(divList,function(item){
+	item.addEventListener('dragstart',dragstarted,false);
+	item.addEventListener('dragenter',dragentered,false);
+	item.addEventListener('dragover',dragovered,false);
+	item.addEventListener('dragleave',dragleaved,false);
+	item.addEventListener('drop',dropped,false);
+	item.addEventListener('dragend',dragended,false);
+});
+function dragstarted(e){
+	e.target.style.opacity='0.5';
+	dragEle=this;
+	e.dataTransfer.effectAllowed='move';
+	e.dataTransfer.setData('text/html',this.innerHTML);
+}
+function dragentered(e){
+	e.target.classList.add('passed');
+}
+function dragovered(e){
+	//事件的默认行为不允许被拖拽元素在其他元素上释放或放置,阻止默认事件才能触发drop事件
+	e.preventDefault();
+	e.dataTransfer.dropEffect='move';
+	return false;
+}
+function dragleaved(e){
+	e.target.classList.remove('passed');
+}
+function dropped(e){
+	e.stopPropagation();
+	if(dragEle!=this){
+		dragEle.innerHTML=this.innerHTML;
+		this.innerHTML=e.dataTransfer.getData('text/html');
+	}
+	return false;
+}
+function dragended(e){
+	[].forEach.call(divList,function(item){
+		item.classList.remove('passed');
+		item.style.opacity=1;
+	})
+}
+
+</script>
+</body>
+</html>
