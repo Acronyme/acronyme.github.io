@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>exechangePos</title>
+	<style>
+	html{font-size:10px;}
+	#wrapper
+	{
+		display: flex;
+		flex-flow:row wrap;
+		justify-content: space-between;
+		width:20rem;
+		margin:10rem auto;
+	}
+	#wrapper div{
+		width:2.4rem;
+		height:2.4rem;
+		border:.3rem solid red;
+		border-radius:.5rem;
+		margin:1rem;
+		text-align: center;
+		line-height:2.4rem;
+	}
+	div.passed{
+		opacity: .5;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div></div>
+		<div class="colsCtrl">A</div>
+		<div class="colsCtrl">B</div>
+		<div class="colsCtrl">C</div>
+		<div class="rowsCtrl">X</div>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div class="rowsCtrl">Y</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div class="rowsCtrl">Z</div>
+		<div>7</div>
+		<div>8</div>
+		<div>9</div>
+	</div>
+	<script>
+//为每个非行列控制元素设置draggable属性为true
+var wrapper = document.getElementById("wrapper");
+var divList = wrapper.querySelectorAll('div:not([class$="Ctrl"])');
+Array.prototype.forEach.call(divList, function(item) {
+    item.draggable = 'true';
+})
+var dragEle = null;
+Array.prototype.forEach.call(divList, function(item) {
+    item.addEventListener('dragstart', dragstarted, false);
+    item.addEventListener('dragenter', dragentered, false);
+    item.addEventListener('dragover', dragovered, false);
+    item.addEventListener('dragleave', dragleaved, false);
+    item.addEventListener('drop', dropped, false);
+    item.addEventListener('dragend', dragended, false);
+});
+//拖拽事件开始
+function dragstarted(e) {
+    e.target.style.opacity = '0.5';
+    dragEle = this;
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+}
+//拖拽元素时改变透明度
+function dragentered(e) {
+	//普通元素拖拽经过时，改变类名
+	if(!dragEle.classList.contains('rowsCtrl')&&!dragEle.classList.contains('colsCtrl')){
+     e.target.classList.add('passed');
+  }else{
+     	return;
+}
+}
+
+function dragovered(e) {
+    //事件的默认行为不允许被拖拽元素在其他元素上释放或放置,阻止默认事件触发drop事件
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+}
+
+function dragleaved(e) {
+    e.target.classList.remove('passed');
+}
+//drop事件放生时，若目标元素非本身，则交换DOM结构
+function dropped(e) {
+    e.stopPropagation();
+    //普通元素交换位置时，当前拖拽元素不能为控制元素
+    if (dragEle != this&&!dragEle.classList.contains('rowsCtrl')&&!dragEle.classList.contains('colsCtrl')) {
+        dragEle.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
+    }
+    return false;
+}
+//还原透明度
+function dragended(e) {
+    Array.prototype.forEach.call(divList, function(item) {
+        item.classList.remove('passed');
+        item.style.opacity = 1;
+    })
+}
+
+
+
+//整行与整列部分
+var ctrlList = document.querySelectorAll('[class$="Ctrl"]');
+var rowsCtrlList=document.querySelectorAll('[class="rowsCtrl"]');
+var colsCtrlList=document.querySelectorAll('[class="colsCtrlList"]');
+var allDiv=wrapper.querySelectorAll('div');
+var selectedEle=[];
+
+
+[].forEach.call(ctrlList, function(item) {
+     item.draggable='true';
+})
+Array.prototype.forEach.call(ctrlList,function(item){
+	item.addEventListener('dragstart', ctrlDragstart, false);
+    item.addEventListener('dragenter', ctrlDragenter, false);
+    item.addEventListener('dragover', ctrlDragover, false);
+    item.addEventListener('dragleave', ctrlDragleave, false);
+    item.addEventListener('drop', ctrlDrop, false);
+    item.addEventListener('dragend', ctrlDragend, false);
+})
+
+function ctrlDragstart(e) {
+    this.style.opacity = '0.5';
+    dragEle = this;
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+
+    for(var i=0;i<4;i++){
+    //若拖动元素是行控制元素，将控制元素对应三个div推入数组
+ 	if(dragEle==rowsCtrlList[i]){
+ 		selectedEle.push(dragEle.nextElementSibling);
+ 		selectedEle.push(selectedEle[0].nextElementSibling);
+ 		selectedEle.push(selectedEle[1].nextElementSibling);
+ 		selectedEle.forEach(function(item){
+ 			item.style.opacity=0.5;
+ 		})
+ 	}else if(dragEle==allDiv[i]){
+ 		//选择ABC对应控制元素推入数组
+ 		selectedEle.push(allDiv[i+4],allDiv[i+8],allDiv[i+12]);
+ 		selectedEle.forEach(function(item){
+ 			item.style.opacity=0.5;
+ 		})
+ 	 }
+   }
+}
+//拖动元素时改变透明度
+function ctrlDragenter(e) {
+	//若拖动元素和目标元素是同类控制元素，改变透明度，否则不变
+	if((dragEle.classList.contains('rowsCtrl')&&e.target.classList.contains('rowsCtrl'))||(dragEle.classList.contains('colsCtrl')&&e.target.classList.contains('colsCtrl'))){
+     e.target.style.opacity=.5;
+}
+}
+
+function ctrlDragover(e) {
+    //事件的默认行为不允许被拖拽元素在其他元素上释放或放置,阻止默认事件触发drop事件
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+}
+function ctrlDragleave(e) {
+    e.target.style.opacity=1;
+}
+function ctrlDrop(e) {
+	//若目标元素也是控制元素，则可以交换DOM结构
+	if(dragEle.classList.contains('rowsCtrl')&&this.classList.contains('rowsCtrl')&&dragEle!=this){
+        dragEle.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
+        //移除原行列元素
+        selectedEle.forEach(function(item){
+        	wrapper.removeChild(item);
+        })
+        //添加到交换行列
+        switch (this){
+        	case rowsCtrlList[0]:
+        	selectedEle.forEach(function(item){
+        	   wrapper.insertBefore(item,rowsCtrlList[1]);
+            })
+        }
+
+    }else{
+    	return;
+    };
+}
+//还原透明度
+function ctrlDragend(e) {
+    Array.prototype.forEach.call(allDiv, function(item) {
+        item.style.opacity = 1;
+    })
+}
+
+
+</script>
+</body>
+</html>
