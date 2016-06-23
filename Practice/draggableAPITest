@@ -25,6 +25,7 @@
 	div.passed{
 		opacity: .5;
 	}
+	.bug{background:blue;}
 	</style>
 </head>
 <body>
@@ -55,12 +56,12 @@ Array.prototype.forEach.call(divList, function(item) {
 })
 var dragEle = null;
 Array.prototype.forEach.call(divList, function(item) {
-    item.addEventListener('dragstart', dragstarted, false);
-    item.addEventListener('dragenter', dragentered, false);
-    item.addEventListener('dragover', dragovered, false);
-    item.addEventListener('dragleave', dragleaved, false);
-    item.addEventListener('drop', dropped, false);
-    item.addEventListener('dragend', dragended, false);
+   item.addEventListener('dragstart', dragstarted, false);
+   item.addEventListener('dragenter', dragentered, false);
+   item.addEventListener('dragover', dragovered, false);
+   item.addEventListener('dragleave', dragleaved, false);
+   item.addEventListener('drop', dropped, false);
+   item.addEventListener('dragend', dragended, false);
 });
 //拖拽事件开始
 function dragstarted(e) {
@@ -96,7 +97,7 @@ function dropped(e) {
     if (dragEle != this&&!dragEle.classList.contains('rowsCtrl')&&!dragEle.classList.contains('colsCtrl')) {
         dragEle.innerHTML = this.innerHTML;
         this.innerHTML = e.dataTransfer.getData('text/html');
-    }
+    }else{return};
     return false;
 }
 //还原透明度
@@ -145,7 +146,7 @@ function ctrlDragstart(e) {
  		selectedEle.push(selectedEle[0].nextElementSibling);
  		selectedEle.push(selectedEle[1].nextElementSibling);
  		selectedEle.forEach(function(item){
- 			item.style.opacity=0.5;
+ 			item.classList.add('passed');
  		})
  	}else if(dragEle==allDiv[i]){
  		//选择ABC对应控制元素推入数组
@@ -160,7 +161,7 @@ function ctrlDragstart(e) {
 function ctrlDragenter(e) {
 	//若拖动元素和目标元素是同类控制元素，改变透明度，否则不变
 	if((dragEle.classList.contains('rowsCtrl')&&e.target.classList.contains('rowsCtrl'))||(dragEle.classList.contains('colsCtrl')&&e.target.classList.contains('colsCtrl'))){
-     e.target.style.opacity=.5;
+       e.target.style.opacity=.5;
 }
 }
 
@@ -182,7 +183,6 @@ function ctrlDrop(e) {
  		targetEle.push(targetEle[1].nextElementSibling);
  		targetEle.forEach(function(item){
  			item.style.opacity=0.5;
- 			item.style.background='green';
  		})
  	}else if(e.target==allDiv[i]){
  		//选择ABC对应控制元素推入数组
@@ -196,17 +196,17 @@ function ctrlDrop(e) {
 	if(dragEle.classList.contains('rowsCtrl')&&this.classList.contains('rowsCtrl')&&dragEle!=this){
         dragEle.innerHTML = this.innerHTML;
         this.innerHTML = e.dataTransfer.getData('text/html');
+        //删除原有元素
+        targetEle.forEach(function(item){wrapper.removeChild(item)});
         //添加到交换行列
         switch (this){
         	//目标元素为第一行控制元素时
         	case rowsCtrlList[0]:
-        	//删除原有元素
-        	targetEle.forEach(function(item){wrapper.removeChild(item)});
         	//将拖动元素对应行元素插到第二个控制元素之前
         	selectedEle.forEach(function(item){
         	   wrapper.insertBefore(item,rowsCtrlList[1]);
             })
-            //置换位置后e.target为第一个rowCtrl元素
+            //若拖动的元素是第二个控制元素
             if(dragEle==rowsCtrlList[1]){
                //将目标元素插入到拖动元素后
                targetEle.forEach(function(item){
@@ -222,33 +222,61 @@ function ctrlDrop(e) {
       	     wrapper.appendChild(item);
            })
         }
-        targetEle=[];
-    //     case rowsCtrlList[1]:
-    //    	//将拖动元素对应行元素插到第三个控制元素之前
-    //    	selectedEle.forEach(function(item){
-    //    	   wrapper.insertBefore(item,rowsCtrlList[2]);
-    //        })
-    //        e.target.style.background='red';
-    //        //置换位置后e.target为第二个rowCtrl元素
-    //        if(e.target==rowsCtrlList[1]){
-    //           //将目标元素插入到拖动元素后
-    //           targetEle.forEach(function(item){
-    //    	   wrapper.appendChild(item);
-    //        })
-    //    }
-     //  else{
-     //  	targetEle.forEach(function(item){
-     //  	   wrapper.appendChild(item);
-     //      })
-     //  }
-
-    }
+      break;
+      case rowsCtrlList[1]:
+         	//将拖动元素对应行元素插到第三个控制元素之前
+         	   selectedEle.forEach(function(item){
+         	   wrapper.insertBefore(item,rowsCtrlList[2]);
+             })
+             //若拖动的是第一个控制元素
+             if(dragEle==rowsCtrlList[0]){
+               //将目标元素插入到拖动元素后
+               targetEle.forEach(function(item){
+         	   wrapper.insertBefore(item,rowsCtrlList[1]);
+             })
+           }else if(dragEle==rowsCtrlList[2]){
+         	 //将拖动元素对应行元素插到第三个控制元素之前
+       	     selectedEle.forEach(function(item){
+       	     wrapper.insertBefore(item,rowsCtrlList[2]);
+             })
+              //将目标元素插入到拖动元素后
+              targetEle.forEach(function(item){
+       	     wrapper.appendChild(item);
+            })
+         }
+     break;
+     case rowsCtrlList[2]:
+     //将拖动元素对应行元素插到第三个控制元素之后
+         	   selectedEle.forEach(function(item){
+         	   wrapper.appendChild(item);
+             })
+             //若拖动的是第一个控制元素
+             if(dragEle==rowsCtrlList[0]){
+               //将目标元素插入到元素后
+               targetEle.forEach(function(item){
+         	   wrapper.insertBefore(item,rowsCtrlList[1]);
+             })
+           }else if(dragEle==rowsCtrlList[1]){
+         	 //将拖动元素对应行元素插到第三个控制元素之后
+       	     selectedEle.forEach(function(item){
+       	     wrapper.appendChild(item);
+             })
+             //将目标元素插入到拖动元素后
+             targetEle.forEach(function(item){
+       	     wrapper.insertBefore(item,rowsCtrlList[2]);
+            })
+         }
+     }
 }
 }
 //还原透明度
 function ctrlDragend(e) {
     Array.prototype.forEach.call(allDiv, function(item) {
         item.style.opacity = 1;
+         targetEle=[];
+         selectedEle=[];
+        // item.classList.remove('bug');
+       // item.style.background='';
     })
 }
 
