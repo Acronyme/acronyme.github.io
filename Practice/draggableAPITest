@@ -114,7 +114,10 @@ var ctrlList = document.querySelectorAll('[class$="Ctrl"]');
 var rowsCtrlList=document.querySelectorAll('[class="rowsCtrl"]');
 var colsCtrlList=document.querySelectorAll('[class="colsCtrlList"]');
 var allDiv=wrapper.querySelectorAll('div');
+//将要换行列的元素
 var selectedEle=[];
+//将要被置换的元素
+var targetEle=[];
 
 
 [].forEach.call(ctrlList, function(item) {
@@ -171,25 +174,76 @@ function ctrlDragleave(e) {
     e.target.style.opacity=1;
 }
 function ctrlDrop(e) {
+	for(var i=0;i<4;i++){
+    //若拖动元素是行控制元素，将控制元素对应三个div推入数组
+ 	if(e.target==rowsCtrlList[i]){
+ 		targetEle.push(e.target.nextElementSibling);
+ 		targetEle.push(targetEle[0].nextElementSibling);
+ 		targetEle.push(targetEle[1].nextElementSibling);
+ 		targetEle.forEach(function(item){
+ 			item.style.opacity=0.5;
+ 			item.style.background='green';
+ 		})
+ 	}else if(e.target==allDiv[i]){
+ 		//选择ABC对应控制元素推入数组
+ 		targetEle.push(allDiv[i+4],allDiv[i+8],allDiv[i+12]);
+ 		targetEle.forEach(function(item){
+ 			item.style.opacity=0.5;
+ 		})
+ 	 }
+   }
 	//若目标元素也是控制元素，则可以交换DOM结构
 	if(dragEle.classList.contains('rowsCtrl')&&this.classList.contains('rowsCtrl')&&dragEle!=this){
         dragEle.innerHTML = this.innerHTML;
         this.innerHTML = e.dataTransfer.getData('text/html');
-        //移除原行列元素
-        selectedEle.forEach(function(item){
-        	wrapper.removeChild(item);
-        })
         //添加到交换行列
         switch (this){
+        	//目标元素为第一行控制元素时
         	case rowsCtrlList[0]:
+        	//删除原有元素
+        	targetEle.forEach(function(item){wrapper.removeChild(item)});
+        	//将拖动元素对应行元素插到第二个控制元素之前
         	selectedEle.forEach(function(item){
         	   wrapper.insertBefore(item,rowsCtrlList[1]);
             })
+            //置换位置后e.target为第一个rowCtrl元素
+            if(dragEle==rowsCtrlList[1]){
+               //将目标元素插入到拖动元素后
+               targetEle.forEach(function(item){
+        	   wrapper.insertBefore(item,rowsCtrlList[2]);
+            })
+          }else if(dragEle==rowsCtrlList[2]){
+        	 //将拖动元素对应行元素插到第二个控制元素之前
+      	     selectedEle.forEach(function(item){
+      	     wrapper.insertBefore(item,rowsCtrlList[1]);
+            })
+             //将目标元素插入到拖动元素后
+             targetEle.forEach(function(item){
+      	     wrapper.appendChild(item);
+           })
         }
+        targetEle=[];
+    //     case rowsCtrlList[1]:
+    //    	//将拖动元素对应行元素插到第三个控制元素之前
+    //    	selectedEle.forEach(function(item){
+    //    	   wrapper.insertBefore(item,rowsCtrlList[2]);
+    //        })
+    //        e.target.style.background='red';
+    //        //置换位置后e.target为第二个rowCtrl元素
+    //        if(e.target==rowsCtrlList[1]){
+    //           //将目标元素插入到拖动元素后
+    //           targetEle.forEach(function(item){
+    //    	   wrapper.appendChild(item);
+    //        })
+    //    }
+     //  else{
+     //  	targetEle.forEach(function(item){
+     //  	   wrapper.appendChild(item);
+     //      })
+     //  }
 
-    }else{
-    	return;
-    };
+    }
+}
 }
 //还原透明度
 function ctrlDragend(e) {
@@ -197,7 +251,6 @@ function ctrlDragend(e) {
         item.style.opacity = 1;
     })
 }
-
 
 </script>
 </body>
