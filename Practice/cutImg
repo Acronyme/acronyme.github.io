@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task1</title>
+	<style>
+	*{margin:0;padding:0;}
+	body{background:linear-gradient(90deg,#82D58E,#2DEF68);font-family:"微软雅黑";}
+	#smallImg{margin-top:30px;width:20%;transition:all 0.5s;}
+	.preview{position:absolute;width:30%;border:3px dashed #E84040; background:#B4B2B2;top:30px;right:25%; opacity: .6;overflow: hidden;}
+	#bigImg{position: absolute;left:0;top:0;}
+	.cutImg{position: absolute;top:30px;width:200px;height:200px;background:#00FF39;line-height:200px;text-align:center;opacity:.5;font-size:1.3rem;}
+
+	</style>
+</head>
+<body>
+<div id="wrapper">
+<img src="pic.jpg"  id="smallImg" alt="small">
+</div>
+</body>
+<script>
+var wrapper=document.getElementById('wrapper');
+var img=document.getElementById('smallImg');
+img.onmousedown=function(e){
+if(e.button==0){
+e.target.style.opacity=0.5;
+setTimeout(beginCutImg,1000);
+function beginCutImg(){
+  e.target.style.opacity=1;
+  e.target.style.width='30%';
+ var cutImg='<div class="cutImg" draggable="true">此区域为截图内容</div>';
+ var eleStr='<div class="preview" ><img src="pic.jpg" id="bigImg" alt="big"></div>';
+ wrapper.innerHTML+=cutImg;
+ wrapper.innerHTML+=eleStr;
+ var previewArea=document.getElementsByClassName('preview')[0];
+ previewArea.style.height=(721*160/287)+'px';
+}
+}
+}
+</script>
+</html>
