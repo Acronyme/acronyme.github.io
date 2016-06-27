@@ -6,13 +6,12 @@
 	<style>
 	*{margin:0;padding:0;}
 	body{background:linear-gradient(90deg,#82D58E,#2DEF68);font-family:"微软雅黑";}
-	#smallImg{margin-top:30px;width:20%;transition:all 0.5s;}
-	#smallImg img{width:100%;}
-	.preview{position:absolute;background-image: url(pic.jpg);background-position:0 0;background-size:cover;background-repeat: no-repeat; top:30px;right:20%; opacity: .6;overflow: hidden;}
+	#smallImg{margin-top:30px;width:20%;}
+	#smallImg img{width:100%;transition:all 0.5s;}
+	.preview{position:absolute;background-image: url(pic.jpg);background-position:0 0;background-size:cover;background-repeat: no-repeat; top:30px;left:35%; opacity: 1;overflow: hidden;}
 	#bigImg{position: absolute;left:0;top:0;}
 	.cutImg{position: absolute;top:30px;background:#00FF39;opacity:.5;}
 	#ctrl span{display:inline-block;font-size:1.5rem;color:#6B6868;}
-
 	</style>
 </head>
 <body>
@@ -25,16 +24,25 @@
 <script>
 var wrapper=document.getElementById('wrapper');
 var img=document.getElementById('smallImg');
+var cuttingImg=document.querySelector('#smallImg img');
 var wholeWidth=document.body.clientWidth;
 var cutImgArea,previewArea,ctrlArea,widthCtrl,heightCtrl,leftPos,topPos;
+var  timer;
 img.onmousedown=function(e){
 //左键
 if(e.button==0){
-e.target.style.opacity=0.5;
-//判断长按，成功则开始截图(需要修改)
-setTimeout(beginCutImg,1000);
+        e.target.style.opacity=0.5;
+        //判断长按，成功则开始截图
+        timer = setTimeout(beginCutImg, 1000); //时间 1s
+   }
+}
+function mouseup(){   ///按钮mouseup事件
+         cuttingImg.style.opacity=1;
+         clearTimeout(timer);
+}
+img.onmouseup=mouseup;
 function beginCutImg(){
-         e.target.style.opacity=1;
+         cuttingImg.style.opacity=1;
          //扩大截图图片
          img.style.width='30%';
          //定义截图区域与预览区域
@@ -42,9 +50,9 @@ function beginCutImg(){
          var previewStr='<div class="preview" ></div>';
          //定义控制区域
          var ctrlAreaStr='<div id="ctrl"><span>截图控制区域:</span><br /></div>'
-         //宽高控制区给出最大值与当前值
-         var widthCtrlStr='在此输入宽度:  <input type="number" id="widthCtrl" min="0" max="406" value="205"><br />';
-         var heightCtrlStr='在此输入高度:  <input type="number" id="heightCtrl" min="0" max="225" value="116"><br />';
+         //宽高控制区给出当前值
+         var widthCtrlStr='在此输入宽度:  <input type="number" id="widthCtrl" min="0" value="205"><br />';
+         var heightCtrlStr='在此输入高度:  <input type="number" id="heightCtrl" min="0" value="116"><br />';
          //偏移位置最大量由元素宽高计算，暂不给定
          var positionLeftCtrlStr='在此输入左偏移量:  <input type="number" id="leftPos" min="0"  value="0"><br />';
          var positionTopCtrlStr='在此输入上偏移量:  <input type="number" id="topPos" min="30"  value="30">';
@@ -64,7 +72,9 @@ function beginCutImg(){
          cutImgArea.style.height=(0.5*smallImg.offsetHeight)+'px'
          previewArea.style.width=(3*cutImgArea.offsetWidth)+'px';
          previewArea.style.height=(3*cutImgArea.offsetHeight)+'px'
-         previewArea.style.backgroundSize='200%,200%';   
+         //预览区域图片初始大小为预览区域的2倍
+         previewArea.style.backgroundSize='200% 200%';
+         //(parseInt(previewArea.style.width)*2)+'px '+(parseInt(previewArea.style.height)*2)+'px'; 
          //获取控制元素
          widthCtrl=document.getElementById('widthCtrl');
          heightCtrl=document.getElementById('heightCtrl');
@@ -76,72 +86,91 @@ function beginCutImg(){
          positionLeftCtrl.addEventListener('change',leftPosChange,false);
          positionTopCtrl.addEventListener('change',topPosChange,false);
         }
-    }
-}
 
 //控制区域
+function widthChange() {
+         var currentWidth = this.value;
+         //最大可用宽度为总宽度减去左偏移
+         var maxWidth = wholeWidth * 0.3 - cutImgArea.offsetLeft;
+         //临界值情况
+         if (currentWidth < 0) {
+           currentWidth = 0;
+         } else if (currentWidth > (maxWidth)) {
+           currentWidth = maxWidth;
+         }
+         cutImgArea.style.width = currentWidth + 'px';
+         previewChange();
 
-function widthChange(){
-  var currentWidth=this.value;
-  //临界值情况
-  if(currentWidth<0){
-  	currentWidth=0;
-  }else if(currentWidth>(wholeWidth*0.3)){
-  	currentWidth=wholeWidth*0.3;
-  }
-  cutImgArea.style.width=currentWidth+'px';
+}
 
+function heightChange() {
+         var currentHeight = this.value;
+         //最大可用高度是总高度减去偏移高度
+         var maxHeight = (wholeWidth * 0.3 * 401 / 721) - cutImgArea.offsetTop + 30;
+         //临界值情况
+         if (currentHeight < 0) {
+           currentHeight = 0;
+         } else if (currentHeight > maxHeight) {
+           currentHeight = maxHeight;
+         }
+         cutImgArea.style.height = currentHeight + 'px';
+         previewChange();
 }
-function heightChange(){
-  var currentHeight=this.value;
-  //临界值情况
-  if(currentHeight<0){
-  	currentHeight=0;
-  }else if(currentHeight>228){
-  	currentHeight=228;
-  }
-   cutImgArea.style.height=currentHeight+'px';
-}
-function leftPosChange(){
-  var currentPos=this.value;
-  //获取当前截图区域宽度
-  var currentWidth=cutImgArea.offsetWidth;
-  //最大左偏移
-  var maxLeftPos=wholeWidth*0.3-currentWidth;
-  //临界值判断
-  if(currentPos>maxLeftPos){
-  	currentPos=maxLeftPos;
-  }else if(currentPos<0){
-  	currentPos=0;
-  }
-  cutImgArea.style.left=currentPos+'px';
-}
-function topPosChange(){
-  var currentPos=this.value;
-  var currentHeight=cutImgArea.offsetHeight;
-  //需要根据img元素高度确定剩余可用偏移
-  var allHeight=img.offsetHeight;
-  alert(allHeight);
- // var maxTopPos=
-  cutImgArea.style.top=currentPos+'px';
-}
-//var cutImg=document.getElementsByClassName('cutImg')[0];
-//cutImg.addEventListener('dragstart', dragstart, false);
-//cutImg.addEventListener('dragenter', dragenter, false);
-//cutImg.addEventListener('dragover', dragover, false);
-//cutImg.addEventListener('dragleave', dragleave, false);
-//cutImg.addEventListener('drop', drop, false);
-//cutImg.addEventListener('dragend', dragend, false);
-//function dragstart(){}
-//function dragenter(){}
-//function dragover(){}
-//function dragleave(){}
-//function drop(){}
-//function dragend(){}
-//
 
-//调整background-position与截图区域同步
-//截图区域大小比例与预览区域同步
-//预览区域比截图区域大一定比例
+function leftPosChange() {
+         var currentPos = this.value;
+         //获取当前截图区域宽度
+         var currentWidth = cutImgArea.offsetWidth;
+         //最大左偏移
+         var maxLeftPos = wholeWidth * 0.3 - currentWidth;
+         //临界值判断
+         if (currentPos > maxLeftPos) {
+           currentPos = maxLeftPos;
+         } else if (currentPos < 0) {
+           currentPos = 0;
+         }
+         cutImgArea.style.left = currentPos + 'px';
+         previewChange();
+}
+
+function topPosChange() {
+         var currentPos = this.value;
+         var currentHeight = cutImgArea.offsetHeight;
+         //需要根据img元素高度确定剩余可用偏移
+         //原始比例721/401
+         //img宽度clientWidth*0.3
+         //高度clientWidth*0.3*401/721
+         //总高度
+         var totalHeight = (wholeWidth * 0.3 * 401 / 721);
+         //可用最大偏移
+         var maxTopPos = totalHeight - currentHeight + 30;
+         if (currentPos > maxTopPos) {
+           currentPos = maxTopPos;
+         } else if (currentPos < 30) {
+           currentPos = 30;
+         }
+         cutImgArea.style.top = currentPos + 'px';
+         previewChange();
+}
+
+function previewChange() {
+         //截图区域的宽高
+         var imgWidth = cutImgArea.offsetWidth;
+         var imgHeight = cutImgArea.offsetHeight;
+         //与初始阶段相比,改变的宽度与高度值
+         var changedWidth = imgWidth - 0.5 * smallImg.offsetWidth;
+         var changedHeight = imgHeight - 0.5 * smallImg.offsetHeight;
+         //预览区域对应的改变百分比
+         var widthChangedPercent = (100 * smallImg.offsetWidth / imgWidth);
+         var heightChangedPercent = (100 * smallImg.offsetHeight / imgHeight);
+         //预览区域理论偏移量
+         var preLeftPos = (-(cutImgArea.offsetLeft * 3)) + 'px ';
+         var preTopPos = (-(cutImgArea.offsetTop - 30) * 3) + 'px';
+         //预览区域随之改变
+         previewArea.style.backgroundSize = (widthChangedPercent) + '% ' + (heightChangedPercent) + '%';
+         previewArea.style.backgroundPosition = preLeftPos + preTopPos;
+         previewArea.style.width = 3 * imgWidth + 'px';
+         previewArea.style.height = 3 * imgHeight + 'px';
+}
 </script>
 </html>
