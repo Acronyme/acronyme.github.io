@@ -96,34 +96,20 @@ function beginCutImg(){
          	dragging=true;
          	dragBeginX=e.clientX;
          	dragBeginY=e.clientY;
+         	currentTopPos=cutImgArea.offsetTop;
+         	currentLeftPos=cutImgArea.offsetLeft;
           }
          cutImgArea.onmousemove=function(e){
          	if(dragging){
          	//将input的value转为number类型
          	var oriValueX=parseInt(positionLeftCtrl.value);
          	var oriValueY=parseInt(positionTopCtrl.value);
-         	var currentHeight = cutImgArea.offsetHeight;
-         	var currentTopPos=cutImgArea.offsetTop;
-         	var currentLeftPos=cutImgArea.offsetLeft;
-            var totalHeight = (wholeWidth * 0.3 * 401 / 721);
-            //可用最大上偏移
-            var maxTopPos = totalHeight - currentHeight + 30;
-            //获取当前截图区域宽度
-            var currentWidth = cutImgArea.offsetWidth;
-            //最大左偏移
-            var maxLeftPos = wholeWidth * 0.3 - currentWidth;
-            //设置截图区域偏移
-            //判断要综合鼠标相对初始位置偏移、元素大小与偏移、父元素容纳宽高
-            if(e.clientX-dragBeginX>0&&e.clientY-dragBeginY>0&&e.clientY-dragBeginY+30<maxTopPos&&e.clientX-dragBeginX<maxLeftPos){
-    
-                    cutImgArea.style.left=e.clientX-dragBeginX+'px';
-                    cutImgArea.style.top=e.clientY-dragBeginY+29+'px'; 
-
-
+            //设置截图区域偏移          
+                cutImgArea.style.left=currentLeftPos+e.clientX-dragBeginX+'px';
+                cutImgArea.style.top=currentTopPos+e.clientY-dragBeginY+'px'; 
          	    positionLeftCtrl.value=cutImgArea.offsetLeft;
                 positionTopCtrl.value=cutImgArea.offsetTop;  
-           }
-         	previewChange();
+         	    previewChange();
           	}else{
           		return;
           	}
