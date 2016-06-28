@@ -10,8 +10,9 @@
 	#smallImg img{width:100%;transition:all 0.5s;}
 	.preview{position:absolute;background-image: url(pic.jpg);background-position:0 0;background-size:cover;background-repeat: no-repeat; top:30px;left:35%; opacity: 1;overflow: hidden;}
 	#bigImg{position: absolute;left:0;top:0;}
-	.cutImg{position: absolute;top:30px;background:#00FF39;opacity:.5;}
+	.cutImg{position: absolute;top:30px;background:#00FF39;opacity:.6;}
 	#ctrl span{display:inline-block;font-size:1.5rem;color:#6B6868;}
+	#changeSize{position: absolute;display: inline-block;width:20px;height:20px;background-color:#DE2A2A;right:0;bottom:0;text-align:right;transition:all .5s;}
 	</style>
 </head>
 <body>
@@ -26,7 +27,7 @@ var wrapper=document.getElementById('wrapper');
 var img=document.getElementById('smallImg');
 var cuttingImg=document.querySelector('#smallImg img');
 var wholeWidth=document.body.clientWidth;
-var cutImgArea,previewArea,ctrlArea,widthCtrl,heightCtrl,leftPos,topPos,dragBeginX,dragBeginY;
+var cutImgArea,previewArea,ctrlArea,widthCtrl,heightCtrl,leftPos,topPos,dragBeginX,dragBeginY,sizeChanger,prePosX,prePosY,preWidth,preHeight;
 var  timer=null;;
 var dragging=false;;
 
@@ -49,7 +50,7 @@ function beginCutImg(){
          //扩大截图图片
          img.style.width='30%';
          //定义截图区域与预览区域
-         var cutImgStr='<div class="cutImg"></div>';
+         var cutImgStr='<div class="cutImg"><span id="changeSize">↘</span></div>';
          var previewStr='<div class="preview" ></div>';
          //定义控制区域
          var ctrlAreaStr='<div id="ctrl"><span>截图控制区域:</span><br /></div>'
@@ -67,6 +68,8 @@ function beginCutImg(){
          ctrlArea.innerHTML=ctrlArea.innerHTML+widthCtrlStr+heightCtrlStr+positionLeftCtrlStr+positionTopCtrlStr;
          previewArea=document.getElementsByClassName('preview')[0];
          cutImgArea=document.getElementsByClassName("cutImg")[0];
+         sizeChanger=document.getElementById('changeSize');
+
          //定义截图与预览区域初始大小,均与原始图片大小成比例关系
          //放大后图片宽高均为初始大小的1.5倍(20%=>30%)
          //截图区域宽高初始为放大后图片区域的0.5倍
@@ -90,6 +93,31 @@ function beginCutImg(){
          heightCtrl.addEventListener('input',heightChange,false);
          positionLeftCtrl.addEventListener('input',leftPosChange,false);
          positionTopCtrl.addEventListener('input',topPosChange,false);
+
+         //鼠标更改大小函数
+         sizeChanger.onmousedown=function(e){
+         	//阻止事件冒泡到父元素触发移动
+         	e.stopPropagation();
+         	this.style.opacity=.6;
+         	//纪录鼠标点下的坐标
+         	prePosX=e.clientX;
+         	prePosY=e.clientY;
+         	//记录鼠标点下时的宽高
+         	preWidth=cutImgArea.offsetWidth;
+         	preHeight=cutImgArea.offsetHeight;
+         }
+         sizeChanger.onmousemove=function(e){
+         	var changedX=e.clientX-prePosX;
+         	var changedY=e.clientY-prePosY;
+         	cutImgArea.style.width=preWidth+changedX+'px';
+         	cutImgArea.style.height=preHeight+changedY+'px';
+         }
+         //鼠标松开后重置初始位置
+         sizeChanger.onmouseup=function(){
+         	this.style.opacity=1;
+         	prePosX=undefined;
+         	prePosY=undefined;
+         }
 
          //鼠标按下时记录鼠标坐标位置
          cutImgArea.onmousedown=function(e){
