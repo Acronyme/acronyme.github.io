@@ -12,7 +12,8 @@
 	#bigImg{position: absolute;left:0;top:0;}
 	.cutImg{position: absolute;top:30px;background:#00FF39;opacity:.6;}
 	#ctrl span{display:inline-block;font-size:1.5rem;color:#6B6868;}
-	#changeSize{position: absolute;display: inline-block;width:20px;height:20px;background-color:#DE2A2A;right:0;bottom:0;text-align:right;transition:all .5s;}
+	#changeSize{position: absolute;display: inline-block;width:40px;height:40px;background-color:#DE2A2A;right:0;bottom:0;transition:all .5s;text-align:center;line-height:40px;font-size:30px;font-weight:bold;color:#C8F22D;}
+	.tips{margin:2% 0;color:#EB5F5F;line-height:25px;font-weight:600;width:35%}
 	</style>
 </head>
 <body>
@@ -21,6 +22,19 @@
 <img src="pic.jpg" alt="pic">
 </div>
 </div>
+<div class="tips">
+<p>
+tips0:请左键长按图片开始截图。
+<br>
+tips1:截图时,若要调整截图区域大小，请在截图区域右下角的调整区(右下角红色方框)长按鼠标并匀速移动,移动时鼠标需位于方框内。
+<br>
+tips2:截图时，若要调整截图位置，请绿色方框调整区外(右下角红色方框外)拖动截图区域。
+<br>
+tips3:在左下角控制框内输入具体数值也可以控制截图区域的大小与位置。
+<br>
+tips4:左下输入框不支持截图区域超出图片的部分截图。
+</p>
+</div>
 </body>
 <script>
 var wrapper=document.getElementById('wrapper');
@@ -28,8 +42,8 @@ var img=document.getElementById('smallImg');
 var cuttingImg=document.querySelector('#smallImg img');
 var wholeWidth=document.body.clientWidth;
 var cutImgArea,previewArea,ctrlArea,widthCtrl,heightCtrl,leftPos,topPos,dragBeginX,dragBeginY,sizeChanger,prePosX,prePosY,preWidth,preHeight;
-var  timer=null;;
-var dragging=false;;
+var  timer=null;
+var dragging=false,changing=false;
 
 
 img.onmousedown=function(e){
@@ -98,8 +112,9 @@ function beginCutImg(){
          sizeChanger.onmousedown=function(e){
          	//阻止事件冒泡到父元素触发移动
          	e.stopPropagation();
+         	changing=true;
          	this.style.opacity=.6;
-         	//纪录鼠标点下的坐标
+         	//记录鼠标点下的坐标
          	prePosX=e.clientX;
          	prePosY=e.clientY;
          	//记录鼠标点下时的宽高
@@ -107,18 +122,18 @@ function beginCutImg(){
          	preHeight=cutImgArea.offsetHeight;
          }
          sizeChanger.onmousemove=function(e){
+         	if(changing){
          	var changedX=e.clientX-prePosX;
          	var changedY=e.clientY-prePosY;
+         	widthCtrl.value=preWidth+changedX;
+         	heightCtrl.value=preHeight+changedY;
          	cutImgArea.style.width=preWidth+changedX+'px';
          	cutImgArea.style.height=preHeight+changedY+'px';
+         	previewChange();
+         }else{
+         	return;
          }
-         //鼠标松开后重置初始位置
-         sizeChanger.onmouseup=function(){
-         	this.style.opacity=1;
-         	prePosX=undefined;
-         	prePosY=undefined;
-         }
-
+     }
          //鼠标按下时记录鼠标坐标位置
          cutImgArea.onmousedown=function(e){
          	dragging=true;
@@ -142,12 +157,17 @@ function beginCutImg(){
           		return;
           	}
           }
-        cutImgArea.onmouseup=function(){
-        	dragging=false;
-        	dragBeginX=undefined;
-        	dragBeginY=undefined;
-        }
-        }
+        //鼠标松开后重置初始化
+        wrapper.onmouseup=function(){
+         	sizeChanger.style.opacity=1;
+         	prePosX=undefined;
+         	prePosY=undefined;
+         	changing=false;
+         	dragging=false;
+            dragBeginX=undefined;
+            dragBeginY=undefined;
+         }
+       }
 
 //控制区域
 function widthChange() {
