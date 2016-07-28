@@ -6,18 +6,45 @@
 	<title>Photo of The Whole Family</title>
 	<style>
 	*{margin:0;padding: 0;}
-	html,body{height: 100%;overflow: hidden;}
-	#wrapper
+	html,body{height: 100%;overflow:hidden;}
+	#page2_wrapper
 	{
 	   position: relative;
 	   width:100%;
 	   height:100%;
 	   background-image: url('background.jpg');
 	}
+	.page1{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+	}
+	.page1 img{
+		position: absolute;
+	}
+	.page1 img.bg{
+		width:100%;
+		height:100%;
+	}
+	.ask{
+		height:6%;
+		bottom:23%;
+	}
+	.begin{
+		height:10%;
+		bottom:10%;
+		transform: translateX(50%);
+	}
+	.page2{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
 	.header{
 		position: relative;
 		width: 100%;
-		top:3%;
+		top:7%;
 	}
 	.header div{
 		display: inline-block;
@@ -39,7 +66,7 @@
     	width:70%;
     	height:4%;
     	left:15%;
-    	top:13%;
+    	top:19%;
     	border:2px solid orange;
     	border-radius:10px;
     }
@@ -47,18 +74,25 @@
     	position:absolute;
     	height:4%;
     	right:15%;
-    	top:13.3%;
+    	top:19.3%;
     	line-height:4%;
     }
     .allpeople img{
     	position: absolute;
-    	top:25%;
+    	top:36%;
     	width:100%;
     }
 	</style>
 </head>
 <body>
-<div id="wrapper">
+<!--第一页-->
+<div class="page1">
+<img class="bg" src="page1.jpg" alt="page1" />
+<img class="ask" src="ask.png" alt="ask" />
+<img class="begin" src="begin.png" alt="begin" />
+</div>
+
+<div id="page2_wrapper">
 <div class="header">
 	<div class="rest-time"><img src="progress.png" alt="progress" /></div>
 	<div class="times"><img src="progress.png" alt="progress" /></div>
@@ -73,5 +107,14 @@
 <img src="allPeople.png" alt="allPeople">
 </div>
 </div>
+
+<script>
+//开始按钮
+var beginBtn=document.getElementsByClassName('begin')[0];
+var page1=document.getElementsByClassName('page1')[0];
+beginBtn.addEventListener('click',function(){
+	page1.style.display='none';
+})
+</script>
 </body>
 </html>
