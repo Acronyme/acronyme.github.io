@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>Photo of The Whole Family</title>
+	<style>
+	*{margin:0;padding: 0;}
+	html,body{height: 100%;overflow: hidden;}
+	#wrapper
+	{
+	   position: relative;
+	   width:100%;
+	   height:100%;
+	   background-image: url('background.jpg');
+	}
+	.header{
+		position: relative;
+		width: 100%;
+		top:3%;
+	}
+	.header div{
+		display: inline-block;
+		position: relative;
+		width: 48%;
+		height:110%;
+		background-image: url('border.png');
+		background-size: 103% 101%;
+		background-repeat: no-repeat;
+	}
+    .rest-time img,.times img{
+    	position: relative;
+    	width: 100%;
+    	left:2%;
+    }
+    .question input {
+    	display: inline-block;
+    	position:absolute;
+    	width:70%;
+    	height:4%;
+    	left:15%;
+    	top:13%;
+    	border:2px solid orange;
+    	border-radius:10px;
+    }
+    .question img{
+    	position:absolute;
+    	height:4%;
+    	right:15%;
+    	top:13.3%;
+    	line-height:4%;
+    }
+    .allpeople img{
+    	position: absolute;
+    	top:25%;
+    	width:100%;
+    }
+	</style>
+</head>
+<body>
+<div id="wrapper">
+<div class="header">
+	<div class="rest-time"><img src="progress.png" alt="progress" /></div>
+	<div class="times"><img src="progress.png" alt="progress" /></div>
+</div>
+
+<div class="question">
+<input type="text">
+<div class="change"><img src="change.png" alt="change"></div>
+</div>
+
+<div class="allpeople">
+<img src="allPeople.png" alt="allPeople">
+</div>
+</div>
+</body>
+</html>
