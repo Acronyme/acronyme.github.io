@@ -6,15 +6,7 @@
 	<title>Photo of The Whole Family</title>
 	<style>
 	*{margin:0;padding: 0;font-family: "微软雅黑"}
-	html,body{height: 100%;overflow:hidden;}
-	#page2_wrapper
-	{
-	   position: relative;
-	   width:100%;
-	   height:100%;
-	   background-image: url('background.jpg');
-	   background-size: cover;
-	}
+	html,body{height: 100%;overflow:auto;}
 	.page1{
 		position: absolute;
 		width: 100%;
@@ -39,6 +31,14 @@
 		bottom:10%;
 		left:50%;
 		transform: translateX(-50%);
+	}
+	#page2_wrapper
+	{
+	   position: relative;
+	   width:100%;
+	   height:100%;
+	   background-image: url('background.jpg');
+	   background-size: cover;
 	}
 	.page2{
 		position: relative;
@@ -118,7 +118,7 @@
     	top:31%;
     	width:100%;
     }
-    #page3{display: none;}
+    
     .page3{
     	position: absolute;
     	width:100%;
@@ -145,7 +145,177 @@
     	margin:0 auto;
     	top: 72%;
     }
+    .all{
+    	position: absolute;
+    }
+    .all img{
+    	opacity:0;
+    	margin-top:-30%;
+    }
 
+    /*亲属们...*/
+    .jiuye{
+    	width:10%;
+    	height:12%;
+    	top:33%;
+    	left:16%;
+    }
+    .gulaoye{
+    	width:12%;
+    	height:12%;
+    	top:33%;
+    	left:28%;
+    }
+     .gulao{
+    	width:13%;
+    	height:12%;
+    	top:32%;
+    	left:42%;
+    }
+     .gunai{
+    	width:14%;
+    	height:12%;
+    	top:32%;
+    	left:56%;
+    }
+     .gege{
+    	width:11%;
+    	height:13%;
+    	top:32%;
+    	left:71%;
+    }
+     .gugu{
+    	width:14%;
+    	height:12%;
+    	top:46%;
+    	left:5%;
+    }
+    .gufu{
+    	width:14%;
+    	height:12%;
+    	top:45.6%;
+    	left:20%;
+    }
+    .shenshen{
+    	width:13%;
+    	height:12%;
+    	top:45%;
+    	left:36%;
+    }
+    .shushu{
+    	width:13%;
+    	height:12%;
+    	top:44.2%;
+    	left:50%;
+    }
+    .yifu{
+    	width:12%;
+    	height:13%;
+    	top:45%;
+    	left:64%;
+    }
+    .yima{
+    	width:13%;
+    	height:12%;
+    	top:45.6%;
+    	left:76.2%;
+    }
+    .jiujiu{
+    	width:16%;
+    	height:14%;
+    	top:58%;
+    	left:0;
+    }
+     .jiuma{
+    	width:12%;
+    	height:13%;
+    	top:58%;
+    	left:16%;
+    }
+     .biaomei{
+    	width:13%;
+    	height:12%;
+    	top:57.6%;
+    	left:28.5%;
+    }
+     .meifu{
+    	width:12%;
+    	height:12%;
+    	top:57%;
+    	left:43%;
+    }
+      .tangjie{
+    	width:13%;
+    	height:12%;
+    	top:57%;
+    	left:56%;
+    }
+      .jiefu{
+    	width:13%;
+    	height:12%;
+    	top:57.9%;
+    	left:69.5%;
+    }
+      .waishengnv{
+    	width:13%;
+    	height:12%;
+    	top:59%;
+    	left:83.5%;
+    }
+    .zhinv{
+    	width:13.5%;
+    	height:13%;
+    	top:72.3%;
+    	left:5%;
+    }
+    .waipo{
+    	width:15%;
+    	height:15%;
+    	top:71%;
+    	left:20%;
+    }
+    .waigong{
+    	width:12%;
+    	height:16%;
+    	top:70%;
+    	left:36.1%;
+    }
+    .yeye{
+    	width:13%;
+    	height:15.6%;
+    	top:69.2%;
+    	left:48.5%;
+    }
+    .nainai{
+    	width:14%;
+    	height:15.6%;
+    	top:69.2%;
+    	left:62%;
+    }
+     .zhizi{
+    	width:14%;
+    	height:13%;
+    	top:71.5%;
+    	left:77%;
+    }
+    .warn{
+    	position: absolute;
+    	width: 100%;
+    	height: 100%;
+    }
+    .timeout img:first-of-type,.wrong img:first-of-type{
+    	width:80%;
+        position: absolute;
+        left:10%;
+        top:30%;
+    }
+    .timeout img:last-of-type,.wrong img:last-of-type{
+    	position: absolute;
+    	width:30%;
+    	left:50%;
+    	transform: translateX(-50%);
+    	top:50%;
+    }
 	</style>
 </head>
 <body>
@@ -177,6 +347,36 @@
 
 <div class="allpeople">
 <img src="allPeople.png" alt="allPeople">
+
+<div class="all jiuye"><img src="right.png" alt="right"></div>
+<div class="all gulaoye"><img src="right.png" alt="right"></div>
+<div class="all gulao"><img src="right.png" alt="right"></div>
+<div class="all gunai"><img src="right.png" alt="right"></div>
+<div class="all gege"><img src="right.png" alt="right"></div>
+
+<div class="all gugu"><img src="right.png" alt="right"></div>
+<div class="all gufu"><img src="right.png" alt="right"></div>
+<div class="all shenshen"><img src="right.png" alt="right"></div>
+<div class="all shushu"><img src="right.png" alt="right"></div>
+<div class="all yifu"><img src="right.png" alt="right"></div>
+<div class="all yima"><img src="right.png" alt="right"></div>
+
+<div class="all jiujiu"><img src="right.png" alt="right"></div>
+<div class="all jiuma"><img src="right.png" alt="right"></div>
+<div class="all biaomei"><img src="right.png" alt="right"></div>
+<div class="all meifu"><img src="right.png" alt="right"></div>
+<div class="all tangjie"><img src="right.png" alt="right"></div>
+<div class="all jiefu"><img src="right.png" alt="right"></div>
+<div class="all waishengnv"><img src="right.png" alt="right"></div>
+
+<div class="all zhinv"><img src="right.png" alt="right"></div>
+<div class="all waipo"><img src="right.png" alt="right"></div>
+<div class="all waigong"><img src="right.png" alt="right"></div>
+<div class="all yeye"><img src="right.png" alt="right"></div>
+<div class="all nainai"><img src="right.png" alt="right"></div>
+<div class="all zhizi"><img src="right.png" alt="right"></div>
+
+
 </div>
 <img class="confirm" src="confirm.png" alt="confirm">
 </div>
@@ -186,26 +386,43 @@
    <img class="result" src="result.png" alt="result" />
    <div class="btn">
    <img class="popular" src="popular.png"  alt="popular" />
-   <img class="playAgain" src="playAgain.png" alt="playAgain">
-   <img class="share" src="share.png" alt="share">
+   <img class="playAgain" src="playAgain.png" alt="playAgain" />
+   <img class="share" src="share.png" alt="share" />
    </div>
 </div>
 
+<div class="warn">
+<div class="timeout">
+<img  src="timeout.jpg" alt="timeout" />
+<img src="checkScore.png" alt="score" />
+</div>
+<div class="wrong">
+<img src="wrong.jpg" alt="wrong" />
+<img src="continue.png" alt="continue" />
+</div>
+</div>
 <script>
 //开始按钮
 var beginBtn=document.getElementsByClassName('begin')[0];
 var page1=document.getElementsByClassName('page1')[0];
 var page2=document.getElementById('page2_wrapper');
 var page3=document.getElementById('page3');
+var allpeople=document.getElementsByClassName('all');
+var confirm=document.getElementsByClassName('confirm')[0];
+
 beginBtn.addEventListener('touchstart',function(){
 	page1.style.display='none'; 
 })
 
-var confirm=document.getElementsByClassName('confirm')[0];
-
 confirm.ontouchstart=function(){
-page2.style.display='none';
-page3.style.display='block';
+    page2.style.display='none';
+    page3.style.display='block';
+}
+for(var i=0;i<allpeople.length;i++){
+	allpeople[i].onclick=function(){
+		var img=this.querySelector('img');
+		img.style.opacity='1';
+	}
 }
 </script>
 </body>
