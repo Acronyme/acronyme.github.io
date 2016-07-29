@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<title>Photo of The Whole Family</title>
 	<style>
-	*{margin:0;padding: 0;}
+	*{margin:0;padding: 0;font-family: "微软雅黑"}
 	html,body{height: 100%;overflow:hidden;}
 	#page2_wrapper
 	{
@@ -13,6 +13,7 @@
 	   width:100%;
 	   height:100%;
 	   background-image: url('background.jpg');
+	   background-size: cover;
 	}
 	.page1{
 		position: absolute;
@@ -30,11 +31,14 @@
 	.ask{
 		height:6%;
 		bottom:23%;
+		left:50%;
+		transform: translateX(-50%);
 	}
 	.begin{
 		height:10%;
 		bottom:10%;
-		transform: translateX(50%);
+		left:50%;
+		transform: translateX(-50%);
 	}
 	.page2{
 		position: relative;
@@ -60,6 +64,38 @@
     	width: 100%;
     	left:2%;
     }
+    .progress_lantern{
+    	position: absolute;
+    	top:-20%;
+    	left:0;
+    	width:10%;
+
+    }
+    .times_lantern{
+    	position: absolute;
+    	width: 10%;
+    	top:-20%;
+    	right:0;
+    	z-index: 10;
+    }
+    span.progress_lantern{
+    	display: inline-block;
+    	left:2%;
+    	top:12%;
+    	color:#fff;
+    }
+    span.times_lantern{
+    	display: inline-block;
+    	right:-4%;
+    	top:12%;
+    	color:#fff;
+    }
+    .confirm{
+    	position: absolute;
+    	bottom:3%;
+    	width:50%;
+    	left:25%;
+    }
     .question input {
     	display: inline-block;
     	position:absolute;
@@ -79,13 +115,41 @@
     }
     .allpeople img{
     	position: absolute;
-    	top:36%;
+    	top:31%;
     	width:100%;
     }
+    #page3{display: none;}
+    .page3{
+    	position: absolute;
+    	width:100%;
+    	height:100%;
+    	background-image: url('page3.jpg');
+    }
+    .result{
+    	position: absolute;
+    	width:70%;
+    	bottom:30%;
+    	left:15%;
+    }
+    .btn{
+    	position:absolute;
+    	width: 100%;
+    	height:100%;
+    	margin:0 auto;
+    	bottom:0;
+    }
+    .playAgain,.popular,.share{
+    	position: relative;
+    	width:43%;
+    	display: block;
+    	margin:0 auto;
+    	top: 72%;
+    }
+
 	</style>
 </head>
 <body>
-<!--第一页-->
+
 <div class="page1">
 <img class="bg" src="page1.jpg" alt="page1" />
 <img class="ask" src="ask.png" alt="ask" />
@@ -94,8 +158,16 @@
 
 <div id="page2_wrapper">
 <div class="header">
-	<div class="rest-time"><img src="progress.png" alt="progress" /></div>
-	<div class="times"><img src="progress.png" alt="progress" /></div>
+	<div class="rest-time">
+	<img src="progress.png" alt="progress" />
+	</div>
+	<img class="progress_lantern" src="lantern.png" alt="lantern">
+	<span class="progress_lantern">60s</span>
+	<img class="times_lantern" src="lantern.png" alt="lantern">
+	<span class="times_lantern">0</span>
+	<div class="times">
+	<img src="progress.png" alt="progress" />
+	</div>
 </div>
 
 <div class="question">
@@ -106,15 +178,35 @@
 <div class="allpeople">
 <img src="allPeople.png" alt="allPeople">
 </div>
+<img class="confirm" src="confirm.png" alt="confirm">
+</div>
+
+<div id='page3'>
+   <img class="page3" src="page3.jpg" alt="page3" />
+   <img class="result" src="result.png" alt="result" />
+   <div class="btn">
+   <img class="popular" src="popular.png"  alt="popular" />
+   <img class="playAgain" src="playAgain.png" alt="playAgain">
+   <img class="share" src="share.png" alt="share">
+   </div>
 </div>
 
 <script>
 //开始按钮
 var beginBtn=document.getElementsByClassName('begin')[0];
 var page1=document.getElementsByClassName('page1')[0];
-beginBtn.addEventListener('click',function(){
-	page1.style.display='none';
+var page2=document.getElementById('page2_wrapper');
+var page3=document.getElementById('page3');
+beginBtn.addEventListener('touchstart',function(){
+	page1.style.display='none'; 
 })
+
+var confirm=document.getElementsByClassName('confirm')[0];
+
+confirm.ontouchstart=function(){
+page2.style.display='none';
+page3.style.display='block';
+}
 </script>
 </body>
 </html>
