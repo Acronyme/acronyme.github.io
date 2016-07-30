@@ -68,12 +68,12 @@
     .rest-time,.times{width:47%;height:100%;display: inline-block;}
     .rest-time img:first-of-type{
      position: absolute;
-     width:50%;
+     width:48%;
      top:17%;
  }
     .progress{
     	position: absolute;
-        width:42%;
+        width:40%;
         height:100%;
         left:6%;
         opacity: 1;
@@ -311,6 +311,24 @@
     	top:64%;
     	left:75%;
     }
+    .gugu img{top:5%;left:10%;}
+    .gufu img{top:5%;left:10%;}
+    .shenshen img{top:5%;left:10%;}
+    .shushu img,.yifu img,.yima img{top:60%;}
+    .jiujiu img{left:5%;top:60%;}
+    .biaomei img{left:10%;top:65%;}
+    .meifu img{left:5%;top:65%;}
+    .tangjie img{left:5%;top:65%;}
+    .jiefu img{left:10%;top:65%;}
+    .waishengnv img{top:67%;}
+    .zhinv img{left:10%;top:73%;}
+    .waipo img{left:10%;top:65%;}
+    .waigong img{top:60%;}
+    .yeye img{top:60%;}
+    .nainai img{top:60%;right:10%}
+    .zhizi img{right: 10%}
+
+
 
     .timeout img:first-of-type,.wrong img:first-of-type{
     	width:80%;
@@ -600,7 +618,7 @@ function countdown(){
     if(restTime>0){
      	restTime=restTime-1;;
     	second.innerText=restTime+'s';
-    	progress.style.width=(restTime*5/3)*0.42+'%';
+    	progress.style.width=(restTime*5/3)*0.4+'%';
     }else{
     	warn.style.display='block';
     	wrong.style.display='none';
