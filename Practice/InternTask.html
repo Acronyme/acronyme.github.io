@@ -6,7 +6,7 @@
 	<title>Photo of The Whole Family</title>
 	<style>
 	*{margin:0;padding: 0;font-family: "微软雅黑"}
-	html,body{height: 100%;overflow:auto;}
+	html,body{height: 100%;overflow:hidden;}
 	.page1{
 		position: absolute;
 		width: 100%;
@@ -49,46 +49,51 @@
 		position: relative;
 		width: 100%;
 		top:7%;
+		height:6%;
 	}
-	.header div{
-		display: inline-block;
-		position: relative;
-		width: 48%;
-		height:110%;
-		background-image: url('border.png');
-		background-size: 103% 101%;
-		background-repeat: no-repeat;
-	}
-    .rest-time img,.times img{
-    	position: relative;
-    	width: 100%;
-    	left:2%;
-    }
     .progress_lantern{
     	position: absolute;
-    	top:-20%;
+    	top:-12%;
     	left:0;
     	width:10%;
+    	text-align: center;
 
     }
     .times_lantern{
     	position: absolute;
     	width: 10%;
-    	top:-20%;
-    	right:0;
-    	z-index: 10;
+    	top:20%;
+    	z-index: 100;
     }
+    .rest-time,.times{width:47%;height:100%;display: inline-block;}
+    .rest-time img:first-of-type{width:103%;}
+    .progress{
+    	position: absolute;
+        width:40%;
+        height:90%;
+        left:6%;
+        opacity: 1;
+        top:10%;
+        background-image: url('progress.png');
+        background-position: 80% 100%;
+        background-size:cover;
+        background-repeat: no-repeat;    	
+    }
+    .times img{position: absolute; width:47%;top:13%;}
+    .times img:first-of-type{width:50%;}
+    .times img:last-of-type{right:3.5%}
+    .times img:nth-of-type(2){position: absolute; width:10%;left:88%;top:-10%;z-index:10}
     span.progress_lantern{
     	display: inline-block;
-    	left:2%;
-    	top:12%;
-    	color:#fff;
+    	top:18%;
+    	color:#E7F71A;
+    	z-index: 10;
     }
     span.times_lantern{
     	display: inline-block;
-    	right:-4%;
-    	top:12%;
-    	color:#fff;
+    	right:-2%;
+    	top:20%;
+    	color:#E7F71A;;
     }
     .confirm{
     	position: absolute;
@@ -104,6 +109,9 @@
     	left:15%;
     	top:19%;
     	border:2px solid orange;
+    	font-size:1rem;
+    	font-weight:600;
+    	color:#918A8A;
     	border-radius:10px;
     }
     .question img{
@@ -118,9 +126,8 @@
     	top:31%;
     	width:100%;
     }
-    
+    #page3{width:100%;height: 100%;}
     .page3{
-    	position: absolute;
     	width:100%;
     	height:100%;
     	background-image: url('page3.jpg');
@@ -131,6 +138,7 @@
     	bottom:30%;
     	left:15%;
     }
+    div.result{width:60%; height:15%;left:18%;}
     .btn{
     	position:absolute;
     	width: 100%;
@@ -138,7 +146,7 @@
     	margin:0 auto;
     	bottom:0;
     }
-    .playAgain,.popular,.share{
+    .playAgain,.known,.share{
     	position: relative;
     	width:43%;
     	display: block;
@@ -298,11 +306,7 @@
     	top:71.5%;
     	left:77%;
     }
-    .warn{
-    	position: absolute;
-    	width: 100%;
-    	height: 100%;
-    }
+
     .timeout img:first-of-type,.wrong img:first-of-type{
     	width:80%;
         position: absolute;
@@ -316,10 +320,64 @@
     	transform: translateX(-50%);
     	top:50%;
     }
+    .wrong div{
+    	width: 100%;
+    	font-size:20px;
+    	color:#DF1616;
+    	display: inline-block;
+    	position: absolute;
+    	text-align: center;
+    	top:47%;
+    	z-index: 20;
+    }
+    .popular{
+    	overflow: auto;
+    	position: absolute;
+    	top:0;
+    	width:100%;
+    	height:100%;
+     	background-image: url('background.jpg');
+    	background-size: cover;
+    }
+    .popular img:first-of-type{
+    	position: absolute;
+    	width:100%;
+    	top:32%;
+    }
+    .popular img:nth-of-type(2){
+    	position: absolute;
+    	width:30%;
+    	left:5%;
+    	top:5%;
+    }
+    .popular img:nth-of-type(3){
+    	position: absolute;
+    	width:60%;
+    	left:20%;
+    	top:20%;
+    }
+    .popular img:nth-of-type(4){
+    	width: 30%;
+    	position: absolute;
+    	right: 10%;
+    	bottom:10%;
+    }
+    .popular img:last-of-type{
+    	position: absolute;
+    	width:46%;
+    	left:27%;
+    	top:67%;
+    }
+    .tip{position:relative;width:80%;text-align:center;margin:0 auto;top:61%;font-weight:600;color:#8B8181;opacity: .6;}
+    .checked img{opacity: 1;}
+    .warn{display: none;}
+    .popular{display:none}
+    #page2_wrapper{display:none;}
+    #page3{display:none;}
+    .wrong{display: none;}
 	</style>
 </head>
 <body>
-
 <div class="page1">
 <img class="bg" src="page1.jpg" alt="page1" />
 <img class="ask" src="ask.png" alt="ask" />
@@ -327,21 +385,25 @@
 </div>
 
 <div id="page2_wrapper">
+<audio class="music" src="http://app.uokay.cn/app/h5/16dati/songs/back1.mp3" autoplay="true" loop="true"></audio>
 <div class="header">
 	<div class="rest-time">
-	<img src="progress.png" alt="progress" />
+	   <img src="border.png" alt="border" />
+	   <span class="progress_lantern">60s</span>
+	   <div class="progress"></div>
+	   <img class="progress_lantern" src="lantern.png" alt="lantern">
 	</div>
-	<img class="progress_lantern" src="lantern.png" alt="lantern">
-	<span class="progress_lantern">60s</span>
-	<img class="times_lantern" src="lantern.png" alt="lantern">
-	<span class="times_lantern">0</span>
+
 	<div class="times">
-	<img src="progress.png" alt="progress" />
+	   <img src="border.png" alt="border" />
+	   <span class="times_lantern">0</span>
+	   <img class="progress_lantern" src="lantern.png" alt="lantern">
+	   <img src="progress.png" alt="progress" />
 	</div>
 </div>
 
 <div class="question">
-<input type="text">
+<input type="text" />
 <div class="change"><img src="change.png" alt="change"></div>
 </div>
 
@@ -384,8 +446,9 @@
 <div id='page3'>
    <img class="page3" src="page3.jpg" alt="page3" />
    <img class="result" src="result.png" alt="result" />
+   <div class="result"></div>
    <div class="btn">
-   <img class="popular" src="popular.png"  alt="popular" />
+   <img class="known" src="popular.png"  alt="popular" />
    <img class="playAgain" src="playAgain.png" alt="playAgain" />
    <img class="share" src="share.png" alt="share" />
    </div>
@@ -393,36 +456,275 @@
 
 <div class="warn">
 <div class="timeout">
-<img  src="timeout.jpg" alt="timeout" />
-<img src="checkScore.png" alt="score" />
+<img src="timeout.jpg" alt="timeout" />
+<img class="checkScore" src="checkScore.png" alt="score" />
 </div>
 <div class="wrong">
+<div>正确答案:<span class="rightAnswer"></span></div>
 <img src="wrong.jpg" alt="wrong" />
-<img src="continue.png" alt="continue" />
+<img class="continue" src="continue.png" alt="continue" />
 </div>
+</div>
+
+<div class="popular">
+	<img src="relation.png" alt="relation">
+	<img src="ad.png" alt="ad">
+	<img src="title.png" alt="title">
+	<img src="last.png" alt="last">
+	<img class="back" src="back.png" alt="back">
+   <div class="tip">单击图片可放大，再次单击可返回</div>
 </div>
 <script>
-//开始按钮
-var beginBtn=document.getElementsByClassName('begin')[0];
-var page1=document.getElementsByClassName('page1')[0];
-var page2=document.getElementById('page2_wrapper');
-var page3=document.getElementById('page3');
-var allpeople=document.getElementsByClassName('all');
-var confirm=document.getElementsByClassName('confirm')[0];
 
+
+//第二页
+var page2=document.getElementById('page2_wrapper');
+//所有亲属
+var allpeople=document.getElementsByClassName('all');
+//计时器
+var timer=null;
+//时间到
+var timeout=document.getElementsByClassName('timeout')[0];
+//警告页
+var warn=document.getElementsByClassName('warn')[0];
+//错误框
+var wrong=document.getElementsByClassName('wrong')[0];
+//输入框
+var input=document.querySelector('.question input');
+//确认按钮
+var confirm=document.getElementsByClassName('confirm')[0];
+//更换按钮
+var changeBtn=document.querySelector('.change img');
+
+//问题与答案
+var questions=[
+'姐姐家的女儿在哪里？',   
+'奶奶的女儿在哪里？',   
+'姨妈的妈妈在哪里？', 
+'侄女的哥哥在哪里？', 
+'姨妈的女儿在哪里？',   
+'表妹的妈妈在哪里？',  
+'奶奶的弟弟在哪里？',   
+'外公的妹妹在哪里？',  
+'爷爷的女儿在哪里？',  
+'舅舅的爸爸在哪里？',  
+'妈妈的姑父在哪里？',  
+'爷爷的妹妹在哪里？',  
+'叔叔家的孙子在哪里？',
+'侄子的爸爸在哪里？',  
+'外公的儿子在哪里？'];
+var answers=[
+['外甥女','waishengnv'],
+['姑姑','gugu'],
+['外婆','waipo'],
+['侄子','zhizi'],
+['表妹','biaomei'],
+['姨妈','yima'],
+['舅爷','jiuye'],
+['姑姥','gulao'],
+['姑姑','gugu'],
+['外公','waigong'],
+['姑姥爷','gulaoye'],
+['姑奶','gunai'],
+['侄子','zhizi'],
+['哥哥','gege'],
+['舅舅','jiujiu']];
+
+
+//开始按钮
+var page1=document.getElementsByClassName('page1')[0];
+var beginBtn=document.getElementsByClassName('begin')[0];
+var music=document.getElementsByClassName('music')[0];
 beginBtn.addEventListener('touchstart',function(){
 	page1.style.display='none'; 
+	page2.style.display='block';
+	music.play();
+    timer=setInterval('countdown()',1000);
+    input.value=questions[Math.floor(Math.random()*15)];
 })
-
-confirm.ontouchstart=function(){
-    page2.style.display='none';
-    page3.style.display='block';
-}
 for(var i=0;i<allpeople.length;i++){
 	allpeople[i].onclick=function(){
-		var img=this.querySelector('img');
-		img.style.opacity='1';
+		for(var j=0;j<allpeople.length;j++){
+			if(allpeople[j].classList.contains('checked')){
+				allpeople[j].classList.remove('checked');
+			}
+		}
+		this.classList.add('checked');
 	}
+}
+//倒计时
+function countdown(){
+	//计时
+	var second=document.querySelectorAll('span.progress_lantern')[0];
+	var restTime=Number(parseInt(second.innerText));
+	var progress=document.querySelectorAll('.progress')[0];
+    if(restTime>0){
+     	restTime=restTime-1;;
+    	second.innerText=restTime+'s';
+    	progress.style.width=(restTime*5/3)*0.4+'%';
+    }else{
+    	warn.style.display='block';
+    	wrong.style.display='none';
+    	timeout.style.display='block';
+    }
+};
+//更换问题
+function changeQuestion(){
+	var val=input.value;
+	var num=Math.floor(Math.random()*15);
+	for(var i=0;i<questions.length;i++){
+		if(val==questions[i]&&num!=i){
+          input.value=questions[num];
+		}
+	}
+}
+changeBtn.onclick=changeQuestion;
+//确认按钮事件
+confirm.onclick=function(){
+	var val=input.value;
+	var times=document.querySelector('span.times_lantern');
+    var checked=document.querySelector('.checked');
+	if(!checked){alert('请选择答案'); 
+	return;
+   };
+
+//确认
+for(var i=0;i<questions.length;i++){
+        var checked=document.querySelector('.checked');
+		if(val==questions[i]&&checked.classList.contains(answers[i][1])){
+			times.innerText=Number(times.innerText)+1;
+			changeQuestion();
+		}else{
+			if(val==questions[i]){
+			    warn.style.display='block';
+			    wrong.style.display='block';
+			    clearInterval(timer);
+			    var rightAnswer=document.getElementsByClassName('rightAnswer')[0];
+			    console.log(answers[i][0]);
+			    rightAnswer.innerText+=answers[i][0];
+			}	
+		}
+	}
+}
+
+//错误提示框
+var continueBtn=document.getElementsByClassName('continue')[0];
+continueBtn.onclick=function(){
+	var rightAnswer=document.getElementsByClassName('rightAnswer')[0];
+	warn.style.display='none';
+    timer=setInterval('countdown()',1000);
+    changeQuestion();
+    rightAnswer.innerText='';
+}
+
+var checkScore=document.getElementsByClassName('checkScore')[0];
+checkScore.onclick=function(){
+	warn.style.display='none';
+	timeout.style.display='none';
+	page2.style.display='none';
+	page3.style.display='block';
+	var resultWord=document.getElementsByClassName('result')[1];
+	var score=Number(document.querySelector('span.times_lantern').innerText);
+	var num,per;
+	if(score<=5){
+		switch(score){
+			case 0:
+			num=0;per=0;
+			break;
+			case 1:
+			num=1;per=10;
+			break;
+			case 2:
+			num=2;per=20;
+			break;
+			case 3:
+			num=3;per=30;
+			break;
+			case 4:
+			num=4;pper=38;
+			break;
+			case 5:
+			num=5;per=50;
+			break;
+		}
+      resultWord.innerText='你认出了'+num+'个亲戚，仅击败了'+per+'%的人，还得努力练习哇，赶紧叫上小伙伴一起挑战吧';
+	}else if(5<score<10){
+		switch(score){
+			case 6:
+			num=6;per=56;
+			break;
+			case 7:
+			num=7;per=68;
+			break;
+			case 8:
+			num=8;per=78;
+			break;
+			case 9:
+			num=9;per=80;
+			break;
+		}
+      resultWord.innerText='你认出了'+num+'个亲戚，比'+per+
+      '%的人更有文化耶，再也不怕久违的亲戚叫不上称呼了，赶紧叫小伙伴们也预习一下吧!'
+	}else if(10<score<16){
+		switch(score){
+			case 10:
+			num=10;per=85;
+			break;
+			case 11:
+			num=11;per=89;
+			break;
+			case 12:
+			num=12;per=91;
+			break;
+			case 13:
+			num=13;per=94;
+			break;
+			case 14:
+			num=14;per=97;
+			break;
+			case 15:
+			num=15;per=99;
+			break;
+		}
+      resultWord.innerText='你认出了'+num+'个亲戚，竟然超越了'+per+'%的人，你就是家族的传说啊！赶紧叫上小伙伴来挑战吧!';
+	}
+}
+
+
+//第三页
+var page3=document.getElementById('page3');
+var known=document.getElementsByClassName('known')[0];
+var playAgain=document.getElementsByClassName('playAgain')[0];
+var share=document.getElementsByClassName('share')[0];
+var page4=document.getElementsByClassName('popular')[0];
+var tip=document.getElementsByClassName('tip')[0];
+known.onclick=function(){
+	page3.style.display='none';
+	page4.style.display='block';
+}
+playAgain.onclick=function(){
+location.reload(false);
+}
+
+//第四页
+var back=document.getElementsByClassName('back')[0];
+back.onclick=function(){
+	page4.style.display='none';
+	page3.style.display='block';
+}
+var photo=document.querySelector('.popular img:first-of-type');
+photo.onclick=function(){
+	if(!this.classList.contains('large')){
+	this.classList.add('large');
+	this.style.width='500%';
+	back.style.display='none';
+	tip.style.display='none';
+}else{
+	this.classList.remove('large');
+	this.style.width='100%';
+	back.style.display='block';
+	tip.style.display='block';
+}
 }
 </script>
 </body>
