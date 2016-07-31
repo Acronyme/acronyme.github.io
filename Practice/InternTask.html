@@ -5,7 +5,11 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<title>Photo of The Whole Family</title>
 	<style>
-	*{margin:0;padding: 0;font-family: "微软雅黑"}
+	*{
+		margin:0;
+		padding: 0;
+		font-family: "微软雅黑"
+	}
 	html,body{height: 100%;overflow:hidden;}
 	.page1{
 		position: absolute;
@@ -65,7 +69,11 @@
     	top:20%;
     	z-index: 100;
     }
-    .rest-time,.times{width:47%;height:100%;display: inline-block;}
+    .rest-time,.times{
+    	width:47%;
+    	height:100%;
+    	display: inline-block;
+    }
     .rest-time img:first-of-type{
      position: absolute;
      width:48%;
@@ -83,10 +91,20 @@
         background-size:cover;
         background-repeat: no-repeat;    	
     }
-    .times img{position: absolute; width:47%;top:10%;}
+    .times img{
+    	position: absolute; 
+    	width:47%;
+    	top:10%;
+    }
     .times img:first-of-type{width:50%;}
     .times img:last-of-type{right:3.5%}
-    .times img:nth-of-type(2){position: absolute; width:10%;left:88%;top:-10%;z-index:10}
+    .times img:nth-of-type(2){
+    	position: absolute; 
+    	width:10%;
+    	left:88%;
+    	top:-10%;
+    	z-index:10
+    }
     span.progress_lantern{
     	display: inline-block;
     	top:20%;
@@ -143,7 +161,14 @@
     	bottom:30%;
     	left:15%;
     }
-    div.result{width:60%; height:15%;left:18%;}
+    div.result{
+    	width:60%; 
+    	height:15%;
+    	left:18%;
+    	font-size:15px;
+    	color:#ACAAA1;
+    	opacity: .8;
+    }
     .btn{
     	position:absolute;
     	width: 100%;
@@ -402,12 +427,17 @@
     	opacity: .6;
     }
     .checked img{opacity: 1;}
-    .warn{display:none;}
+    .warn{
+    	position: absolute;
+    	top:0;
+    	width:100%;
+    	height: 100%; 
+    	display:none;
+    }
     .popular{display:none}
-    #page2_wrapper{display:none;}
+    #page2_wrapper{display:block;}
     #page3{display:none;}
     .wrong{display: none;}
- 
 	</style>
 </head>
 <body>
@@ -659,7 +689,6 @@ for(var i=0;i<questions.length;i++){
 			    wrong.style.display='block';
 			    clearInterval(timer);
 			    var rightAnswer=document.getElementsByClassName('rightAnswer')[0];
-			    console.log(answers[i][0]);
 			    rightAnswer.innerText+=answers[i][0];
 			}	
 		}
@@ -709,7 +738,6 @@ checkScore.onclick=function(e){
 		}
       resultWord.innerText='你认出了'+num+'个亲戚，仅击败了'+per+'%的人，还得努力练习哇，赶紧叫上小伙伴一起挑战吧!';
 	}else if(score<10){
-		alert(score);
 		switch(score){
 			case 6:
 			num=6,per=56;
@@ -746,6 +774,8 @@ checkScore.onclick=function(e){
 			case 15:
 			num=15,per=99;
 			break;
+			default:
+			num='大于15',per=99;
 		}
       resultWord.innerText='你认出了'+num+'个亲戚，竟然超越了'+per+'%的人，你就是家族的传说啊！赶紧叫上小伙伴来挑战吧!';
 	}
