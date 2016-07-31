@@ -435,7 +435,7 @@
     	display:none;
     }
     .popular{display:none}
-    #page2_wrapper{display:block;}
+    #page2_wrapper{display:none;}
     #page3{display:none;}
     .wrong{display: none;}
 	</style>
@@ -707,7 +707,6 @@ continueBtn.onclick=function(){
 
 var checkScore=document.getElementsByClassName('checkScore')[0];
 checkScore.onclick=function(e){
-	e.stopPropagation();
 	warn.style.display='none';
 	page2.style.display='none';
 	timeout.style.display='none';
