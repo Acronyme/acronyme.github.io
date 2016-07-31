@@ -165,6 +165,7 @@
     	width:60%; 
     	height:15%;
     	left:18%;
+    	bottom: 32%;	
     	font-size:15px;
     	color:#ACAAA1;
     	opacity: .8;
@@ -434,9 +435,12 @@
     	height: 100%; 
     	display:none;
     }
+    .page1{display: none}
+
+
     .popular{display:none}
     #page2_wrapper{display:none;}
-    #page3{display:none;}
+    #page3{display:block;}
     .wrong{display: none;}
 	</style>
 </head>
@@ -531,7 +535,7 @@
 	<div id='page3'>
 		<img class="page3" src="page3.jpg" alt="page3" />
 		<img class="result" src="result.png" alt="result" />
-		<div class="result"></div>
+		<div class="result">你认出了32个亲戚，比16%%的人更有文化耶，再也不怕久违的亲戚叫不上称呼了，赶紧叫小伙伴们也预习一下吧!</div>
 		<div class="btn">
 			<img class="known" src="popular.png"  alt="popular" />
 			<img class="playAgain" src="playAgain.png" alt="playAgain" />
@@ -779,7 +783,6 @@ checkScore.onclick=function(e){
       resultWord.innerText='你认出了'+num+'个亲戚，竟然超越了'+per+'%的人，你就是家族的传说啊！赶紧叫上小伙伴来挑战吧!';
 	}
 }
-
 
 //第三页
 var page3=document.getElementById('page3');
