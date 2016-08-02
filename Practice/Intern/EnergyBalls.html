@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 	<title>夏日能量球</title>
 	<style>
-	*{margin:0;padding:0;overflow: hidden;}
+	*{margin:0;padding:0;overflow:hidden;transition: all 1s;}
 	html,body{height:100%;width:100%;font-family: '微软雅黑';}
 	.page-1,.page-2,.page-3{
 	  	height:100%;
 	  	width: 100%;
 	  }
-	.page3{
-		overflow-x: auto;
-	}
 	.page3 div{
 		width:100%;
 		height: 100%;
@@ -65,7 +63,7 @@
     .btns{
     	position: absolute;
     	width:90%;
-    	height:7%;
+    	height:9%;
     	bottom:21%;
     	left:5%;
     }
@@ -85,6 +83,7 @@
     	left:10%;
     	top:10%;
     	height:55%;
+    	overflow-y:visible;
     }
     .balls img{
     	position: absolute;
@@ -92,6 +91,30 @@
     }
     .balls img:nth-of-type(1){
     	left:0;
+    }
+    .balls span{display: inline-block;position: absolute;color: #fff;}
+    .balls span:nth-of-type(1){
+         top:30%;
+         left:5%;
+    }
+    .balls span:nth-of-type(2){
+    	top:30%;
+    	right:6%;
+    }
+    .balls span:nth-of-type(3){
+    	top:60%;
+    	left:40%;
+    	
+    }
+    .balls span:nth-of-type(4){
+    	top:94%;
+    	left:5%;
+    	
+    }
+    .balls span:nth-of-type(5){
+    	top:94%;
+    	right:6%;
+    	
     }
     .balls img:nth-of-type(2){
     	right:0;
@@ -102,11 +125,11 @@
     }    
     .balls img:nth-of-type(4){
     	left:0;
-    	bottom: 0;
+    	bottom: 5%;
     }    
     .balls img:nth-of-type(5){
     	right: 0;
-    	bottom: 0;
+    	bottom: 5%;
     }
     .friendCircle{
     	position: absolute;
@@ -115,10 +138,7 @@
     	height:100%;
     	display: none;
     }
-    .ball-1{
-    	width: 100%;
-    	height: 100%;
-    }
+
     .func{
     	position: absolute;
         width:90%;
@@ -135,18 +155,20 @@
     	left:5%;
     	top:36%;
     	transform: translateY(-50%);
+    	z-index: 10;
     }
     .right{
     	position: absolute;
     	width:10%;
     	right:5%;
     	top:36%;
-    	transform: translateY(-50%);  	
+    	transform: translateY(-50%);  
+    	z-index: 10;	
     }
     [class^='ball-']{
     	position: absolute;
-    	width:100%;
-    	height: 72%;
+    	width:20%;
+    	height:100%;
     	top:0;
     }
      [class^='ball-'] img{
@@ -154,6 +176,39 @@
       	position: absolute;
      	left:30%;
      	top:34%;
+     }
+     .collect{
+     	position:relative;
+     	top:-100%;
+     	width:500%;
+     	height:72%;
+     	overflow: hidden;
+     	color:#fff;
+     }
+     .collect span:nth-of-type(1){
+     	position: absolute;
+     	top:67%;
+     	left:40%;
+     }
+     .collect span:nth-of-type(2){
+     	position: absolute;
+     	top:65%;
+     	left:165%;
+     }
+     .collect span:nth-of-type(3){
+     	position: absolute;
+     	top:65%;
+     	left:265%;
+     }
+     .collect span:nth-of-type(4){
+     	position: absolute;
+     	top:65%;
+     	left:365%;
+     }
+     .collect span:nth-of-type(5){
+     	position: absolute;
+     	top:65%;
+     	left:465%;
      }
      .sendpage,.helppage{
         position: absolute;
@@ -163,14 +218,77 @@
         z-index: 10;
         display: none;
      }
-     .ball-1{left:-200%;}
-     .ball-2{left:-100%;}
-     .ball-4{right:100%;}
-     .ball-5{right:200%;}
-	.intro{display: none}
-    .page-1{display: block;}
-    .page-2,.page-3{display:none;}
+    .pos1{left:0;}
+    .pos2{left:-100%;}
+    .pos3{left:-200%;}
+    .pos4{left:-300%;}
+    .pos5{left:-400%;}
 
+    .ball-1{left:0;}
+    .ball-2{left:20%;}
+    .ball-3{left:40%;}
+    .ball-4{left:60%;}
+    .ball-5{left:80%;}
+	.intro{display: none}
+    .page-2,.page-3{display:none;}
+     
+    .star1,.star2,.star3,.star4,.star5{
+    	position: absolute;
+    }
+    .star1{
+    	width:15%;
+    	top:10%;
+    	left:15%;
+    	animation: bling 2s linear 1s infinite;
+
+    }
+    .star2{
+    	width:10%;
+    	top:15%;
+    	right:23%; 
+    	animation: bling 2s linear infinite;
+
+    }
+    .star3{
+    	width:10%;
+    	top:49%;
+    	left:15%;
+    	animation: bling 2s linear .4s infinite;
+    }
+    .star4{
+      width:10%;
+      top:6%;
+      left:10%;
+      animation: bling 2s linear .6s infinite;
+    }
+    .star5{
+    	width:8%;
+    	top:6%;
+    	right:15%;
+    	animation: bling 2s linear infinite;
+
+    }
+    @keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+
+    }
+    .balls{
+    perspective: 500;
+    transform-style:preserve-3d;
+    perspective-origin: 50% 50%;
+    }
+   .balls img,.collect img{
+　
+   	transform:rotate3d(0,0,0,0deg);
+   	animation: rotate 5s linear infinite;
+   }
+   @keyframes rotate{
+   	0% {transform:rotate3d(1,1,0,0deg);}
+    50%{transform:rotate3d(1,1,0,360deg);}
+    100%{transform:rotate3d(1,1,0,0deg);}}
+}
 	</style>
 </head>
 <body>
@@ -188,11 +306,18 @@
 <div class="page-2">
     <div class="balls">
     	<img src="images/page2/ball1.png" alt="ball1" />
-    	<img src="images/page2/ball2.png" alt="ball1" />
-    	<img src="images/page2/ball3.png" alt="ball1" />
-    	<img src="images/page2/ball4.png" alt="ball1" />
-    	<img src="images/page2/ball5.png" alt="ball1" />
+    	<span>去瞌球0个</span>
+    	<img src="images/page2/ball2.png" alt="ball2" />
+    	<span>抗饿球0个</span>
+    	<img src="images/page2/ball3.png" alt="ball3" />
+    	<span>解乏球0个</span>
+    	<img src="images/page2/ball4.png" alt="ball4" />
+    	<span>减肥球0个</span>
+    	<img src="images/page2/ball5.png" alt="ball5" />
+    	<span>消暑球0个</span>
     </div>
+    <img src="images/page3/star1.png" alt="star" class="star4" />
+    <img src="images/page3/star2.png" alt="star" class="star5" />
 	<img src="images/page2/background.png" alt="background" class="background" />
 	<div class="btns">
 	<a class="link" target="_blank" href="http://wap.17iwo.com/yhqhx"></a>
@@ -212,11 +337,26 @@
    	</div>
    <img src="images/page3/sendpage.png" alt="sendpage" class="sendpage" />
    <img src="images/page3/helppage.png" alt="helppage" class="helppage" />
-   <div class="ball-1"><img src="images/page2/ball1.png" alt="ball1"></div>
-   <div class="ball-2"><img src="images/page2/ball2.png" alt="ball1"></div>
-   <div class="ball-3"><img src="images/page2/ball3.png" alt="ball1"></div>
-   <div class="ball-4"><img src="images/page2/ball4.png" alt="ball1"></div>
-   <div class="ball-5"><img src="images/page2/ball5.png" alt="ball1"></div>
+   <img src="images/page3/star1.png" alt="star1" class="star1" />
+   <img src="images/page3/star2.png" alt="star2" class="star2" />
+   <img src="images/page3/star3.png" alt="star3" class="star3" />
+   <div class="collect">
+   <div class="ball-1">
+    <span>去瞌球0个</span>
+   <img src="images/page2/ball1.png" alt="ball1"></div>
+   <div class="ball-2">
+    <span>抗饿球0个</span>
+   <img src="images/page2/ball2.png" alt="ball1"></div>
+   <div class="ball-3">
+    <span>解乏球0个</span>
+   <img src="images/page2/ball3.png" alt="ball1"></div>
+   <div class="ball-4">
+    <span>减肥球0个</span>
+   <img src="images/page2/ball4.png" alt="ball1"></div>
+   <div class="ball-5">
+    <span>消暑球0个</span>
+   <img src="images/page2/ball5.png" alt="ball1"></div>
+   </div>
 </div>
 <script>
    //page1 
@@ -243,18 +383,70 @@
    var link=document.getElementsByClassName('link')[0];
    var friendCircle=document.getElementsByClassName('friendCircle')[0];
    var page3=document.getElementsByClassName('page-3')[0];
-   var ball1=document.querySelector('ball1 img:nth-of-type(1)');
-   var ball2=document.querySelector('ball1 img:nth-of-type(2)');
-   var ball3=document.querySelector('ball1 img:nth-of-type(3)');
-   var ball4=document.querySelector('ball1 img:nth-of-type(4)');
-   var ball5=document.querySelector('ball1 img:nth-of-type(5)');
-   
-   var balls=[ball1,ball2,ball3,ball4,ball5];
-   for(var i=0;i>balls.length;i++){
-   	balls[i].onclick=function(){
-   		
-   	}
+   var ball1=document.querySelector('.balls img:nth-of-type(1)');
+   var ball2=document.querySelector('.balls img:nth-of-type(2)');
+   var ball3=document.querySelector('.balls img:nth-of-type(3)');
+   var ball4=document.querySelector('.balls img:nth-of-type(4)');
+   var ball5=document.querySelector('.balls img:nth-of-type(5)');
+   var singleBall1=document.getElementsByClassName('ball-1')[0];
+   var singleBall2=document.getElementsByClassName('ball-2')[0];
+   var singleBall3=document.getElementsByClassName('ball-3')[0];
+   var singleBall4=document.getElementsByClassName('ball-4')[0];
+   var singleBall5=document.getElementsByClassName('ball-5')[0];
+   var balls=[singleBall1,singleBall2,singleBall3,singleBall4,singleBall5];
+   var left=document.getElementsByClassName('left')[0];
+   var right=document.getElementsByClassName('right')[0];
+   var collect=document.getElementsByClassName('collect')[0];
+   ball1.onclick=function(){
+   	page2.style.display='none';
+   	page3.style.display='block';
+   	collect.classList.add('pos1');
    }
+   ball2.onclick=function(){
+   	page2.style.display='none';
+   	page3.style.display='block';
+   	collect.classList.add('pos2');
+   }
+   ball3.onclick=function(){
+   	page2.style.display='none';
+   	page3.style.display='block';
+   	collect.classList.add('pos3');
+   }
+   ball4.onclick=function(){
+   	page2.style.display='none';
+   	page3.style.display='block';
+   	collect.classList.add('pos4');
+   }
+   ball5.onclick=function(){
+   	page2.style.display='none';
+   	page3.style.display='block';
+   	collect.classList.add('pos5');
+   }
+   
+  left.onclick=function(){
+  	 if(collect.classList.contains('pos1')){
+  	 	collect.classList.remove('pos1');
+  	 	collect.classList.add('pos5');
+  	 }else{
+  	 	var a=collect.classList[1];
+  	 	var now=Number(a.split('')[a.split('').length-1])-1;
+  	 	collect.classList.remove(a);
+  	 	collect.classList.add('pos'+now);
+  	 }
+  }
+  right.onclick=function(){
+  	 if(collect.classList.contains('pos5')){
+  	 	collect.classList.remove('pos5');
+  	 	collect.classList.add('pos1');
+  	 }else{
+  	 	var a=collect.classList[1];
+  	 	var now=Number(a.split('')[a.split('').length-1])+1;
+  	 	collect.classList.remove(a);
+  	 	collect.classList.add('pos'+now);
+  	 }     
+  }
+
+
    getDiscount.onclick=function(){
    	link.click();
    }
@@ -283,8 +475,6 @@
    helppage.onclick=function(){
    	this.style.display='none';
    }
-
-
 
 </script>
 </body>
