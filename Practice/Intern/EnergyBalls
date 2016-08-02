@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>夏日能量球</title>
+	<style>
+	*{margin:0;padding:0;overflow: hidden;}
+	html,body{height:100%;width:100%;font-family: '微软雅黑';}
+	.page-1,.page-2,.page-3{
+	  	height:100%;
+	  	width: 100%;
+	  }
+	.page3{
+		overflow-x: auto;
+	}
+	.page3 div{
+		width:100%;
+		height: 100%;
+	}
+	.background{
+		width:100%;
+		height: 100%;
+	}
+	 img{
+	  	display:block;
+	  	margin:0 auto;
+	  }
+	.phone{
+		position: absolute;
+		width:70%;
+		bottom: 30%;
+		left:50%;
+		transform: translateX(-50%);
+	}
+	.introBtn{
+		position: absolute;
+		width:50%;
+		bottom: 20%;
+		left:50%;
+		transform: translateX(-50%);
+	}
+	.intro{
+		position: absolute;
+		width:90%;
+		left:5%;
+		top:10%;
+		z-index: 100;
+	}
+	.intro img:first-of-type{
+		width:100%;
+	}
+	.close{
+		position: absolute;
+		width:15%;
+		right:2%;
+		top:2%;
+	}
+	.begin{
+		position: absolute;
+		bottom: 30.5%;
+		right:20%;
+		width:15%;
+	}
+    
+    .btns{
+    	position: absolute;
+    	width:90%;
+    	height:7%;
+    	bottom:21%;
+    	left:5%;
+    }
+    .btns img{
+    	position: absolute;
+    	width:47%;
+    }
+    .btns img:first-of-type{
+    	left:0;
+    }
+    .btns img:last-of-type{
+    	right:0;
+    }
+    .balls{
+    	position: absolute;
+    	width:80%;
+    	left:10%;
+    	top:10%;
+    	height:55%;
+    }
+    .balls img{
+    	position: absolute;
+    	width:36%;
+    }
+    .balls img:nth-of-type(1){
+    	left:0;
+    }
+    .balls img:nth-of-type(2){
+    	right:0;
+    }    
+    .balls img:nth-of-type(3){
+    	left:32%;
+    	top:32%;
+    }    
+    .balls img:nth-of-type(4){
+    	left:0;
+    	bottom: 0;
+    }    
+    .balls img:nth-of-type(5){
+    	right: 0;
+    	bottom: 0;
+    }
+    .friendCircle{
+    	position: absolute;
+    	top:0;
+    	width:100%;
+    	height:100%;
+    	display: none;
+    }
+    .ball-1{
+    	width: 100%;
+    	height: 100%;
+    }
+    .func{
+    	position: absolute;
+        width:90%;
+        left:5%;
+        bottom:12%;
+    }
+    .func img{
+    	width:46%;
+    	margin-bottom:3.5%;
+    }
+    .left{
+    	position: absolute;
+    	width:10%;
+    	left:5%;
+    	top:36%;
+    	transform: translateY(-50%);
+    }
+    .right{
+    	position: absolute;
+    	width:10%;
+    	right:5%;
+    	top:36%;
+    	transform: translateY(-50%);  	
+    }
+    [class^='ball-']{
+    	position: absolute;
+    	width:100%;
+    	height: 72%;
+    	top:0;
+    }
+     [class^='ball-'] img{
+     	width:40%;
+      	position: absolute;
+     	left:30%;
+     	top:34%;
+     }
+     .sendpage,.helppage{
+        position: absolute;
+        top:0;
+        width:100%;
+        height: 100%;
+        z-index: 10;
+        display: none;
+     }
+     .ball-1{left:-200%;}
+     .ball-2{left:-100%;}
+     .ball-4{right:100%;}
+     .ball-5{right:200%;}
+	.intro{display: none}
+    .page-1{display: block;}
+    .page-2,.page-3{display:none;}
+
+	</style>
+</head>
+<body>
+<div class="page-1">
+   <img src="images/page1/background.png" alt="background" class="background" />
+   <img src="images/page1/phone.png" alt="phone" class="phone" />
+   <img src="images/page1/begin.png" alt="begin" class="begin" />
+   <div class="intro">
+   <img src="images/page1/intro.png" alt="intro" />
+   <img src="images/page1/close.png" alt="close" class="close">
+   </div>
+   <img src="images/page1/introBtn.png" alt="introBtn" class="introBtn" />
+</div>
+
+<div class="page-2">
+    <div class="balls">
+    	<img src="images/page2/ball1.png" alt="ball1" />
+    	<img src="images/page2/ball2.png" alt="ball1" />
+    	<img src="images/page2/ball3.png" alt="ball1" />
+    	<img src="images/page2/ball4.png" alt="ball1" />
+    	<img src="images/page2/ball5.png" alt="ball1" />
+    </div>
+	<img src="images/page2/background.png" alt="background" class="background" />
+	<div class="btns">
+	<a class="link" target="_blank" href="http://wap.17iwo.com/yhqhx"></a>
+	<img src="images/page2/get.png" alt="getDiscount" class="getDiscount" />
+	<img src="images/page2/invite.png" alt="invite" class="invite" />
+	</div>
+	<img src="images/page2/friend.png" alt="friend" class="friendCircle" />
+</div>
+
+<div class="page-3">
+   	<img src="images/page3/background.png" alt="background" class="background" />
+   	<img src="images/page3/left.png" alt="left" class="left" />
+   	<img src="images/page3/right.png" alt="right" class="right" />
+   	<div class="func">
+   	  	  <img src="images/page3/send.png" alt="send" class="send" />
+   	  	  <img src="images/page3/help.png" alt="help" class="help" />
+   	</div>
+   <img src="images/page3/sendpage.png" alt="sendpage" class="sendpage" />
+   <img src="images/page3/helppage.png" alt="helppage" class="helppage" />
+   <div class="ball-1"><img src="images/page2/ball1.png" alt="ball1"></div>
+   <div class="ball-2"><img src="images/page2/ball2.png" alt="ball1"></div>
+   <div class="ball-3"><img src="images/page2/ball3.png" alt="ball1"></div>
+   <div class="ball-4"><img src="images/page2/ball4.png" alt="ball1"></div>
+   <div class="ball-5"><img src="images/page2/ball5.png" alt="ball1"></div>
+</div>
+<script>
+   //page1 
+   var introBtn=document.getElementsByClassName('introBtn')[0];
+   var intro=document.getElementsByClassName('intro')[0];
+   var close=document.getElementsByClassName('close')[0];
+   var begin=document.getElementsByClassName('begin')[0];
+   var page1=document.getElementsByClassName('page-1')[0];
+   var page2=document.getElementsByClassName('page-2')[0];
+   introBtn.onclick=function(){
+   	intro.style.display='block';
+   }
+   close.onclick=function(){
+   	intro.style.display='none';
+   }
+   begin.onclick=function(){
+     page1.style.display='none';
+     page2.style.display='block';
+   }
+
+   //page2
+   var getDiscount=document.getElementsByClassName('getDiscount')[0];
+   var invite=document.getElementsByClassName('invite')[0];
+   var link=document.getElementsByClassName('link')[0];
+   var friendCircle=document.getElementsByClassName('friendCircle')[0];
+   var page3=document.getElementsByClassName('page-3')[0];
+   var ball1=document.querySelector('ball1 img:nth-of-type(1)');
+   var ball2=document.querySelector('ball1 img:nth-of-type(2)');
+   var ball3=document.querySelector('ball1 img:nth-of-type(3)');
+   var ball4=document.querySelector('ball1 img:nth-of-type(4)');
+   var ball5=document.querySelector('ball1 img:nth-of-type(5)');
+   
+   var balls=[ball1,ball2,ball3,ball4,ball5];
+   for(var i=0;i>balls.length;i++){
+   	balls[i].onclick=function(){
+   		
+   	}
+   }
+   getDiscount.onclick=function(){
+   	link.click();
+   }
+   invite.onclick=function(){
+   	 friendCircle.style.display='block';
+   }
+   friendCircle.onclick=function(){
+   	this.style.display='none';
+   }
+
+   //page3
+   var send=document.getElementsByClassName('send')[0];
+   var sendpage=document.getElementsByClassName('sendpage')[0];
+   var help=document.getElementsByClassName('help')[0];
+   var helppage=document.getElementsByClassName('helppage')[0];
+   send.onclick=function(){
+        sendpage.style.display='block';
+   }
+   sendpage.onclick=function(){
+   	   this.style.display='none';
+   }
+
+   help.onclick=function(){
+   	helppage.style.display='block';
+   }
+   helppage.onclick=function(){
+   	this.style.display='none';
+   }
+
+
+
+</script>
+</body>
+</html>
