@@ -94,15 +94,15 @@
     }
     .balls span{display: inline-block;position: absolute;color: #fff;}
     .balls span:nth-of-type(1){
-         top:32%;
+         top:33%;
          left:5%;
     }
     .balls span:nth-of-type(2){
-    	top:32%;
+    	top:33%;
     	right:6%;
     }
     .balls span:nth-of-type(3){
-    	top:62%;
+    	top:65%;
     	left:39%;
     	
     }
@@ -118,7 +118,9 @@
     }
     .balls img:nth-of-type(2){
     	right:0;
-    }    
+    	border-radius: 50%;
+    } 
+
     .balls img:nth-of-type(3){
     	left:32%;
     	top:32%;
@@ -266,7 +268,6 @@
     	top:6%;
     	right:15%;
     	animation: bling 2s linear infinite;
-
     }
     @keyframes bling{
     	0%{opacity: 1}
@@ -274,20 +275,15 @@
     	100%{opacity: 1}
 
     }
-    .balls{
-    perspective: 500;
-    transform-style:preserve-3d;
-    perspective-origin: 50% 50%;
-    }
    .balls img,.collect img{
 　
    	transform:rotate3d(0,0,0,0deg);
-   	animation: rotate 5s linear infinite;
+   	animation: rotate 3s linear infinite;
    }
    @keyframes rotate{
-   	0% {transform:rotate3d(1,1,0,0deg);}
-    50%{transform:rotate3d(1,1,0,360deg);}
-    100%{transform:rotate3d(1,1,0,0deg);}}
+   	0% {transform:rotate3d(0,0,1,0deg);}
+    50%{transform:rotate3d(0,0,1,180deg);}
+    100%{transform:rotate3d(0,0,1,360deg);}}
 }
 	</style>
 </head>
@@ -397,6 +393,8 @@
    var left=document.getElementsByClassName('left')[0];
    var right=document.getElementsByClassName('right')[0];
    var collect=document.getElementsByClassName('collect')[0];
+   //领取折扣券判断数量
+   var nums=[];
    ball1.onclick=function(){
    	page2.style.display='none';
    	page3.style.display='block';
@@ -445,6 +443,7 @@
   	 	collect.classList.add('pos'+now);
   	 }     
   }
+
 
 
    getDiscount.onclick=function(){
