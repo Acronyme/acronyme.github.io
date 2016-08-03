@@ -29,6 +29,20 @@
 		bottom: 30%;
 		left:50%;
 		transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+	}
+	.phoneNum{
+		position: absolute;
+		width:45%;
+		height:5%;
+		bottom: 30.7%;
+		left:18%;
+		border-radius: 10px;
+		font-size:1.2rem;
+		text-align: center;
 	}
 	.introBtn{
 		position: absolute;
@@ -36,6 +50,10 @@
 		bottom: 17%;
 		left:50%;
 		transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
 	}
 	.intro{
 		position: absolute;
@@ -83,7 +101,6 @@
     	left:10%;
     	top:10%;
     	height:55%;
-    	overflow-y:visible;
     }
     .balls img{
     	position: absolute;
@@ -92,7 +109,11 @@
     .balls img:nth-of-type(1){
     	left:0;
     }
-    .balls span{display: inline-block;position: absolute;color: #fff;}
+    .balls span{
+    	display: inline-block;
+    	position: absolute;
+    	color: #fff;
+    }
     .balls span:nth-of-type(1){
          top:33%;
          left:5%;
@@ -140,7 +161,51 @@
     	height:100%;
     	display: none;
     }
-
+    .err{
+    	position:absolute;
+    	width: 100%;
+    	height: 100%;
+    	top:0;
+    	background-color:rgba(107, 13, 13,0.4);
+    	animation: alarm 2s linear infinite;
+    	-webkit-animation: alarm 2s linear infinite;
+    	-moz-animation: alarm 2s linear infinite;
+    	-o-animation: alarm 2s linear infinite;
+    	-ms-animation: alarm 2s linear infinite;
+    	display: none;
+    }
+    @keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    @-webkit-keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    @-o-keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    @-ms-keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    @-moz-keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    .alarm{
+    	position: absolute;
+    	width:70%;
+    	top:20%;
+    	left:15%;
+    	opacity: 1;
+    }
     .func{
     	position: absolute;
         width:90%;
@@ -156,16 +221,24 @@
     	width:10%;
     	left:5%;
     	top:36%;
-    	transform: translateY(-50%);
     	z-index: 10;
+    	transform: translateY(-50%);
+    	-webkit-transform: translateY(-50%);
+    	-o-transform: translateY(-50%);
+    	-moz-transform: translateY(-50%);
+    	-ms-transform: translateY(-50%);
     }
     .right{
     	position: absolute;
     	width:10%;
     	right:5%;
     	top:36%;
+    	z-index: 10;
     	transform: translateY(-50%);  
-    	z-index: 10;	
+    	-webkit-transform: translateY(-50%);  
+    	-o-transform: translateY(-50%);  
+    	-moz-transform: translateY(-50%);  
+    	-ms-transform: translateY(-50%);  
     }
     [class^='ball-']{
     	position: absolute;
@@ -242,6 +315,10 @@
     	top:10%;
     	left:15%;
     	animation: bling 2s linear 1s infinite;
+    	-webkit-animation: bling 2s linear 1s infinite;
+    	-o-animation: bling 2s linear 1s infinite;
+    	-ms-animation: bling 2s linear 1s infinite;
+    	-moz-animation: bling 2s linear 1s infinite;
 
     }
     .star2{
@@ -249,6 +326,10 @@
     	top:15%;
     	right:23%; 
     	animation: bling 2s linear infinite;
+    	-webkit-animation: bling 2s linear infinite;
+    	-o-animation: bling 2s linear infinite;
+    	-ms-animation: bling 2s linear infinite;
+    	-moz-animation: bling 2s linear infinite;
 
     }
     .star3{
@@ -256,31 +337,86 @@
     	top:49%;
     	left:15%;
     	animation: bling 2s linear .4s infinite;
+    	-webkit-animation: bling 2s linear .4s infinite;
+    	-moz-animation: bling 2s linear .4s infinite;
+    	-ms-animation: bling 2s linear .4s infinite;
+    	-o-animation: bling 2s linear .4s infinite;
     }
     .star4{
       width:10%;
       top:6%;
       left:10%;
       animation: bling 2s linear .6s infinite;
+      -webkit-animation: bling 2s linear .6s infinite;
+      -moz-animation: bling 2s linear .6s infinite;
+      -ms-animation: bling 2s linear .6s infinite;
+      -o-animation: bling 2s linear .6s infinite;
     }
     .star5{
     	width:8%;
     	top:6%;
     	right:15%;
     	animation: bling 2s linear infinite;
+    	-webkit-animation: bling 2s linear infinite;
+    	-moz-animation: bling 2s linear infinite;
+    	-o-animation: bling 2s linear infinite;
+    	-ms-animation: bling 2s linear infinite;
     }
     @keyframes bling{
     	0%{opacity: 1}
     	50%{opacity: 0}
     	100%{opacity: 1}
-
+    }
+    @-webkit-keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+    }
+    @-moz-keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+    }
+    @-ms-keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+    }
+    @-o-keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
     }
    .balls img,.collect img{
 　
    	transform:rotate3d(0,0,0,0deg);
    	animation: rotate 3s linear infinite;
+    -webkit-animation: rotate 3s linear infinite;
+   	-moz-animation: rotate 3s linear infinite;
+   	-o-animation: rotate 3s linear infinite;
+   	-ms-animation: rotate 3s linear infinite;
    }
-   @keyframes rotate{
+ @keyframes rotate{
+   	0% {transform:rotate3d(0,0,1,0deg);}
+    50%{transform:rotate3d(0,0,1,180deg);}
+    100%{transform:rotate3d(0,0,1,360deg);}}
+}
+   @-webkit-keyframes rotate{
+   	0% {transform:rotate3d(0,0,1,0deg);}
+    50%{transform:rotate3d(0,0,1,180deg);}
+    100%{transform:rotate3d(0,0,1,360deg);}}
+}
+   @-moz-keyframes rotate{
+   	0% {transform:rotate3d(0,0,1,0deg);}
+    50%{transform:rotate3d(0,0,1,180deg);}
+    100%{transform:rotate3d(0,0,1,360deg);}}
+}
+   @-ms-keyframes rotate{
+   	0% {transform:rotate3d(0,0,1,0deg);}
+    50%{transform:rotate3d(0,0,1,180deg);}
+    100%{transform:rotate3d(0,0,1,360deg);}}
+}
+   @-o-keyframes rotate{
    	0% {transform:rotate3d(0,0,1,0deg);}
     50%{transform:rotate3d(0,0,1,180deg);}
     100%{transform:rotate3d(0,0,1,360deg);}}
@@ -292,6 +428,7 @@
    <img src="images/page1/background.png" alt="background" class="background" />
    <img src="images/page1/phone.png" alt="phone" class="phone" />
    <img src="images/page1/begin.png" alt="begin" class="begin" />
+   <input type="text" class="phoneNum" placeholder="请输入手机号码" />
    <div class="intro">
    <img src="images/page1/intro.png" alt="intro" />
    <img src="images/page1/close.png" alt="close" class="close">
@@ -302,19 +439,22 @@
 <div class="page-2">
     <div class="balls">
     	<img src="images/page2/ball1.png" alt="ball1" />
-    	<span>去瞌球0个</span>
+    	<span>去瞌球<b>0</b>个</span>
     	<img src="images/page2/ball2.png" alt="ball2" />
-    	<span>抗饿球0个</span>
+    	<span>抗饿球<b>0</b>个</span>
     	<img src="images/page2/ball3.png" alt="ball3" />
-    	<span>解乏球0个</span>
+    	<span>解乏球<b>0</b>个</span>
     	<img src="images/page2/ball4.png" alt="ball4" />
-    	<span>减肥球0个</span>
+    	<span>减肥球<b>0</b>个</span>
     	<img src="images/page2/ball5.png" alt="ball5" />
-    	<span>消暑球0个</span>
+    	<span>消暑球<b>0</b>个</span>
     </div>
     <img src="images/page3/star1.png" alt="star" class="star4" />
     <img src="images/page3/star2.png" alt="star" class="star5" />
 	<img src="images/page2/background.png" alt="background" class="background" />
+	<div class="err">
+	<img src="images/page2/alarm.png" alt="alarm" class="alarm" />
+	</div>
 	<div class="btns">
 	<a class="link" target="_blank" href="http://wap.17iwo.com/yhqhx"></a>
 	<img src="images/page2/get.png" alt="getDiscount" class="getDiscount" />
@@ -338,19 +478,19 @@
    <img src="images/page3/star3.png" alt="star3" class="star3" />
    <div class="collect">
    <div class="ball-1">
-    <span>去瞌球0个</span>
+    <span>去瞌球<b>0</b>个</span>
    <img src="images/page2/ball1.png" alt="ball1"></div>
    <div class="ball-2">
-    <span>抗饿球0个</span>
+    <span>抗饿球<b>0</b>个</span>
    <img src="images/page2/ball2.png" alt="ball1"></div>
    <div class="ball-3">
-    <span>解乏球0个</span>
+    <span>解乏球<b>0</b>个</span>
    <img src="images/page2/ball3.png" alt="ball1"></div>
    <div class="ball-4">
-    <span>减肥球0个</span>
+    <span>减肥球<b>0</b>个</span>
    <img src="images/page2/ball4.png" alt="ball1"></div>
    <div class="ball-5">
-    <span>消暑球0个</span>
+    <span>消暑球<b>0</b>个</span>
    <img src="images/page2/ball5.png" alt="ball1"></div>
    </div>
 </div>
@@ -369,8 +509,15 @@
    	intro.style.display='none';
    }
    begin.onclick=function(){
-     page1.style.display='none';
-     page2.style.display='block';
+   	var phone=document.getElementsByClassName('phoneNum')[0].value;
+   	if(phone==''){
+   		alert('请输入您的手机号!');
+   	}else if(!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/i.test(phone)){
+   	    alert('请输入正确手机号!');  
+     }else{
+     	page1.style.display='none';
+        page2.style.display='block';
+     }
    }
 
    //page2
@@ -389,12 +536,11 @@
    var singleBall3=document.getElementsByClassName('ball-3')[0];
    var singleBall4=document.getElementsByClassName('ball-4')[0];
    var singleBall5=document.getElementsByClassName('ball-5')[0];
-   var balls=[singleBall1,singleBall2,singleBall3,singleBall4,singleBall5];
    var left=document.getElementsByClassName('left')[0];
    var right=document.getElementsByClassName('right')[0];
    var collect=document.getElementsByClassName('collect')[0];
-   //领取折扣券判断数量
-   var nums=[];
+   
+
    ball1.onclick=function(){
    	page2.style.display='none';
    	page3.style.display='block';
@@ -445,9 +591,29 @@
   }
 
 
-
+   var alarm=document.getElementsByClassName('err')[0];
    getDiscount.onclick=function(){
+   	//领取折扣券判断数量
+   var num1=document.querySelectorAll('.balls b')[0].innerText;
+   var num2=document.querySelectorAll('.balls b')[1].innerText;
+   var num3=document.querySelectorAll('.balls b')[2].innerText;
+   var num4=document.querySelectorAll('.balls b')[3].innerText;
+   var num5=document.querySelectorAll('.balls b')[4].innerText;
+   var numsStrArr=[num1,num2,num3,num4,num5];
+   var numsArr=numsStrArr.map(function(item){
+   	return Number(item);
+   });
+   var meet=numsArr.every(function(item){
+   	return item>0;
+   })
+   if(meet){
    	link.click();
+   }else{
+     alarm.style.display='block';
+   }
+   }
+   alarm.onclick=function(){
+   	this.style.display='none';
    }
    invite.onclick=function(){
    	 friendCircle.style.display='block';
@@ -474,6 +640,63 @@
    helppage.onclick=function(){
    	this.style.display='none';
    }
+   
+
+ //分享
+       var imgUrl = "images/share/ad.jpg";  //图片LOGO注意必须是绝对路径
+       var descContent = '小伙伴，我们并肩参与，快赐予我能量吧！'; //分享给朋友或朋友圈时的文字简介
+       var shareTitle = '集夏日能量球 购机折扣拿走不谢';  //分享title
+       var lineLink='http:www.baidu.com';
+       var appid = '';
+        
+       function shareFriend() {
+           WeixinJSBridge.invoke('sendAppMessage',{
+               "appid": appid,
+               "img_url": imgUrl,
+               "img_width": "200",
+               "img_height": "200",
+               "link": lineLink,
+               "desc": descContent,
+               "title": shareTitle
+           }, function(res) {
+               //_report('send_msg', res.err_msg);
+           })
+       }
+       function shareTimeline() {
+           WeixinJSBridge.invoke('shareTimeline',{
+               "img_url": imgUrl,
+               "img_width": "200",
+               "img_height": "200",
+               "link": lineLink,
+               "desc": descContent,
+               "title": shareTitle
+           }, function(res) {
+                  //_report('timeline', res.err_msg);
+           });
+       }
+       function shareWeibo() {
+           WeixinJSBridge.invoke('shareWeibo',{
+               "content": descContent,
+               "url": lineLink,
+           }, function(res) {
+               //_report('weibo', res.err_msg);
+           });
+       }
+       // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+       document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+           // 发送给好友
+           WeixinJSBridge.on('menu:share:appmessage', function(argv){
+               shareFriend();
+           });
+           // 分享到朋友圈
+           WeixinJSBridge.on('menu:share:timeline', function(argv){
+               shareTimeline();
+           });
+           // 分享到微博
+           WeixinJSBridge.on('menu:share:weibo', function(argv){
+               shareWeibo();
+           });
+       }, false);
 
 </script>
 </body>
