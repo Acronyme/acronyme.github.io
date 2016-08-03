@@ -19,6 +19,7 @@
 	  	width: 100%;
 	  }
 	.page-1{
+		position: absolute;
     	z-index: -1;
     }
 	.page3 div{
@@ -509,14 +510,15 @@
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
    //page1高度
-   var page1=document.getElementsByClassName('page-1')[0];
-   var height=window.document.body.offsetHeight;
+   /*
    page1.style.height=height+'px';
+   */
    //page1 
    var introBtn=document.getElementsByClassName('introBtn')[0];
    var intro=document.getElementsByClassName('intro')[0];
    var close=document.getElementsByClassName('close')[0];
    var begin=document.getElementsByClassName('begin')[0];
+   var page1=document.getElementsByClassName('page-1')[0];
    var page2=document.getElementsByClassName('page-2')[0];
 
    introBtn.onclick=function(){
@@ -527,11 +529,19 @@
    }
 
    //开始集球按钮逻辑
+    var phone=document.getElementsByClassName('phoneNum')[0]
+   // var totalHeight=window.document.body.offsetHeight;
+    phone.onfocus=function(){
+    	page1.style.top='-50%';
+    }
+     phone.onblur=function(){
+    	page1.style.top=0;
+    }
     begin.onclick=function(){
-   	var phone=document.getElementsByClassName('phoneNum')[0].value;
-   	if(phone==''){
+   	var phoneNum=phone.value;
+   	if(phoneNum==''){
    		alert('请输入您的手机号!');
-   	}else if(!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/i.test(phone)){
+   	}else if(!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/i.test(phoneNum)){
    	    alert('请输入正确手机号!');  
      }else{
      	page1.style.display='none';
