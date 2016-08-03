@@ -306,7 +306,7 @@
     .ball-4{left:60%;}
     .ball-5{left:80%;}
 	.intro{display: none}
-    .page-1,.page-3{display:none;}
+    .page-2,.page-3{display:none;}
      
     .star1,.star2,.star3,.star4,.star5{
     	position: absolute;
@@ -389,16 +389,18 @@
     	100%{opacity: 1}
     }
    .balls img,.collect img{
-　
    	transform:rotate3d(0,0,0,0deg);
+   	-webkit-transform:rotate3d(0,0,0,0deg);
+   	-moz-transform:rotate3d(0,0,0,0deg);
+   	-o-transform:rotate3d(0,0,0,0deg);
+   	-ms-transform:rotate3d(0,0,0,0deg);
    	animation: rotate 3s linear infinite forwards;
     -webkit-animation: rotate 3s linear infinite forwards;
    	-moz-animation: rotate 3s linear infinite forwards;
    	-o-animation: rotate 3s linear infinite forwards;
    	-ms-animation: rotate 3s linear infinite forwards;
    }
-
-   @keyframes rotate{ 
+  @keyframes rotate{ 
    	0% {transform:rotate3d(0,0,1,0deg)}
     50%{transform:rotate3d(0,0,1,180deg)}
     100%{transform:rotate3d(0,0,1,360deg)}
@@ -440,33 +442,15 @@
 	<div class="page-2">
 		<div class="balls">
 			<img src="images/page2/ball1.png" alt="ball1" />
-			<span>
-				去瞌球 <b>0</b>
-				个
-			</span>
+			<span>去瞌球 <b>0</b>个</span>
 			<img src="images/page2/ball2.png" alt="ball2" />
-			<span>
-				抗饿球 <b>0</b>
-				个
-			</span>
+			<span>抗饿球 <b>0</b>个</span>
 			<img src="images/page2/ball3.png" alt="ball3" />
-			<span>
-				解乏球
-				<b>0</b>
-				个
-			</span>
+			<span>解乏球<b>0</b>个</span>
 			<img src="images/page2/ball4.png" alt="ball4" />
-			<span>
-				减肥球
-				<b>0</b>
-				个
-			</span>
+			<span>减肥球<b>0</b>个</span>
 			<img src="images/page2/ball5.png" alt="ball5" />
-			<span>
-				消暑球
-				<b>0</b>
-				个
-			</span>
+			<span>消暑球<b>0</b>个</span>
 		</div>
 		<img src="images/page3/star1.png" alt="star" class="star4" />
 		<img src="images/page3/star2.png" alt="star" class="star5" />
@@ -496,43 +480,23 @@
 		<img src="images/page3/star2.png" alt="star2" class="star2" />
 		<img src="images/page3/star3.png" alt="star3" class="star3" />
 		<div class="collect">
-			<div class="ball-1">
-				<span>
-					去瞌球
-					<b>0</b>
-					个
-				</span>
+			<div class="ball-1"><span>去瞌球<b>0</b>个</span>
 				<img src="images/page2/ball1.png" alt="ball1"></div>
 			<div class="ball-2">
-				<span>
-					抗饿球
-					<b>0</b>
-					个
-				</span>
-				<img src="images/page2/ball2.png" alt="ball1"></div>
+			<span>抗饿球<b>0</b>个</span>
+			<img src="images/page2/ball2.png" alt="ball1"></div>
 			<div class="ball-3">
-				<span>
-					解乏球
-					<b>0</b>
-					个
-				</span>
-				<img src="images/page2/ball3.png" alt="ball1"></div>
+				<span>解乏球<b>0</b>个</span>
+			<img src="images/page2/ball3.png" alt="ball1"></div>
 			<div class="ball-4">
-				<span>
-					减肥球
-					<b>0</b>
-					个
-				</span>
-				<img src="images/page2/ball4.png" alt="ball1"></div>
+            <span>减肥球<b>0</b>个</span>
+			<img src="images/page2/ball4.png" alt="ball1"></div>
 			<div class="ball-5">
-				<span>
-					消暑球
-					<b>0</b>
-					个
-				</span>
-				<img src="images/page2/ball5.png" alt="ball1"></div>
+			<span>消暑球<b>0</b>个</span>
+			<img src="images/page2/ball5.png" alt="ball1"></div>
 		</div>
 	</div>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
    //page1 
    var introBtn=document.getElementsByClassName('introBtn')[0];
@@ -632,16 +596,15 @@
   	 }     
   }
 
-
-   //领取折扣逻辑
-   var alarm=document.getElementsByClassName('err')[0];
-   getDiscount.onclick=function(){
-   	//领取折扣券判断数量
    var num1=document.querySelectorAll('.balls b')[0].innerText;
    var num2=document.querySelectorAll('.balls b')[1].innerText;
    var num3=document.querySelectorAll('.balls b')[2].innerText;
    var num4=document.querySelectorAll('.balls b')[3].innerText;
    var num5=document.querySelectorAll('.balls b')[4].innerText;
+   //领取折扣逻辑
+   var alarm=document.getElementsByClassName('err')[0];
+   getDiscount.onclick=function(){
+   	//领取折扣券判断数量
    var numsStrArr=[num1,num2,num3,num4,num5];
    var numsArr=numsStrArr.map(function(item){
    	return Number(item);
@@ -649,8 +612,27 @@
    var meet=numsArr.every(function(item){
    	return item>0;
    })
+   //满足领取条件
    if(meet){
    	link.click();
+   	//抵扣券面额....暂时未知
+   	var X=1000;
+   	 wx.ready(function(){
+     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+     wx.onMenuShareTimeline({
+           title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+           link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+           imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+    });
+    // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+        desc: '我已集齐夏日能量球，成功启动'+X+'元购机折扣券。大牌裸机，击破底价。', // 分享描述
+        link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+        imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+        type: 'link', 
+    });
+});
    }else{
      alarm.style.display='block';
    }
@@ -660,6 +642,22 @@
    }
    invite.onclick=function(){
    	 friendCircle.style.display='block';
+   	 wx.ready(function(){
+     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+     wx.onMenuShareTimeline({
+           title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+           link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+           imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+    });
+    // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+        desc: '小伙伴，我们并肩参与，快赐予我能量吧。', // 分享描述
+        link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+        imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+        type: 'link', 
+    });
+});
    }
    friendCircle.onclick=function(){
    	this.style.display='none';
@@ -671,78 +669,93 @@
    var help=document.getElementsByClassName('help')[0];
    var helppage=document.getElementsByClassName('helppage')[0];
 
+   //赠送或求助的球
+   function getBallName(){
+   	var ballName;
+   	var ballNum;
+   	switch(collect.classList[1]){
+   		case 'pos1':
+   		ballName='去瞌球';
+   		ballNum=num1;
+   		break;
+   		case 'pos2':
+   		ballName='抗饿球';
+   		ballNum=num2;
+   		break;
+   		case 'pos3':
+   		ballName='解乏球';
+   		ballNum=num3;
+   		break;
+   		case 'pos4':
+   		ballName='减肥球';
+   		ballNum=num4;
+   		break;
+   		case 'pos5':
+   		ballName='消暑球';
+   		ballNum=num5;
+   		break;
+   		default:
+   		ballName='能量球';
+   		ballNum=0;
+   	}
+   	return [ballName,ballNum];
+   }
+
    //赠送与求助
    send.onclick=function(){
-        sendpage.style.display='block';
+   	//获取当前球
+    var current=getBallName()[0];
+    var num=getBallName()[1];
+    if(num==0){alert('无法赠送，目前还没有'+current+'呢!')}
+    else{
+    sendpage.style.display='block';
+    //分享
+    wx.ready(function(){
+    // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareTimeline({
+           title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+           link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+           imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+    });
+    // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+        desc: "送你一个"+current+"球 ，对抗酷热，轻爽换机！", // 分享描述
+        link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+        imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+        type: 'link', 
+    });
+});
+}
    }
    sendpage.onclick=function(){
    	   this.style.display='none';
+
    }
 
    help.onclick=function(){
    	helppage.style.display='block';
+   	var current=getBallName()[0];
+   	wx.ready(function(){
+    // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareTimeline({
+           title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+           link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+           imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+    });
+    // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+        desc: current+"球不足,快赋予我能量，拯救我的换机计划。", // 分享描述
+        link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+        imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+        type: 'link', 
+    });
+});
    }
    helppage.onclick=function(){
    	this.style.display='none';
    }
-   
-
- //分享
-       var imgUrl = "images/share/ad.jpg";  //图片LOGO注意必须是绝对路径
-       var descContent = '小伙伴，我们并肩参与，快赐予我能量吧！'; //分享给朋友或朋友圈时的文字简介
-       var shareTitle = '集夏日能量球 购机折扣拿走不谢';  //分享title
-       var lineLink='http:www.baidu.com';
-       var appid = '';
-        
-       function shareFriend() {
-           WeixinJSBridge.invoke('sendAppMessage',{
-               "appid": appid,
-               "img_url": imgUrl,
-               "img_width": "200",
-               "img_height": "200",
-               "link": lineLink,
-               "desc": descContent,
-               "title": shareTitle
-           }, function(res) {
-               //_report('send_msg', res.err_msg);
-           })
-       }
-       function shareTimeline() {
-           WeixinJSBridge.invoke('shareTimeline',{
-               "img_url": imgUrl,
-               "img_width": "200",
-               "img_height": "200",
-               "link": lineLink,
-               "desc": descContent,
-               "title": shareTitle
-           }, function(res) {
-                  //_report('timeline', res.err_msg);
-           });
-       }
-       function shareWeibo() {
-           WeixinJSBridge.invoke('shareWeibo',{
-               "content": descContent,
-               "url": lineLink,
-           }, function(res) {
-               //_report('weibo', res.err_msg);
-           });
-       }
-       // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
-       document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-           // 发送给好友
-           WeixinJSBridge.on('menu:share:appmessage', function(argv){
-               shareFriend();
-           });
-           // 分享到朋友圈
-           WeixinJSBridge.on('menu:share:timeline', function(argv){
-               shareTimeline();
-           });
-           // 分享到微博
-           WeixinJSBridge.on('menu:share:weibo', function(argv){
-               shareWeibo();
-           });
-       }, false);
-
 </script>
 </body>
 </html>
