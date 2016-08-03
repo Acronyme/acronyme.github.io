@@ -529,12 +529,22 @@
 
    //开始集球按钮逻辑
     var phone=document.getElementsByClassName('phoneNum')[0]
-   // var totalHeight=window.document.body.offsetHeight;
+    var u = navigator.userAgent; 
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    console.log(u);
     phone.onfocus=function(){
+    	if(isAndroid){
     	page1.style.top='-50%';
+    }else{
+    	return ;
+    }
     }
     phone.onblur=function(){
-    	page1.style.top=0;
+    	if(isAndroid){
+    	page1.style.top='0';
+    }else{
+    	return;
+    }
     }
     begin.onclick=function(){
    	var phoneNum=phone.value;
