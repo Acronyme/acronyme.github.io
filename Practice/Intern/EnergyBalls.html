@@ -124,7 +124,7 @@
     	right:6%;
     }
     .balls span:nth-of-type(3){
-    	top:65%;
+    	top:67%;
     	left:39%;
     	
     }
@@ -397,100 +397,138 @@
    	-o-animation: rotate 3s linear infinite;
    	-ms-animation: rotate 3s linear infinite;
    }
- @keyframes rotate{
-   	0% {transform:rotate3d(0,0,1,0deg);}
-    100%{transform:rotate3d(0,0,1,360deg);}}
-}
-   @-webkit-keyframes rotate{
-   	0% {-webkit-transform:rotate3d(0,0,1,0deg);}
-    100%{-webkit-transform:rotate3d(0,0,1,360deg);}}
+
+   @keyframes rotate{ 
+   	from {transform:rotate3d(0,0,1,0deg);}
+    to   {transform:rotate3d(0,0,1,360deg);}}
+  }
+  @-webkit-keyframes rotate{
+   	from {-webkit-transform:rotate3d(0,0,1,0deg);}
+    to  {-webkit-transform:rotate3d(0,0,1,360deg);}}
 }
    @-moz-keyframes rotate{
-   	0% {-moz-transform:rotate3d(0,0,1,0deg);}
-    100%{-moz-transform:rotate3d(0,0,1,360deg);}}
+   	from {-moz-transform:rotate3d(0,0,1,0deg);}
+    to {-moz-transform:rotate3d(0,0,1,360deg);}}
 }
    @-ms-keyframes rotate{
-   	0% {-ms-transform:rotate3d(0,0,1,0deg);}
-    100%{-ms-transform:rotate3d(0,0,1,360deg);}}
+   	from {-ms-transform:rotate3d(0,0,1,0deg);}
+    to {-ms-transform:rotate3d(0,0,1,360deg);}}
 }
    @-o-keyframes rotate{
-   	0% {-o-transform:rotate3d(0,0,1,0deg);}
-    100%{-o-transform:rotate3d(0,0,1,360deg);}}
+   	from {-o-transform:rotate3d(0,0,1,0deg);}
+    to {-o-transform:rotate3d(0,0,1,360deg);}}
 }
 	</style>
 </head>
 <body>
-<div class="page-1">
-   <img src="images/page1/background.png" alt="background" class="background" />
-   <img src="images/page1/phone.png" alt="phone" class="phone" />
-   <img src="images/page1/begin.png" alt="begin" class="begin" />
-   <input type="text" class="phoneNum" placeholder="请输入手机号码" />
-   <div class="intro">
-   <img src="images/page1/intro.png" alt="intro" />
-   <img src="images/page1/close.png" alt="close" class="close">
-   </div>
-   <img src="images/page1/introBtn.png" alt="introBtn" class="introBtn" />
-</div>
-
-<div class="page-2">
-    <div class="balls">
-    	<img src="images/page2/ball1.png" alt="ball1" />
-    	<span>去瞌球<b>0</b>个</span>
-    	<img src="images/page2/ball2.png" alt="ball2" />
-    	<span>抗饿球<b>0</b>个</span>
-    	<img src="images/page2/ball3.png" alt="ball3" />
-    	<span>解乏球<b>0</b>个</span>
-    	<img src="images/page2/ball4.png" alt="ball4" />
-    	<span>减肥球<b>0</b>个</span>
-    	<img src="images/page2/ball5.png" alt="ball5" />
-    	<span>消暑球<b>0</b>个</span>
-    </div>
-    <img src="images/page3/star1.png" alt="star" class="star4" />
-    <img src="images/page3/star2.png" alt="star" class="star5" />
-	<img src="images/page2/background.png" alt="background" class="background" />
-	<div class="err">
-	<img src="images/page2/alarm.png" alt="alarm" class="alarm" />
+	<div class="page-1">
+		<img src="images/page1/background.png" alt="background" class="background" />
+		<img src="images/page1/phone.png" alt="phone" class="phone" />
+		<img src="images/page1/begin.png" alt="begin" class="begin" />
+		<input type="text" class="phoneNum" placeholder="请输入手机号码" />
+		<div class="intro">
+			<img src="images/page1/intro.png" alt="intro" />
+			<img src="images/page1/close.png" alt="close" class="close"></div>
+		<img src="images/page1/introBtn.png" alt="introBtn" class="introBtn" />
 	</div>
-	<div class="btns">
-	<a class="link" target="_blank" href="http://wap.17iwo.com/yhqhx"></a>
-	<img src="images/page2/get.png" alt="getDiscount" class="getDiscount" />
-	<img src="images/page2/invite.png" alt="invite" class="invite" />
-	</div>
-	<img src="images/page2/friend.png" alt="friend" class="friendCircle" />
-</div>
 
-<div class="page-3">
-   	<img src="images/page3/background.png" alt="background" class="background" />
-   	<img src="images/page3/left.png" alt="left" class="left" />
-   	<img src="images/page3/right.png" alt="right" class="right" />
-   	<div class="func">
-   	  	  <img src="images/page3/send.png" alt="send" class="send" />
-   	  	  <img src="images/page3/help.png" alt="help" class="help" />
-   	</div>
-   <img src="images/page3/sendpage.png" alt="sendpage" class="sendpage" />
-   <img src="images/page3/helppage.png" alt="helppage" class="helppage" />
-   <img src="images/page3/star1.png" alt="star1" class="star1" />
-   <img src="images/page3/star2.png" alt="star2" class="star2" />
-   <img src="images/page3/star3.png" alt="star3" class="star3" />
-   <div class="collect">
-   <div class="ball-1">
-    <span>去瞌球<b>0</b>个</span>
-   <img src="images/page2/ball1.png" alt="ball1"></div>
-   <div class="ball-2">
-    <span>抗饿球<b>0</b>个</span>
-   <img src="images/page2/ball2.png" alt="ball1"></div>
-   <div class="ball-3">
-    <span>解乏球<b>0</b>个</span>
-   <img src="images/page2/ball3.png" alt="ball1"></div>
-   <div class="ball-4">
-    <span>减肥球<b>0</b>个</span>
-   <img src="images/page2/ball4.png" alt="ball1"></div>
-   <div class="ball-5">
-    <span>消暑球<b>0</b>个</span>
-   <img src="images/page2/ball5.png" alt="ball1"></div>
-   </div>
-</div>
-<script>
+	<div class="page-2">
+		<div class="balls">
+			<img src="images/page2/ball1.png" alt="ball1" />
+			<span>
+				去瞌球 <b>0</b>
+				个
+			</span>
+			<img src="images/page2/ball2.png" alt="ball2" />
+			<span>
+				抗饿球 <b>0</b>
+				个
+			</span>
+			<img src="images/page2/ball3.png" alt="ball3" />
+			<span>
+				解乏球
+				<b>0</b>
+				个
+			</span>
+			<img src="images/page2/ball4.png" alt="ball4" />
+			<span>
+				减肥球
+				<b>0</b>
+				个
+			</span>
+			<img src="images/page2/ball5.png" alt="ball5" />
+			<span>
+				消暑球
+				<b>0</b>
+				个
+			</span>
+		</div>
+		<img src="images/page3/star1.png" alt="star" class="star4" />
+		<img src="images/page3/star2.png" alt="star" class="star5" />
+		<img src="images/page2/background.png" alt="background" class="background" />
+		<div class="err">
+			<img src="images/page2/alarm.png" alt="alarm" class="alarm" />
+		</div>
+		<div class="btns">
+			<a class="link" target="_blank" href="http://wap.17iwo.com/yhqhx"></a>
+			<img src="images/page2/get.png" alt="getDiscount" class="getDiscount" />
+			<img src="images/page2/invite.png" alt="invite" class="invite" />
+		</div>
+		<img src="images/page2/friend.png" alt="friend" class="friendCircle" />
+	</div>
+
+	<div class="page-3">
+		<img src="images/page3/background.png" alt="background" class="background" />
+		<img src="images/page3/left.png" alt="left" class="left" />
+		<img src="images/page3/right.png" alt="right" class="right" />
+		<div class="func">
+			<img src="images/page3/send.png" alt="send" class="send" />
+			<img src="images/page3/help.png" alt="help" class="help" />
+		</div>
+		<img src="images/page3/sendpage.png" alt="sendpage" class="sendpage" />
+		<img src="images/page3/helppage.png" alt="helppage" class="helppage" />
+		<img src="images/page3/star1.png" alt="star1" class="star1" />
+		<img src="images/page3/star2.png" alt="star2" class="star2" />
+		<img src="images/page3/star3.png" alt="star3" class="star3" />
+		<div class="collect">
+			<div class="ball-1">
+				<span>
+					去瞌球
+					<b>0</b>
+					个
+				</span>
+				<img src="images/page2/ball1.png" alt="ball1"></div>
+			<div class="ball-2">
+				<span>
+					抗饿球
+					<b>0</b>
+					个
+				</span>
+				<img src="images/page2/ball2.png" alt="ball1"></div>
+			<div class="ball-3">
+				<span>
+					解乏球
+					<b>0</b>
+					个
+				</span>
+				<img src="images/page2/ball3.png" alt="ball1"></div>
+			<div class="ball-4">
+				<span>
+					减肥球
+					<b>0</b>
+					个
+				</span>
+				<img src="images/page2/ball4.png" alt="ball1"></div>
+			<div class="ball-5">
+				<span>
+					消暑球
+					<b>0</b>
+					个
+				</span>
+				<img src="images/page2/ball5.png" alt="ball1"></div>
+		</div>
+	</div>
+	<script>
    //page1 
    var introBtn=document.getElementsByClassName('introBtn')[0];
    var intro=document.getElementsByClassName('intro')[0];
@@ -504,6 +542,8 @@
    close.onclick=function(){
    	intro.style.display='none';
    }
+
+   //开始集球按钮逻辑
    begin.onclick=function(){
    	var phone=document.getElementsByClassName('phoneNum')[0].value;
    	if(phone==''){
@@ -536,7 +576,7 @@
    var right=document.getElementsByClassName('right')[0];
    var collect=document.getElementsByClassName('collect')[0];
    
-
+   //点击每个球进入对应单页
    ball1.onclick=function(){
    	page2.style.display='none';
    	page3.style.display='block';
@@ -563,6 +603,7 @@
    	collect.classList.add('pos5');
    }
    
+   //左右切换功能
   left.onclick=function(){
   	 if(collect.classList.contains('pos1')){
   	 	collect.classList.remove('pos1');
@@ -587,6 +628,7 @@
   }
 
 
+   //领取折扣逻辑
    var alarm=document.getElementsByClassName('err')[0];
    getDiscount.onclick=function(){
    	//领取折扣券判断数量
@@ -623,6 +665,8 @@
    var sendpage=document.getElementsByClassName('sendpage')[0];
    var help=document.getElementsByClassName('help')[0];
    var helppage=document.getElementsByClassName('helppage')[0];
+
+   //赠送与求助
    send.onclick=function(){
         sendpage.style.display='block';
    }
