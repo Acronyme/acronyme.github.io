@@ -532,21 +532,26 @@
     var u = navigator.userAgent; 
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
     var totalHeight=document.body.offsetHeight;
+   
     phone.onfocus=function(){
-    	if(isAndroid){
-        page1.style.height=totalHeight+'px';
-    	page1.style.top='-50%';
+    if(isAndroid){
+    	console.log('1');
+        page1.style.minHeight=totalHeight+'px';
+        console.log(page1.style.height)
     }else{
     	return ;
     }
     }
+    /*
     phone.onblur=function(){
     	if(isAndroid){
+    	intro.style.display='block';
     	page1.style.top='0';
     }else{
     	return;
     }
     }
+    */
     begin.onclick=function(){
    	var phoneNum=phone.value;
    	if(phoneNum==''){
