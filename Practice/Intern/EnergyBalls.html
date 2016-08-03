@@ -18,6 +18,9 @@
 	  	height:100%;
 	  	width: 100%;
 	  }
+	.page-1{
+    	z-index: -1;
+    }
 	.page3 div{
 		width:100%;
 		height: 100%;
@@ -48,7 +51,7 @@
 		bottom: 31.5%;
 		left:18%;
 		border:none;
-		border-radius: 10px;
+		border-radius: 20px;
 		font-size:1.2rem;
 		text-align: center;
 	}
@@ -505,17 +508,17 @@
 	</div>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
+   //page1高度
+   var page1=document.getElementsByClassName('page-1')[0];
+   var height=window.document.body.offsetHeight;
+   page1.style.height=height+'px';
    //page1 
    var introBtn=document.getElementsByClassName('introBtn')[0];
    var intro=document.getElementsByClassName('intro')[0];
    var close=document.getElementsByClassName('close')[0];
    var begin=document.getElementsByClassName('begin')[0];
-   var page1=document.getElementsByClassName('page-1')[0];
    var page2=document.getElementsByClassName('page-2')[0];
-      //page1高度
-   var height=window.document.body.offsetHeight;
-   page1.style.height=height+'px';
-   
+
    introBtn.onclick=function(){
    	intro.style.display='block';
    }
@@ -524,7 +527,7 @@
    }
 
    //开始集球按钮逻辑
-   begin.onclick=function(){
+    begin.onclick=function(){
    	var phone=document.getElementsByClassName('phoneNum')[0].value;
    	if(phone==''){
    		alert('请输入您的手机号!');
