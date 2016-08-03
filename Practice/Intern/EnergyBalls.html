@@ -531,9 +531,10 @@
     var phone=document.getElementsByClassName('phoneNum')[0]
     var u = navigator.userAgent; 
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-    console.log(u);
+    var totalHeight=document.body.offsetHeight;
     phone.onfocus=function(){
     	if(isAndroid){
+        page1.style.height=totalHeight+'px';
     	page1.style.top='-50%';
     }else{
     	return ;
