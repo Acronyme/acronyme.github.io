@@ -407,11 +407,11 @@
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
     transform: translateZ(0);
-   	animation: rotate 3s linear infinite forwards;
-    -webkit-animation: rotate 3s linear infinite forwards;
-   	-moz-animation: rotate 3s linear infinite forwards;
-   	-o-animation: rotate 3s linear infinite forwards;
-   	-ms-animation: rotate 3s linear infinite forwards;
+   	animation: rotate 8s linear infinite forwards;
+    -webkit-animation: rotate 8s linear infinite forwards;
+   	-moz-animation: rotate 8s linear infinite forwards;
+   	-o-animation: rotate 8s linear infinite forwards;
+   	-ms-animation: rotate 8s linear infinite forwards;
    }
   @keyframes rotate{ 
    	0% {transform:rotateZ(0deg)}
@@ -443,7 +443,7 @@
 </head>
 <body>
 <img src="images/share/ad.jpg" alt="ad" class="shareImg">
-<audio src="http://ip.h5.re03.sycdn.kuwo.cn/7c5a6bf98f5a086c4a7c872b0006db2f/57a2f978/resource/a1/76/64/1292558040.aac" autoplay="true" loop="true"></audio>
+<audio src="http://ip.h5.re03.sycdn.kuwo.cn/7c5a6bf98f5a086c4a7c872b0006db2f/57a2f978/resource/a1/76/64/1292558040.aac" autoplay="true" loop="true" class="music"></audio>
 	<div class="page-1">
 		<img src="images/page1/background.png" alt="background" class="background" />
 		<img src="images/page1/phone.png" alt="phone" class="phone" />
@@ -532,7 +532,12 @@
     var begin = document.getElementsByClassName('begin')[0];
     var page1 = document.getElementsByClassName('page-1')[0];
     var page2 = document.getElementsByClassName('page-2')[0];
+	var music=document.getElementsByClassName('music')[0];
 
+    document.addEventListener('touchstart', function(){ 
+      music.play();
+    }, false);
+    
     introBtn.onclick = function() {
       intro.style.display = 'block';
     }
@@ -553,6 +558,7 @@
         return;
       }
     }
+   
     begin.onclick = function() {
       var phoneNum = phone.value;
       if (phoneNum == '') {
