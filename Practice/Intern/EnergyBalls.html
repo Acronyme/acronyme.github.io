@@ -399,11 +399,11 @@
     	100%{opacity: 1}
     }
    .balls img,.collect img{
-   	transform:rotate3d(0,0,0,0deg);
-   	-webkit-transform:rotate3d(0,0,0,0deg);
-   	-moz-transform:rotate3d(0,0,0,0deg);
-   	-o-transform:rotate3d(0,0,0,0deg);
-   	-ms-transform:rotate3d(0,0,0,0deg);
+   -webkit-transform: translateZ(0);
+   -moz-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0);
    	animation: rotate 3s linear infinite forwards;
     -webkit-animation: rotate 3s linear infinite forwards;
    	-moz-animation: rotate 3s linear infinite forwards;
@@ -506,7 +506,9 @@
 			<img src="images/page2/ball5.png" alt="ball1"></div>
 		</div>
 	</div>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="weixinshare.js"></script>
 	<script>
    //page1高度
    /*
@@ -535,7 +537,6 @@
    
     phone.onfocus=function(){
     if(isAndroid){
-    	console.log('1');
         page1.style.minHeight=totalHeight+'px';
         console.log(page1.style.height)
     }else{
@@ -655,6 +656,7 @@
    if(meet){
    	link.click();
    	//抵扣券面额....暂时未知
+   	/*
    	var X=1000;
    	 wx.ready(function(){
      // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
@@ -672,6 +674,7 @@
         type: 'link', 
     });
 });
+*/
    }else{
      alarm.style.display='block';
    }
@@ -681,6 +684,7 @@
    }
    invite.onclick=function(){
    	 friendCircle.style.display='block';
+   	 /*
    	 wx.ready(function(){
      // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
      wx.onMenuShareTimeline({
@@ -697,6 +701,7 @@
         type: 'link', 
     });
 });
+*/
    }
    friendCircle.onclick=function(){
    	this.style.display='none';
@@ -749,6 +754,7 @@
     else{
     sendpage.style.display='block';
     //分享
+    /*
     wx.ready(function(){
     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
     wx.onMenuShareTimeline({
@@ -765,6 +771,7 @@
         type: 'link', 
     });
 });
+    */
 }
    }
    sendpage.onclick=function(){
@@ -775,6 +782,8 @@
    help.onclick=function(){
    	helppage.style.display='block';
    	var current=getBallName()[0];
+   	/*
+
    	wx.ready(function(){
     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
     wx.onMenuShareTimeline({
@@ -791,10 +800,27 @@
         type: 'link', 
     });
 });
+*/
    }
    helppage.onclick=function(){
    	this.style.display='none';
    }
+</script>
+ <script>
+        var Config = {
+            //分享内容填充
+            share : {
+                // 新版接口
+                weiboText: '集夏日能量球 购机折扣拿走不谢。http://acronyme.github.io/Practice/Intern/EnergyBalls.html',
+                weixinText: '小伙伴，我们并肩参与，快赐予我能量吧！',
+                weixinThumbnailUrl: 'http://acronyme.github.io/Practice/Intern/images/page1/ball1.png',
+                weixinTitle: '集夏日能量球 购机折扣拿走不谢',
+                // 旧版接口
+                shareText: '集夏日能量球 购机折扣拿走不谢',
+                shareImg: 'http://acronyme.github.io/Practice/Intern/images/page1/ball1.png'
+            }
+        }
+        WxShare.init();
 </script>
 </body>
 </html>
