@@ -435,14 +435,18 @@
     50% {transform:rotateZ(180deg)}
     100% {-o-transform:rotateZ(360deg)}
 }
+    .shareImg{
+    	position:absolute;width:0;height:0;z-index:-1;
+    }
 </style>
 </head>
 <body>
+<img src="images/share/ad.jpg" alt="ad" class="shareImg">
 	<div class="page-1">
 		<img src="images/page1/background.png" alt="background" class="background" />
 		<img src="images/page1/phone.png" alt="phone" class="phone" />
 		<img src="images/page1/begin.png" alt="begin" class="begin" />
-		<input type="text" class="phoneNum" placeholder="请输入手机号码" />
+		<input type="number" class="phoneNum" placeholder="请输入手机号码" />
 		<div class="intro">
 			<img src="images/page1/intro.png" alt="intro" />
 			<img src="images/page1/close.png" alt="close" class="close"></div>
@@ -506,14 +510,19 @@
 			<img src="images/page2/ball5.png" alt="ball1"></div>
 		</div>
 	</div>
-	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <script type="text/javascript" src="weixinshare.js"></script>
 	<script>
-   //page1高度
-   /*
-   page1.style.height=height+'px';
-   */
+    //weixinConfig param
+    var  count,timestamp,randomStr,signature,apiList=[];
+   //weixinShareConfig
+   wx.config({
+    debug: false, //不开启调试模式
+    appId: count, // 必填，公众号的唯一标识
+    timestamp:timestamp, // 必填，生成签名的时间戳
+    nonceStr:randomStr, // 必填，生成签名的随机串
+    signature:signature,// 必填，签名，见附录1
+    jsApiList: apiList // 必填，需要使用的JS接口列表
+});
    //page1 
    var introBtn=document.getElementsByClassName('introBtn')[0];
    var intro=document.getElementsByClassName('intro')[0];
@@ -538,21 +547,10 @@
     phone.onfocus=function(){
     if(isAndroid){
         page1.style.minHeight=totalHeight+'px';
-        console.log(page1.style.height)
     }else{
     	return ;
     }
     }
-    /*
-    phone.onblur=function(){
-    	if(isAndroid){
-    	intro.style.display='block';
-    	page1.style.top='0';
-    }else{
-    	return;
-    }
-    }
-    */
     begin.onclick=function(){
    	var phoneNum=phone.value;
    	if(phoneNum==''){
@@ -656,7 +654,7 @@
    if(meet){
    	link.click();
    	//抵扣券面额....暂时未知
-   	/*
+ 
    	var X=1000;
    	 wx.ready(function(){
      // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
@@ -674,7 +672,7 @@
         type: 'link', 
     });
 });
-*/
+
    }else{
      alarm.style.display='block';
    }
@@ -684,7 +682,6 @@
    }
    invite.onclick=function(){
    	 friendCircle.style.display='block';
-   	 /*
    	 wx.ready(function(){
      // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
      wx.onMenuShareTimeline({
@@ -701,7 +698,6 @@
         type: 'link', 
     });
 });
-*/
    }
    friendCircle.onclick=function(){
    	this.style.display='none';
@@ -754,7 +750,6 @@
     else{
     sendpage.style.display='block';
     //分享
-    /*
     wx.ready(function(){
     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
     wx.onMenuShareTimeline({
@@ -771,7 +766,6 @@
         type: 'link', 
     });
 });
-    */
 }
    }
    sendpage.onclick=function(){
@@ -782,8 +776,6 @@
    help.onclick=function(){
    	helppage.style.display='block';
    	var current=getBallName()[0];
-   	/*
-
    	wx.ready(function(){
     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
     wx.onMenuShareTimeline({
@@ -800,27 +792,10 @@
         type: 'link', 
     });
 });
-*/
    }
    helppage.onclick=function(){
    	this.style.display='none';
    }
-</script>
- <script>
-        var Config = {
-            //分享内容填充
-            share : {
-                // 新版接口
-                weiboText: '集夏日能量球 购机折扣拿走不谢。http://acronyme.github.io/Practice/Intern/EnergyBalls.html',
-                weixinText: '小伙伴，我们并肩参与，快赐予我能量吧！',
-                weixinThumbnailUrl: 'http://acronyme.github.io/Practice/Intern/images/page1/ball1.png',
-                weixinTitle: '集夏日能量球 购机折扣拿走不谢',
-                // 旧版接口
-                shareText: '集夏日能量球 购机折扣拿走不谢',
-                shareImg: 'http://acronyme.github.io/Practice/Intern/images/page1/ball1.png'
-            }
-        }
-        WxShare.init();
 </script>
 </body>
 </html>
