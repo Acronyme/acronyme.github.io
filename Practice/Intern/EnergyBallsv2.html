@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
 	<title>夏日能量球</title>
 	<style>
 	*{margin:0;padding:0;overflow:hidden;transition: all 1s;}
@@ -511,9 +511,12 @@
 	</div>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
-    var page2 = document.getElementsByClassName('page-2')[0];
- //page1
- //weixinConfig param
+(function(){
+
+
+ var u = navigator.userAgent;
+ var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+ var totalHeight = document.body.offsetHeight;
  var count, timestamp, randomStr, signature, apiList = [];
  //weixinShareConfig
  wx.config({
@@ -524,42 +527,32 @@
    signature: signature, // 必填，签名，见附录1
    jsApiList: apiList // 必填，需要使用的JS接口列表
  });
- //领取折扣券判断数量
+ var page2 = document.getElementsByClassName('page-2')[0];
  var num1 = document.querySelectorAll('.balls b')[0].innerText;
  var num2 = document.querySelectorAll('.balls b')[1].innerText;
  var num3 = document.querySelectorAll('.balls b')[2].innerText;
  var num4 = document.querySelectorAll('.balls b')[3].innerText;
  var num5 = document.querySelectorAll('.balls b')[4].innerText;
+ var collect = document.getElementsByClassName('collect')[0];
+
+(function(){
+ var music = document.getElementsByClassName('music')[0];
  var introBtn = document.getElementsByClassName('introBtn')[0];
  var intro = document.getElementsByClassName('intro')[0];
  var close = document.getElementsByClassName('close')[0];
- var begin = document.getElementsByClassName('begin')[0];
  var page1 = document.getElementsByClassName('page-1')[0];
- var music = document.getElementsByClassName('music')[0];
- var getDiscount = document.getElementsByClassName('getDiscount')[0];
- var invite = document.getElementsByClassName('invite')[0];
- var link = document.getElementsByClassName('link')[0];
- var page3 = document.getElementsByClassName('page-3')[0];
- var left = document.getElementsByClassName('left')[0];
- var right = document.getElementsByClassName('right')[0];
- var collect = document.getElementsByClassName('collect')[0];
+ var phone = document.getElementsByClassName('phoneNum')[0];
+ var begin = document.getElementsByClassName('begin')[0];
 
  document.addEventListener('click', function() {
    music.play();
  }, false);
-
  introBtn.onclick = function() {
    intro.style.display = 'block';
  }
  close.onclick = function() {
      intro.style.display = 'none';
    }
-   //开始集球按钮逻辑
- var phone = document.getElementsByClassName('phoneNum')[0]
- var u = navigator.userAgent;
- var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
- var totalHeight = document.body.offsetHeight;
-
  phone.onfocus = function() {
    if (isAndroid) {
      page1.style.minHeight = totalHeight + 'px';
@@ -578,7 +571,24 @@
        page2.style.display = 'block';
      }
    }
-   //切换
+}());
+
+(function(){
+ var ball1 = document.querySelector('.balls img:nth-of-type(1)');
+ var ball2 = document.querySelector('.balls img:nth-of-type(2)');
+ var ball3 = document.querySelector('.balls img:nth-of-type(3)');
+ var ball4 = document.querySelector('.balls img:nth-of-type(4)');
+ var ball5 = document.querySelector('.balls img:nth-of-type(5)');
+ var invite = document.getElementsByClassName('invite')[0];
+ var getDiscount = document.getElementsByClassName('getDiscount')[0];
+ var balls = [ball1, ball2, ball3, ball4, ball5];
+ var friendCircle = document.getElementsByClassName('friendCircle')[0];
+ var alarm = document.getElementsByClassName('err')[0];
+ var link = document.getElementsByClassName('link')[0];
+ var page3 = document.getElementsByClassName('page-3')[0];
+ var left = document.getElementsByClassName('left')[0];
+ var right = document.getElementsByClassName('right')[0];
+
  left.onclick = function() {
    if (collect.classList.contains('pos1')) {
      collect.classList.remove('pos1');
@@ -601,14 +611,6 @@
      collect.classList.add('pos' + now);
    }
  }
-
- //对应页
- var ball1 = document.querySelector('.balls img:nth-of-type(1)');
- var ball2 = document.querySelector('.balls img:nth-of-type(2)');
- var ball3 = document.querySelector('.balls img:nth-of-type(3)');
- var ball4 = document.querySelector('.balls img:nth-of-type(4)');
- var ball5 = document.querySelector('.balls img:nth-of-type(5)');
- var balls = [ball1, ball2, ball3, ball4, ball5];
  balls.forEach(function(item) {
    item.onclick = function() {
      page2.style.display = 'none';
@@ -620,13 +622,9 @@
      }
    }
  });
- var friendCircle = document.getElementsByClassName('friendCircle')[0];
  friendCircle.onclick = function() {
    this.style.display = 'none';
  };
-
- //领取折扣逻辑
- var alarm = document.getElementsByClassName('err')[0];
  getDiscount.onclick = function() {
    var numsStrArr = [num1, num2, num3, num4, num5];
    var numsArr = numsStrArr.map(function(item) {
@@ -636,7 +634,6 @@
        return item >
          0;
      })
-     //满足领取条件
    if (meet) {
      link.click();
      //抵扣券面额....暂时未知
@@ -683,16 +680,18 @@
      });
    })
  };
- //page3
- var send = document.getElementsByClassName('send')[0];
- var sendpage = document.getElementsByClassName('sendpage')[0];
- var help = document.getElementsByClassName('help')[0];
- var helppage = document.getElementsByClassName('helppage')[0];
+})();
 
- //赠送或求助的球
- function getBallName() {
-   var ballName;
-   var ballNum;
+ //赠送或求助
+ (function(){
+ 	 var send = document.getElementsByClassName('send')[0];
+     var sendpage = document.getElementsByClassName('sendpage')[0];
+     var help = document.getElementsByClassName('help')[0];
+     var helppage = document.getElementsByClassName('helppage')[0];
+
+    function getBallName() {
+       var ballName;
+       var ballNum;
    switch (collect.classList[1]) {
      case 'pos1':
        ballName = '去瞌球';
@@ -720,8 +719,6 @@
    }
    return [ballName, ballNum];
  };
-
- //赠送与求助
  send.onclick = function() {
    //获取当前球
    var current = getBallName()[0];
@@ -752,7 +749,6 @@
  sendpage.onclick = function() {
    this.style.display = 'none';
  };
-
  help.onclick = function() {
    helppage.style.display = 'block';
    var current = getBallName()[0];
@@ -776,6 +772,8 @@
  helppage.onclick = function() {
    this.style.display = 'none';
  };
+})();
+})();
 </script>
 </body>
 </html>
