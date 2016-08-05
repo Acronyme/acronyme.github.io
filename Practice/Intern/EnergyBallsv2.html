@@ -512,273 +512,270 @@
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
     var page2 = document.getElementsByClassName('page-2')[0];
-    //page1
-    //weixinConfig param
-    var count, timestamp, randomStr, signature, apiList = [];
-    //weixinShareConfig
-    wx.config({
-      debug: false, //不开启调试模式
-      appId: count, // 必填，公众号的唯一标识
-      timestamp: timestamp, // 必填，生成签名的时间戳
-      nonceStr: randomStr, // 必填，生成签名的随机串
-      signature: signature, // 必填，签名，见附录1
-      jsApiList: apiList // 必填，需要使用的JS接口列表
-    });
-    //领取折扣券判断数量
-    var num1 = document.querySelectorAll('.balls b')[0].innerText;
-    var num2 = document.querySelectorAll('.balls b')[1].innerText;
-    var num3 = document.querySelectorAll('.balls b')[2].innerText;
-    var num4 = document.querySelectorAll('.balls b')[3].innerText;
-    var num5 = document.querySelectorAll('.balls b')[4].innerText;
-    (function() {
-      var introBtn = document.getElementsByClassName('introBtn')[0];
-      var intro = document.getElementsByClassName('intro')[0];
-      var close = document.getElementsByClassName('close')[0];
-      var begin = document.getElementsByClassName('begin')[0];
-      var page1 = document.getElementsByClassName('page-1')[0];
-      var music = document.getElementsByClassName('music')[0];
-      var getDiscount = document.getElementsByClassName('getDiscount')[0];
-      var invite = document.getElementsByClassName('invite')[0];
-      var link = document.getElementsByClassName('link')[0];
-      var page3 = document.getElementsByClassName('page-3')[0];
-      var left = document.getElementsByClassName('left')[0];
-      var right = document.getElementsByClassName('right')[0];
-      var collect = document.getElementsByClassName('collect')[0];
-      var friendCircle = document.getElementsByClassName('friendCircle')[0];
-      document.addEventListener('click', function() {
-        music.play();
-      }, false);
+ //page1
+ //weixinConfig param
+ var count, timestamp, randomStr, signature, apiList = [];
+ //weixinShareConfig
+ wx.config({
+   debug: false, //不开启调试模式
+   appId: count, // 必填，公众号的唯一标识
+   timestamp: timestamp, // 必填，生成签名的时间戳
+   nonceStr: randomStr, // 必填，生成签名的随机串
+   signature: signature, // 必填，签名，见附录1
+   jsApiList: apiList // 必填，需要使用的JS接口列表
+ });
+ //领取折扣券判断数量
+ var num1 = document.querySelectorAll('.balls b')[0].innerText;
+ var num2 = document.querySelectorAll('.balls b')[1].innerText;
+ var num3 = document.querySelectorAll('.balls b')[2].innerText;
+ var num4 = document.querySelectorAll('.balls b')[3].innerText;
+ var num5 = document.querySelectorAll('.balls b')[4].innerText;
+ var introBtn = document.getElementsByClassName('introBtn')[0];
+ var intro = document.getElementsByClassName('intro')[0];
+ var close = document.getElementsByClassName('close')[0];
+ var begin = document.getElementsByClassName('begin')[0];
+ var page1 = document.getElementsByClassName('page-1')[0];
+ var music = document.getElementsByClassName('music')[0];
+ var getDiscount = document.getElementsByClassName('getDiscount')[0];
+ var invite = document.getElementsByClassName('invite')[0];
+ var link = document.getElementsByClassName('link')[0];
+ var page3 = document.getElementsByClassName('page-3')[0];
+ var left = document.getElementsByClassName('left')[0];
+ var right = document.getElementsByClassName('right')[0];
+ var collect = document.getElementsByClassName('collect')[0];
 
-      introBtn.onclick = function() {
-        intro.style.display = 'block';
-      }
-      close.onclick = function() {
-        intro.style.display = 'none';
-      }
-      //开始集球按钮逻辑
-      var phone = document.getElementsByClassName('phoneNum')[0]
-      var u = navigator.userAgent;
-      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-      var totalHeight = document.body.offsetHeight;
+ document.addEventListener('click', function() {
+   music.play();
+ }, false);
 
-      phone.onfocus = function() {
-        if (isAndroid) {
-          page1.style.minHeight = totalHeight + 'px';
-        } else {
-          return;
-        }
-      }
-      begin.onclick = function() {
-        var phoneNum = phone.value.trim();
-        if (phoneNum == '') {
-          alert('请输入您的手机号!');
-        } else if (!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9])\d{8}$/i.test(phoneNum)) {
-          alert('请输入正确手机号!');
-        } else {
-          page1.style.display = 'none';
-          page2.style.display = 'block';
-        }
-      }
-    })();
-    friendCircle.onclick = function() {
-      this.style.display = 'none';
-    };
-    //对应页
-    (function() {
-      var ball1 = document.querySelector('.balls img:nth-of-type(1)');
-      var ball2 = document.querySelector('.balls img:nth-of-type(2)');
-      var ball3 = document.querySelector('.balls img:nth-of-type(3)');
-      var ball4 = document.querySelector('.balls img:nth-of-type(4)');
-      var ball5 = document.querySelector('.balls img:nth-of-type(5)');
-      var balls = [ball1, ball2, ball3, ball4, ball5];
-      balls.forEach(function(item) {
-        item.onclick = function() {
-          page2.style.display = 'none';
-          page3.style.display = 'block';
-          for (var i = 0; i < 5; i++) {
-            if (item == balls[i]) {
-              collect.classList.add('pos' + (i + 1));
-            }
-          }
-        }
-      })
-    })();
-    //切换
-    left.onclick = function() {
-      if (collect.classList.contains('pos1')) {
-        collect.classList.remove('pos1');
-        collect.classList.add('pos5');
-      } else {
-        var a = collect.classList[1];
-        var now = Number(a.split('')[a.split('').length - 1]) - 1;
-        collect.classList.remove(a);
-        collect.classList.add('pos' + now);
-      }
-    }
-    right.onclick = function() {
-      if (collect.classList.contains('pos5')) {
-        collect.classList.remove('pos5');
-        collect.classList.add('pos1');
-      } else {
-        var a = collect.classList[1];
-        var now = Number(a.split('')[a.split('').length - 1]) + 1;
-        collect.classList.remove(a);
-        collect.classList.add('pos' + now);
-      }
-    }
-    //领取折扣逻辑
-    var alarm = document.getElementsByClassName('err')[0];
-    getDiscount.onclick = function() {
+ introBtn.onclick = function() {
+   intro.style.display = 'block';
+ }
+ close.onclick = function() {
+     intro.style.display = 'none';
+   }
+   //开始集球按钮逻辑
+ var phone = document.getElementsByClassName('phoneNum')[0]
+ var u = navigator.userAgent;
+ var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+ var totalHeight = document.body.offsetHeight;
 
-      var numsStrArr = [num1, num2, num3, num4, num5];
-      var numsArr = numsStrArr.map(function(item) {
-        return Number(item);
-      });
-      var meet = numsArr.every(function(item) {
-          return item > 0;
-        })
-        //满足领取条件
-      if (meet) {
-        link.click();
-        //抵扣券面额....暂时未知
-        var X = 1000;
-        wx.ready(function() {
-          // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
-          wx.onMenuShareTimeline({
-            title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
-            link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
-            imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
-          });
-          // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
-          wx.onMenuShareAppMessage({
-            title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
-            desc: '我已集齐夏日能量球，成功启动' + X + '元购机折扣券。大牌裸机，击破底价。', // 分享描述
-            link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
-            imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
-            type: 'link',
-          });
-        });
-      } else {
-        alarm.style.display = 'block';
-      }
-    }
-    alarm.onclick = function() {
-      this.style.display = 'none';
-    }
-    invite.onclick = function() {
-      friendCircle.style.display = 'block';
-      wx.ready(function() {
-        // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
-        wx.onMenuShareTimeline({
-          title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
-          link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
-          imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
-        });
-        // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
-        wx.onMenuShareAppMessage({
-          title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
-          desc: '小伙伴，我们并肩参与，快赐予我能量吧。', // 分享描述
-          link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
-          imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
-          type: 'link',
-        });
-      })
-    };
-    //page3
-    (function() {
-      var send = document.getElementsByClassName('send')[0];
-      var sendpage = document.getElementsByClassName('sendpage')[0];
-      var help = document.getElementsByClassName('help')[0];
-      var helppage = document.getElementsByClassName('helppage')[0];
+ phone.onfocus = function() {
+   if (isAndroid) {
+     page1.style.minHeight = totalHeight + 'px';
+   } else {
+     return;
+   }
+ }
+ begin.onclick = function() {
+     var phoneNum = phone.value.trim();
+     if (phoneNum == '') {
+       alert('请输入您的手机号!');
+     } else if (!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9])\d{8}$/i.test(phoneNum)) {
+       alert('请输入正确手机号!');
+     } else {
+       page1.style.display = 'none';
+       page2.style.display = 'block';
+     }
+   }
+   //切换
+ left.onclick = function() {
+   if (collect.classList.contains('pos1')) {
+     collect.classList.remove('pos1');
+     collect.classList.add('pos5');
+   } else {
+     var a = collect.classList[1];
+     var now = Number(a.split('')[a.split('').length - 1]) - 1;
+     collect.classList.remove(a);
+     collect.classList.add('pos' + now);
+   }
+ };
+ right.onclick = function() {
+   if (collect.classList.contains('pos5')) {
+     collect.classList.remove('pos5');
+     collect.classList.add('pos1');
+   } else {
+     var a = collect.classList[1];
+     var now = Number(a.split('')[a.split('').length - 1]) + 1;
+     collect.classList.remove(a);
+     collect.classList.add('pos' + now);
+   }
+ }
 
-      //赠送或求助的球
-      function getBallName() {
-        var ballName;
-        var ballNum;
-        switch (collect.classList[1]) {
-          case 'pos1':
-            ballName = '去瞌球';
-            ballNum = num1;
-            break;
-          case 'pos2':
-            ballName = '抗饿球';
-            ballNum = num2;
-            break;
-          case 'pos3':
-            ballName = '解乏球';
-            ballNum = num3;
-            break;
-          case 'pos4':
-            ballName = '减肥球';
-            ballNum = num4;
-            break;
-          case 'pos5':
-            ballName = '消暑球';
-            ballNum = num5;
-            break;
-          default:
-            ballName = '能量球';
-            ballNum = 0;
-        }
-        return [ballName, ballNum];
-      };
+ //对应页
+ var ball1 = document.querySelector('.balls img:nth-of-type(1)');
+ var ball2 = document.querySelector('.balls img:nth-of-type(2)');
+ var ball3 = document.querySelector('.balls img:nth-of-type(3)');
+ var ball4 = document.querySelector('.balls img:nth-of-type(4)');
+ var ball5 = document.querySelector('.balls img:nth-of-type(5)');
+ var balls = [ball1, ball2, ball3, ball4, ball5];
+ balls.forEach(function(item) {
+   item.onclick = function() {
+     page2.style.display = 'none';
+     page3.style.display = 'block';
+     for (var i = 0; i < 5; i++) {
+       if (item == balls[i]) {
+         collect.classList.add('pos' + (i + 1));
+       }
+     }
+   }
+ });
+ var friendCircle = document.getElementsByClassName('friendCircle')[0];
+ friendCircle.onclick = function() {
+   this.style.display = 'none';
+ };
 
-      //赠送与求助
-      send.onclick = function() {
-        //获取当前球
-        var current = getBallName()[0];
-        var num = getBallName()[1];
-        if (num == 0) {
-          alert('无法赠送，目前还没有' + current + '呢!')
-        } else {
-          sendpage.style.display = 'block';
-          //分享
-          wx.ready(function() {
-            // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
-            wx.onMenuShareTimeline({
-              title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
-              link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
-              imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
-            });
-            // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
-            wx.onMenuShareAppMessage({
-              title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
-              desc: "送你一个" + current + "球 ，对抗酷热，轻爽换机！", // 分享描述
-              link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
-              imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
-              type: 'link',
-            });
-          });
-        }
-      };
-      sendpage.onclick = function() {
-        this.style.display = 'none';
-      };
+ //领取折扣逻辑
+ var alarm = document.getElementsByClassName('err')[0];
+ getDiscount.onclick = function() {
+   var numsStrArr = [num1, num2, num3, num4, num5];
+   var numsArr = numsStrArr.map(function(item) {
+     return Number(item);
+   });
+   var meet = numsArr.every(function(item) {
+       return item >
+         0;
+     })
+     //满足领取条件
+   if (meet) {
+     link.click();
+     //抵扣券面额....暂时未知
+     var X = 1000;
+     wx.ready(function() {
+       // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+       wx.onMenuShareTimeline({
+         title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+         link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+         imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+       });
+       // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+       wx.onMenuShareAppMessage({
+         title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+         desc: '我已集齐夏日能量球，成功启动' + X + '元购机折扣券。大牌裸机，击破底价。', // 分享描述
+         link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+         imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+         type: 'link',
+       });
+     });
+   } else {
+     alarm.style.display = 'block';
+   }
+ }
+ alarm.onclick = function() {
+   this.style.display = 'none';
+ }
+ invite.onclick = function() {
+   friendCircle.style.display = 'block';
+   wx.ready(function() {
+     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+     wx.onMenuShareTimeline({
+       title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+       link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+       imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+     });
+     // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+     wx.onMenuShareAppMessage({
+       title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+       desc: '小伙伴，我们并肩参与，快赐予我能量吧。', // 分享描述
+       link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+       imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+       type: 'link',
+     });
+   })
+ };
+ //page3
+ var send = document.getElementsByClassName('send')[0];
+ var sendpage = document.getElementsByClassName('sendpage')[0];
+ var help = document.getElementsByClassName('help')[0];
+ var helppage = document.getElementsByClassName('helppage')[0];
 
-      help.onclick = function() {
-        helppage.style.display = 'block';
-        var current = getBallName()[0];
-        wx.ready(function() {
-          // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
-          wx.onMenuShareTimeline({
-            title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
-            link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
-            imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
-          });
-          // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
-          wx.onMenuShareAppMessage({
-            title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
-            desc: current + "球不足,快赋予我能量，拯救我的换机计划。", // 分享描述
-            link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
-            imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
-            type: 'link',
-          });
-        });
-      };
-      helppage.onclick = function() {
-        this.style.display = 'none';
-      };
-    })();
+ //赠送或求助的球
+ function getBallName() {
+   var ballName;
+   var ballNum;
+   switch (collect.classList[1]) {
+     case 'pos1':
+       ballName = '去瞌球';
+       ballNum = num1;
+       break;
+     case 'pos2':
+       ballName = '抗饿球';
+       ballNum = num2;
+       break;
+     case 'pos3':
+       ballName = '解乏球';
+       ballNum = num3;
+       break;
+     case 'pos4':
+       ballName = '减肥球';
+       ballNum = num4;
+       break;
+     case 'pos5':
+       ballName = '消暑球';
+       ballNum = num5;
+       break;
+     default:
+       ballName = '能量球';
+       ballNum = 0;
+   }
+   return [ballName, ballNum];
+ };
+
+ //赠送与求助
+ send.onclick = function() {
+   //获取当前球
+   var current = getBallName()[0];
+   var num = getBallName()[1];
+   if (num == 0) {
+     alert('无法赠送，目前还没有' + current + '呢!')
+   } else {
+     sendpage.style.display = 'block';
+     //分享
+     wx.ready(function() {
+       // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+       wx.onMenuShareTimeline({
+         title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+         link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+         imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+       });
+       // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+       wx.onMenuShareAppMessage({
+         title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+         desc: "送你一个" + current + "球 ，对抗酷热，轻爽换机！", // 分享描述
+         link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+         imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+         type: 'link',
+       });
+     });
+   }
+ };
+ sendpage.onclick = function() {
+   this.style.display = 'none';
+ };
+
+ help.onclick = function() {
+   helppage.style.display = 'block';
+   var current = getBallName()[0];
+   wx.ready(function() {
+     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+     wx.onMenuShareTimeline({
+       title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+       link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+       imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+     });
+     // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+     wx.onMenuShareAppMessage({
+       title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+       desc: current + "球不足,快赋予我能量，拯救我的换机计划。", // 分享描述
+       link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+       imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+       type: 'link',
+     });
+   });
+ };
+ helppage.onclick = function() {
+   this.style.display = 'none';
+ };
 </script>
 </body>
 </html>
