@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>国际流量</title>
+	<style>
+	    *{margin:0;padding:0;}
+		html,body{
+			width:100%;
+			height: 100%;
+			font-family: '微软雅黑';
+		}
+		.wrapper{width:100%;height:400%;}
+		.wrapper div{position: relative;width:100%;height:25%;}
+		.background{width:100%;height:100%;}
+		.text{
+			position: absolute;
+			width: 50%;
+			top:43%;
+			left:25%;
+			z-index: 10;
+		}
+		.page2 .text{
+			width:80%;
+			left:10%;
+		}
+		.page3 .text{
+			width: 60%;
+			left:20%;
+		}
+    .current{
+	    -webkit-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+	    -moz-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+	    -o-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+	    -ms-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+        animation:moveDown 0.6s ease-in-out 0.2s backwards;
+       }
+    @-webkit-keyframes moveDown{
+    0%{	-webkit-transform:translateY(-40px);opacity: 0;}
+    100%{-webkit-transform:translateY(0px);opacity: 1;}}
+    @-moz-keyframes moveDown{
+    0%{	-moz-transform:translateY(-40px);opacity: 0;}
+    100%{-moz-transform:translateY(0px);opacity: 1;}}
+    @-o-keyframes moveDown{
+    0%{	-o-transform:translateY(-40px);opacity: 0;}
+    100%{-o-transform:translateY(0px);opacity: 1;}}
+    @-ms-keyframes moveDown{
+    0%{	-ms-transform:translateY(-40px);opacity: 0;}
+    100%{-ms-transform:translateY(0px);opacity: 1;}}
+    @keyframes moveDown{
+    0%{	transform:translateY(-40px);opacity: 0;}
+    100%{transform:translateY(0px);opacity: 1;}}
+	</style>
+</head>
+<body>
+<div class="wrapper">
+  <!--
+  <div class="page1">
+      <img src="images/page1-background.png" alt="background" class="background" />
+      <img src="images/page2-text.png" alt="text" class="text" />
+  </div>
+  -->
+  <div class="page2">
+      <img src="images/page2-background.png" alt="background" class="background" />
+      <img src="images/page2-text.png" alt="text" class="text current" />
+  </div>
+  <div class="page3">
+      <img src="images/page3-background.png" alt="background" class="background" />
+      <img src="images/page3-text.png" alt="text" class="text" />
+  </div>
+  <div class="page4">
+      <img src="images/page4-background.png" alt="background" class="background" />
+      <img src="images/page4-text.png" alt="text" class="text" />
+  </div>
+</div>
+</body>
+</html>
