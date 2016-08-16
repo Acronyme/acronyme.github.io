@@ -32,7 +32,13 @@
 			width: 60%;
 			left:20%;
 		}
-	.ball img{
+		.pic{
+			position: absolute;
+			width:100%;
+			top:59.5%;
+			z-index: 10;
+		}
+	.ball img:first-of-type{
 		position: fixed;
 		left:-5%;
 		width: 110%;
@@ -44,6 +50,45 @@
 		-ms-animation: run 5s linear backwards infinite; 
 		-moz-animation: run 5s linear backwards infinite; 
 	}
+	.ball img:last-of-type{
+		position: fixed;
+		bottom:2%;
+		width:6%;
+		left:47%;
+		animation: down 2s linear backwards infinite;
+		-webkit-animation: down 2s linear backwards infinite; 
+		-o-animation: down 2s linear backwards infinite; 
+		-ms-animation: down 2s linear backwards infinite; 
+		-moz-animation: down 2s linear backwards infinite; 
+	}
+     
+    @keyframes down{
+		0%{bottom:0;}
+		50%{bottom:3%;}
+		100%{bottom:0;}
+	}
+	@-webkit-keyframes down{
+		0%{bottom:0;}
+		50%{bottom:3%;}
+		100%{bottom:0;}
+	}
+	@-o-keyframes down{
+		0%{bottom:0;}
+		50%{bottom:3%;}
+		100%{bottom:0;}
+	}
+	@-moz-keyframes down{
+		0%{bottom:0;}
+		50%{bottom:3%;}
+		100%{bottom:0;}
+	}
+	@-ms-keyframes down{
+		0%{bottom:0;}
+		50%{bottom:3%;}
+		100%{bottom:0;}
+	}
+
+
 	@keyframes run{
 		0%{transform:rotateZ(0deg);}
 		100%{transform: rotateZ(360deg);}
@@ -105,10 +150,12 @@
   <div class="page4">
       <img src="images/page4-background.png" alt="background" class="background" />
       <img src="images/page4-text.png" alt="text" class="text" />
+      <img src="images/pic.png" alt="pic" class="pic" />
   </div>
 </div>
 <div class="ball">
 	<img src="images/ball.png" alt="ball" class="running" />
+	<img src="images/down.png" alt="down" class="down" />
 </div>
 </body>
 </html>
