@@ -214,6 +214,7 @@
   var down=document.getElementsByClassName('down')[0];
   down.onclick=function(){
     var current=document.getElementsByClassName('current')[0];
+    current.style.display='none';
     var page1=document.getElementsByClassName('page1')[0];
     var curClass=current.classList[0];
       var nextCur=Number(curClass.split('')[curClass.length-1])+1;
