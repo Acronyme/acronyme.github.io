@@ -11,7 +11,7 @@
       font-family: '微软雅黑';
     }
     .wrapper{width:100%;height:100%;}
-    .wrapper div{position:absolute;width:100%;height:100%;}
+    .wrapper div{position:absolute;width:100%;height:100%;transition: all 1s;}
     .background{width:100%;height:100%;}
     .text{
       position: absolute;
@@ -116,7 +116,7 @@
       -moz-animation:moveDown 0.6s ease-in-out 0.2s backwards;
       -o-animation:moveDown 0.6s ease-in-out 0.2s backwards;
       -ms-animation:moveDown 0.6s ease-in-out 0.2s backwards;
-        animation:moveDown 0.6s ease-in-out 0.2s backwards;
+      animation:moveDown 0.6s ease-in-out 0.2s backwards;
        }
     @-webkit-keyframes moveDown{
     0%{ -webkit-transform:translateY(-40px);opacity: 0;}
@@ -134,28 +134,74 @@
     0%{ transform:translateY(-40px);opacity: 0;}
     100%{transform:translateY(0px);opacity: 1;}}
 
-   .page1,.page2,.page3,.page4{
+   @keyframes shake{
+   0%{ transform:translateX(-30px);}
+   50%{transform:translateX(30px);}
+   100%{transform:translateX(0px);}
+   }
+   @-webkit-keyframes shake{
+   0%{ -webkit-transform:translateX(-30px);}
+   50%{-webkit-transform:translateX(30px);}
+   100%{-webkit-transform:translateX(0px);}
+  }
+  @-moz-keyframes shake{
+   0%{ -moz-transform:translateX(-30px);}
+   50%{-moz-transform:translateX(30px);}
+   100%{-moz-transform:translateX(0px);}
+  }
+  @-ms-keyframes shake{
+   0%{ -ms-transform:translateX(-30px);}
+   50%{-ms-transform:translateX(30px);}
+   100%{-ms-transform:translateX(0px);}
+   }
+  @-o-keyframes shake{
+   0%{ -o-transform:translateX(-30px);}
+   50%{-o-transform:translateX(30px);}
+   100%{-o-transform:translateX(0px);}
+   }
+
+ .shake{
+    position: absolute;
+    width: 80%;
+    left:10%;
+    top:32%;
+    animation: shake 0.2s linear 2;
+    -webkit-animation: shake 0.2s linear 2; 
+    -o-animation: shake 0.2s linear 2; 
+    -ms-animation: shake 0.2s linear 2; 
+    -moz-animation: shake 0.2s linear 2; 
+ }
+ .page1 .shake{
+  top:29%;
+ }
+
+
+  .page1,.page2,.page3,.page4{
       display: none;
     }
-    .current{display: block;}
+  .current{display: block;}
   </style>
 </head>
 <body>
 <div class="wrapper">
   <div class="page1 current">
       <img src="images/page1-background.png" alt="background" class="background" />
+      <img src="images/page1-shakeText.png" alt="shake" class="shake" />
       <img src="images/page1-text.png" alt="text" class="text" />
   </div>
   <div class="page2">
       <img src="images/page2-background.png" alt="background" class="background" />
+      <img src="images/shakeText.png" alt="shake" class="shake" />
       <img src="images/page2-text.png" alt="text" class="text" />
   </div>
   <div class="page3">
       <img src="images/page3-background.png" alt="background" class="background" />
+      <img src="images/shakeText.png" alt="shake" class="shake" />
       <img src="images/page3-text.png" alt="text" class="text" />
   </div>
   <div class="page4">
       <img src="images/page4-background.png" alt="background" class="background" />
+      <img src="images/shakeText.png" alt="shake" class="shake" />
       <img src="images/page4-text.png" alt="text" class="text" />
       <img src="images/pic.png" alt="pic" class="pic" />
   </div>
@@ -164,7 +210,6 @@
   <img src="images/ball.png" alt="ball" class="running" />
   <img src="images/down.png" alt="down" class="down" />
 </div>
-
 <script>
   var down=document.getElementsByClassName('down')[0];
   down.onclick=function(){
