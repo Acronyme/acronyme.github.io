@@ -4,12 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Long Lost Pen Pal</title>
 	<style>
-	    *{margin:0;padding:0;box-sizing: border-box;}
+	    *{margin:0;padding:0;box-sizing: border-box;font-family: 'Microsoft Yahei'}
 		html,body{width:100%;height:100%;font-size:15px;}
 		.wrapper{
 			width:100%;
 			height: 100%;
-			background-color: #768DB6;
+			background-color:#A8C5AB;
 		}
 		.tv_wrapper{
 			width:60rem;
@@ -21,24 +21,106 @@
 			float: left;
 			width:46rem;
 			height:27rem;
-			background-color:#EFE566;
-		    border: .6rem solid #BD3535;
+			background-color:#629BD2;
+		    border: .6rem solid #A09DF2;
 		    margin-top:7rem;
 		    border-radius: 1rem;
 		}
 		.tv_inner{
 		   margin:1rem;
-		   border: .6rem solid #BD3535;
+		   border: .6rem solid #7FF0C3;
 		   border-radius: 1rem;
 		   width: 38rem;
 		   height:24rem;
 		   background-color: #fff;
+		   padding: 1rem;
 		}
 		.voice{
 			float: right;
 			margin:-19rem .4rem 0 0;
 			width:5rem;
 			height:10rem;
+		}
+		.myPhoto{
+			position: relative;
+			width:8rem;
+			height: 8rem;
+			margin: 0 auto;
+			background-color:#59BFEE;
+			border-radius: 50%;
+			border:.4rem solid #D0DAD9;
+			background-image: url('images/myPhoto.png');
+			background-size:cover;
+			background-position: 0 0;
+		}
+		.myPhoto:after{
+			content: '万珂';
+			text-align: center;
+			line-height: 2rem;
+			position: absolute;
+			width: 8rem;
+			height: 2rem;
+			background-color:#73899C;
+			bottom:-3rem;
+			border:.2rem solid #385994;
+            left:-0.67rem;
+            opacity: .7;
+		}
+		.icon{
+			position: absolute;
+			width:35rem;
+			height:10rem;
+			bottom: 2rem;
+		}
+		.icon div{
+			float: left;
+			margin:1rem;
+			width:6.7rem;
+			height:6.7rem;
+		}
+		.school:after{
+			position: absolute;
+			text-align: center;
+			left:.5rem;
+			bottom:.5rem;
+		    content: '重庆邮电大学';
+		    background-color: #C5DBC6;
+			border:0.3rem solid #BCC9CC;
+			width:7rem;
+			height: 1.4rem;
+		}
+		.edu:after{
+			position: absolute;
+			text-align: center;
+			left:9.2rem;
+			bottom: .5rem;
+		    content: '应届毕业生';
+		    background-color: #C5DBC6;
+			border:0.3rem solid #BCC9CC;
+			width:7rem;
+			height: 1.3rem;
+		}
+		.location:after{
+			position: absolute;
+			text-align: center;
+			left:18rem;
+			bottom: .5rem;
+		    content: '期待坐标:西安';
+		    background-color: #C5DBC6;
+			border:0.3rem solid #BCC9CC;
+			width:7rem;
+			height: 1.4rem;
+		}
+		.html:after{
+			position: absolute;
+			text-align: center;
+			left:26.6rem;
+			bottom:.5rem;
+		    content: 'FE';
+		    background-color: #C5DBC6;
+			border:0.3rem solid #BCC9CC;
+			width:7rem;
+			height: 1.4rem;
 		}
 		.circular{
 			padding-top:2rem;
@@ -47,7 +129,7 @@
 			display: inline-block;
 			width:1rem;
 			height:1rem;
-			background-color: #000;
+			background-color:#BCC9CC;
 			border-radius: 50%;
             margin:.3rem .1rem .1rem .1rem;
 		}
@@ -73,7 +155,6 @@
 			margin-top: 7rem;
 			border-radius:1rem;
 		}
-
 	</style>
 </head>
 <body>
@@ -83,6 +164,14 @@
 	    <!--电视-->
 		<div class="tv">
 			<div class="tv_inner">
+			 <div class="myPhoto">
+			 </div>
+			 <div class="icon">
+			   <div class='school'><img src="images/school.png" alt="school"></div>
+			   <div class="edu"><img src="images/edu.png" alt="edu"></div>
+			   <div class="location"><img src="images/location.png" alt="location"></div>
+			   <div class="html"><img src="images/html.png" alt="html"></div>
+			 </div>
 			</div>
 			<!--电视按钮-->
 		    <span class="btn"></span>
@@ -100,8 +189,8 @@
             		<li></li>
             		<li></li>
             		<li></li>
-            	</ol>
-            </div>
+            	</ol></div>
+
 		    </div>
 
 		 <!--遥控器-->
