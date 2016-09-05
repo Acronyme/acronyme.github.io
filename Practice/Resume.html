@@ -150,11 +150,83 @@
 			float: right;
 			width:12rem;
 			height:27rem;
-			background-color: #EFE566;
-			border: .6rem solid #BD3535;
+			background-color: #97AFD9;
+			border: .6rem solid #77B9C7;
 			margin-top: 7rem;
 			border-radius:1rem;
 		}
+	    .controller .btn{
+	    	display: block;
+			float: left;
+			width:2.8rem;
+			height:2.8rem;
+			margin:.5rem;
+			border-radius: 50%;
+			background-color: #aaa;
+			border:.4rem solid #E84242;
+			border-radius: 50%;
+			cursor: pointer;
+	    }
+	    .func{
+	    	list-style-type: none;
+            margin:5rem 0 0 .9rem;
+	    	width:10rem;
+	    	height:7rem;
+	    }
+	    .func li{
+	    	font-size: 10px;
+	    	color:#C7BFBF;
+	    	float: left;
+	    	text-align: center;
+	    	margin:.2rem;
+	    	line-height:1.6rem;
+	    	width:4rem;
+	    	height:2rem;
+	    	background-color:#77A4D8;
+	    	border:.2rem solid #4796E9;
+	    	border-radius: .4rem;
+	    }
+	    .control{
+	    	width:8rem;
+	    	height: 8rem;
+	    	border-radius: 50%;
+	    	background-color: #C48B8B;
+	    	margin:0 auto;
+	    }
+	    .more{
+	    	margin:3rem auto;
+	    	width:10rem;
+	    	height:2rem;
+            background-color: #C58C8C;
+            border-radius:.5rem;
+            text-align: center;
+            line-height: 2rem;
+	    }
+	    .download{
+	    	transition: all .5s;
+	    	position: absolute;
+	    	right:23.6rem;
+	    	top:2rem;
+	    	width: 3rem;
+	    	height: 3rem;
+	    	border-radius: 50%;
+	    	background-image: url(images/download.png);
+	    	background-size: cover;
+	    	background-color: #8A95D9;
+	    	border:.3rem solid #4A40DE;
+	    }
+	    .download:hover{
+	    	text-align: center;
+	    	line-height: 1.9rem;
+	    	right: 18.6rem;
+	    	height: 2.5rem;
+	    	background-image:none;
+	    	width:10rem;
+	    	border-radius:.5rem;
+	    }
+	    .download:hover:after{
+	    	content: '下载简历';
+	    }
 	</style>
 </head>
 <body>
@@ -173,7 +245,7 @@
 			   <div class="html"><img src="images/html.png" alt="html"></div>
 			 </div>
 			</div>
-			<!--电视按钮-->
+			<!--电视开关按钮-->
 		    <span class="btn"></span>
             <div class="voice">
             	<ol class="circular">
@@ -194,8 +266,28 @@
 		    </div>
 
 		 <!--遥控器-->
-		<div class="controller"></div>
+		<div class="controller">
+			<span class="btn"></span>
+			<ul class="func">
+				<li>个人资料</li>
+				<li>掌握技能</li>
+				<li>实习经历</li>
+				<li>其他</li>
+			</ul>
+			<div class="control">
+				
+			</div>
+			<div class="more">其他作品</div>
+		</div>
 	</div>
+	<div class="download"></div>
 </div>
 </body>
+<script>
+	function myrefresh() 
+{ 
+       window.location.reload(); 
+} 
+//setTimeout('myrefresh()',1000); //指定1秒刷新一次 
+</script>
 </html>
