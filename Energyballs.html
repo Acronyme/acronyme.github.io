@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>夏日能量球</title>
+	<style>
+	*{margin:0;padding:0;overflow:hidden;transition: all 1s;}
+	html,body{height:100%;width:100%;font-family:  'Microsoft YaHei';}
+	body{
+	 animation:fadein 5s linear 1;
+	}
+	@keyframes fadein{
+	0%{opacity:0;background-color:#000;}
+	100%{opacity:1;background-color:#fff;}
+}
+	.page-1,.page-2,.page-3{
+	  	height:100%;
+	  	width: 100%;
+	  }
+	.page-1{
+		position: absolute;
+    }
+	.page3 div{
+		width:100%;
+		height: 100%;
+	}
+	.background{
+		width:100%;
+		height: 100%;
+	}
+	 img{
+	  	display:block;
+	  	margin:0 auto;
+	  }
+	.phone{
+		position: absolute;
+		width:70%;
+		bottom: 30%;
+		left:50%;
+		transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+	}
+	.phoneNum{
+		position: absolute;
+		width:45%;
+		height:5%;
+		bottom: 31.5%;
+		left:18%;
+		border:none;
+		border-radius: 20px;
+		font-size:1.2rem;
+		text-align: center;
+	}
+	.introBtn{
+		position: absolute;
+		width:50%;
+		bottom: 17%;
+		left:50%;
+		transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+	}
+	.intro{
+		position: absolute;
+		width:90%;
+		left:5%;
+		top:10%;
+		z-index: 100;
+	}
+	.intro img:first-of-type{
+		width:100%;
+	}
+	.close{
+		position: absolute;
+		width:15%;
+		right:2%;
+		top:2%;
+	}
+	.begin{
+		position: absolute;
+		bottom: 30.5%;
+		right:20%;
+		width:15%;
+	}
+    
+    .btns{
+    	position: absolute;
+    	width:90%;
+    	height:9%;
+    	bottom:21%;
+    	left:5%;
+    }
+    .btns img{
+    	position: absolute;
+    	width:47%;
+    }
+    .btns img:first-of-type{
+    	left:0;
+    }
+    .btns img:last-of-type{
+    	right:0;
+    }
+    .balls{
+    	position: absolute;
+    	width:80%;
+    	left:10%;
+    	top:10%;
+    	height:55%;
+    }
+    .balls img{
+    	position: absolute;
+    	width:36%;
+    }
+    .balls img:nth-of-type(1){
+    	left:0;
+    }
+    .balls span{
+    	display: inline-block;
+    	position: absolute;
+    	color: #fff;
+    }
+    .balls span:nth-of-type(1){
+         top:33%;
+         left:5%;
+    }
+    .balls span:nth-of-type(2){
+    	top:33%;
+    	right:6%;
+    }
+    .balls span:nth-of-type(3){
+    	top:67%;
+    	left:37%;
+    	
+    }
+    .balls span:nth-of-type(4){
+    	top:93%;
+    	left:5%;
+    	
+    }
+    .balls span:nth-of-type(5){
+    	top:93%;
+    	right:6%;
+    	
+    }
+    .balls img:nth-of-type(2){
+    	right:0;
+    	border-radius: 50%;
+    } 
+
+    .balls img:nth-of-type(3){
+    	left:32%;
+    	top:33%;
+    }    
+    .balls img:nth-of-type(4){
+    	left:0;
+    	bottom: 7%;
+    }    
+    .balls img:nth-of-type(5){
+    	right: 0;
+    	bottom: 7%;
+    }
+    .friendCircle{
+    	position: absolute;
+    	top:0;
+    	width:100%;
+    	height:100%;
+    	display: none;
+    }
+    .err{
+    	position:absolute;
+    	width: 100%;
+    	height: 100%;
+    	top:0;
+    	background-color:rgba(107, 13, 13,0.4);
+    	animation: alarm 2s linear infinite;
+    	-webkit-animation: alarm 2s linear infinite;
+    	-moz-animation: alarm 2s linear infinite;
+    	-o-animation: alarm 2s linear infinite;
+    	-ms-animation: alarm 2s linear infinite;
+    	display: none;
+    }
+    @keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    @-webkit-keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    @-o-keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    @-ms-keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    @-moz-keyframes alarm{
+    	0%{background-color:rgba(107, 13, 13,0.4);}
+    	50%{background-color:rgba(241, 23, 23,0.6);}
+    	100%{background-color:rgba(107, 13, 13,0.4);}
+    }
+    .alarm{
+    	position: absolute;
+    	width:70%;
+    	top:20%;
+    	left:15%;
+    	opacity: 1;
+    }
+    .func{
+    	position: absolute;
+        width:90%;
+        left:5%;
+        bottom:12%;
+    }
+    .func img{
+    	width:46%;
+    	margin-bottom:3.5%;
+    }
+    .left{
+    	position: absolute;
+    	width:10%;
+    	left:5%;
+    	top:36%;
+    	z-index: 10;
+    	transform: translateY(-50%);
+    	-webkit-transform: translateY(-50%);
+    	-o-transform: translateY(-50%);
+    	-moz-transform: translateY(-50%);
+    	-ms-transform: translateY(-50%);
+    }
+    .right{
+    	position: absolute;
+    	width:10%;
+    	right:5%;
+    	top:36%;
+    	z-index: 10;
+    	transform: translateY(-50%);  
+    	-webkit-transform: translateY(-50%);  
+    	-o-transform: translateY(-50%);  
+    	-moz-transform: translateY(-50%);  
+    	-ms-transform: translateY(-50%);  
+    }
+    [class^='ball-']{
+    	position: absolute;
+    	width:20%;
+    	height:100%;
+    	top:0;
+    }
+     [class^='ball-'] img{
+     	width:40%;
+      	position: absolute;
+     	left:30%;
+     	top:34%;
+     }
+     .collect{
+     	position:relative;
+     	top:-100%;
+     	width:500%;
+     	height:72%;
+     	overflow: hidden;
+     	color:#fff;
+     }
+     .collect span:nth-of-type(1){
+     	position: absolute;
+     	top:72%;
+     	left:40%;
+     }
+     .collect span:nth-of-type(2){
+     	position: absolute;
+     	top:72%;
+     	left:165%;
+     }
+     .collect span:nth-of-type(3){
+     	position: absolute;
+     	top:72%;
+     	left:265%;
+     }
+     .collect span:nth-of-type(4){
+     	position: absolute;
+     	top:72%;
+     	left:365%;
+     }
+     .collect span:nth-of-type(5){
+     	position: absolute;
+     	top:72%;
+     	left:465%;
+     }
+     .sendpage,.helppage{
+        position: absolute;
+        top:0;
+        width:100%;
+        height: 100%;
+        z-index: 10;
+        display: none;
+     }
+    .pos1{left:0;}
+    .pos2{left:-100%;}
+    .pos3{left:-200%;}
+    .pos4{left:-300%;}
+    .pos5{left:-400%;}
+
+    .ball-1{left:0;}
+    .ball-2{left:20%;}
+    .ball-3{left:40%;}
+    .ball-4{left:60%;}
+    .ball-5{left:80%;}
+	.intro{display: none}
+    .page-2,.page-3{display:none;}
+     
+    .star1,.star2,.star3,.star4,.star5{
+    	position: absolute;
+    }
+    .shareImg{
+    	position:absolute;width:0;height:0;z-index:-1;
+    }
+    .star1{
+    	width:15%;
+    	top:10%;
+    	left:15%;
+    	animation: bling 2s linear 1s infinite;
+    	-webkit-animation: bling 2s linear 1s infinite;
+    	-o-animation: bling 2s linear 1s infinite;
+    	-ms-animation: bling 2s linear 1s infinite;
+    	-moz-animation: bling 2s linear 1s infinite;
+
+    }
+    .star2{
+    	width:10%;
+    	top:15%;
+    	right:23%; 
+    	animation: bling 2s linear infinite;
+    	-webkit-animation: bling 2s linear infinite;
+    	-o-animation: bling 2s linear infinite;
+    	-ms-animation: bling 2s linear infinite;
+    	-moz-animation: bling 2s linear infinite;
+
+    }
+    .star3{
+    	width:10%;
+    	top:49%;
+    	left:15%;
+    	animation: bling 2s linear .4s infinite;
+    	-webkit-animation: bling 2s linear .4s infinite;
+    	-moz-animation: bling 2s linear .4s infinite;
+    	-ms-animation: bling 2s linear .4s infinite;
+    	-o-animation: bling 2s linear .4s infinite;
+    }
+    .star4{
+      width:10%;
+      top:6%;
+      left:10%;
+      animation: bling 2s linear .6s infinite;
+      -webkit-animation: bling 2s linear .6s infinite;
+      -moz-animation: bling 2s linear .6s infinite;
+      -ms-animation: bling 2s linear .6s infinite;
+      -o-animation: bling 2s linear .6s infinite;
+    }
+    .star5{
+    	width:8%;
+    	top:6%;
+    	right:15%;
+    	animation: bling 2s linear infinite;
+    	-webkit-animation: bling 2s linear infinite;
+    	-moz-animation: bling 2s linear infinite;
+    	-o-animation: bling 2s linear infinite;
+    	-ms-animation: bling 2s linear infinite;
+    }
+    @keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+    }
+    @-webkit-keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+    }
+    @-moz-keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+    }
+    @-ms-keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+    }
+    @-o-keyframes bling{
+    	0%{opacity: 1}
+    	50%{opacity: 0}
+    	100%{opacity: 1}
+    }
+   .balls img,.collect img{
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+   	animation: rotate 8s linear infinite forwards;
+    -webkit-animation: rotate 8s linear infinite forwards;
+   	-moz-animation: rotate 8s linear infinite forwards;
+   	-o-animation: rotate 8s linear infinite forwards;
+   	-ms-animation: rotate 8s linear infinite forwards;
+   }
+  @keyframes rotate{ 
+   	0% {transform:rotateZ(0deg)}
+    50%{transform:rotateZ(180deg)}
+    100%{transform:rotateZ(360deg)}
+}
+   @-webkit-keyframes rotate{
+   	0% {-webkit-transform:rotateZ(0deg)}
+    50% {-webkit-transform:rotateZ(180deg)}
+    100% {-webkit-transform:rotateZ(360deg)}
+}
+   @-moz-keyframes rotate{
+   	0% {-moz-transform:rotateZ(0deg)}
+    50% {-moz-transform:rotateZ(180deg)}
+    100% {-moz-transform:rotateZ(360deg)}
+}
+   @-ms-keyframes rotate{
+   	0% {-ms-transform:rotateZ(0deg)}
+    50% {-ms-transform:rotateZ(180deg)}
+    100% {-ms-transform:rotateZ(360deg)}
+}
+   @-o-keyframes rotate{
+   	0% {-o-transform:rotateZ(0deg)}
+    50% {transform:rotateZ(180deg)}
+    100% {-o-transform:rotateZ(360deg)}
+}
+
+</style>
+</head>
+<body>
+<img src="images/share/ad.jpg" alt="ad" class="shareImg">
+<audio src="http://ip.h5.re03.sycdn.kuwo.cn/7c5a6bf98f5a086c4a7c872b0006db2f/57a2f978/resource/a1/76/64/1292558040.aac" autoplay="true" loop="true" class="music"></audio>
+	<div class="page-1">
+		<img src="images/page1/background.png" alt="background" class="background" />
+		<img src="images/page1/phone.png" alt="phone" class="phone" />
+		<img src="images/page1/begin.png" alt="begin" class="begin" />
+		<input type="tel" class="phoneNum" placeholder="请输入手机号码" />
+		<div class="intro">
+			<img src="images/page1/intro.png" alt="intro" />
+			<img src="images/page1/close.png" alt="close" class="close"></div>
+		<img src="images/page1/introBtn.png" alt="introBtn" class="introBtn" />
+	</div>
+
+	<div class="page-2">
+		<div class="balls">
+			<img src="images/page2/ball1.png" alt="ball1" />
+			<span>去瞌球 <b>0</b>个</span>
+			<img src="images/page2/ball2.png" alt="ball2" />
+			<span>抗饿球 <b>0</b>个</span>
+			<img src="images/page2/ball3.png" alt="ball3" />
+			<span>解乏球<b>0</b>个</span>
+			<img src="images/page2/ball4.png" alt="ball4" />
+			<span>减肥球<b>0</b>个</span>
+			<img src="images/page2/ball5.png" alt="ball5" />
+			<span>消暑球<b>0</b>个</span>
+		</div>
+		<img src="images/page3/star1.png" alt="star" class="star4" />
+		<img src="images/page3/star2.png" alt="star" class="star5" />
+		<img src="images/page2/background.png" alt="background" class="background" />
+		<div class="err">
+			<img src="images/page2/alarm.png" alt="alarm" class="alarm" />
+		</div>
+		<div class="btns">
+			<a class="link" target="_blank" href="http://wap.17iwo.com/yhqhx"></a>
+			<img src="images/page2/get.png" alt="getDiscount" class="getDiscount" />
+			<img src="images/page2/invite.png" alt="invite" class="invite" />
+		</div>
+		<img src="images/page2/friend.png" alt="friend" class="friendCircle" />
+	</div>
+
+	<div class="page-3">
+		<img src="images/page3/background.png" alt="background" class="background" />
+		<img src="images/page3/left.png" alt="left" class="left" />
+		<img src="images/page3/right.png" alt="right" class="right" />
+		<div class="func">
+			<img src="images/page3/send.png" alt="send" class="send" />
+			<img src="images/page3/help.png" alt="help" class="help" />
+		</div>
+		<img src="images/page3/sendpage.png" alt="sendpage" class="sendpage" />
+		<img src="images/page3/helppage.png" alt="helppage" class="helppage" />
+		<img src="images/page3/star1.png" alt="star1" class="star1" />
+		<img src="images/page3/star2.png" alt="star2" class="star2" />
+		<img src="images/page3/star3.png" alt="star3" class="star3" />
+		<div class="collect">
+			<div class="ball-1"><span>去瞌球<b>0</b>个</span>
+				<img src="images/page2/ball1.png" alt="ball1"></div>
+			<div class="ball-2">
+			<span>抗饿球<b>0</b>个</span>
+			<img src="images/page2/ball2.png" alt="ball1"></div>
+			<div class="ball-3">
+				<span>解乏球<b>0</b>个</span>
+			<img src="images/page2/ball3.png" alt="ball1"></div>
+			<div class="ball-4">
+            <span>减肥球<b>0</b>个</span>
+			<img src="images/page2/ball4.png" alt="ball1"></div>
+			<div class="ball-5">
+			<span>消暑球<b>0</b>个</span>
+			<img src="images/page2/ball5.png" alt="ball1"></div>
+		</div>
+	</div>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+    //weixinConfig param
+    var count, timestamp, randomStr, signature, apiList = [];
+    //weixinShareConfig
+    wx.config({
+      debug: false, //不开启调试模式
+      appId: count, // 必填，公众号的唯一标识
+      timestamp: timestamp, // 必填，生成签名的时间戳
+      nonceStr: randomStr, // 必填，生成签名的随机串
+      signature: signature, // 必填，签名，见附录1
+      jsApiList: apiList // 必填，需要使用的JS接口列表
+    });
+    //page1 
+    var introBtn = document.getElementsByClassName('introBtn')[0];
+    var intro = document.getElementsByClassName('intro')[0];
+    var close = document.getElementsByClassName('close')[0];
+    var begin = document.getElementsByClassName('begin')[0];
+    var page1 = document.getElementsByClassName('page-1')[0];
+    var page2 = document.getElementsByClassName('page-2')[0];
+	var music=document.getElementsByClassName('music')[0];
+
+    document.addEventListener('click', function(){ 
+      music.play();
+    }, false);
+
+    introBtn.onclick = function() {
+      intro.style.display = 'block';
+    }
+    close.onclick = function() {
+      intro.style.display = 'none';
+    }
+
+    //开始集球按钮逻辑
+    var phone = document.getElementsByClassName('phoneNum')[0]
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var totalHeight = document.body.offsetHeight;
+
+    phone.onfocus = function() {
+      if (isAndroid) {
+        page1.style.minHeight = totalHeight + 'px';
+      } else {
+        return;
+      }
+    }
+   
+    begin.onclick = function() {
+      var phoneNum = phone.value;
+      if (phoneNum == '') {
+        alert('请输入您的手机号!');
+      } else if (!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/i.test(phoneNum)) {
+        alert('请输入正确手机号!');
+      } else {
+        page1.style.display = 'none';
+        page2.style.display = 'block';
+      }
+    }
+
+    //page2
+    var getDiscount = document.getElementsByClassName('getDiscount')[0];
+    var invite = document.getElementsByClassName('invite')[0];
+    var link = document.getElementsByClassName('link')[0];
+    var friendCircle = document.getElementsByClassName('friendCircle')[0];
+    var page3 = document.getElementsByClassName('page-3')[0];
+    var ball1 = document.querySelector('.balls img:nth-of-type(1)');
+    var ball2 = document.querySelector('.balls img:nth-of-type(2)');
+    var ball3 = document.querySelector('.balls img:nth-of-type(3)');
+    var ball4 = document.querySelector('.balls img:nth-of-type(4)');
+    var ball5 = document.querySelector('.balls img:nth-of-type(5)');
+    var singleBall1 = document.getElementsByClassName('ball-1')[0];
+    var singleBall2 = document.getElementsByClassName('ball-2')[0];
+    var singleBall3 = document.getElementsByClassName('ball-3')[0];
+    var singleBall4 = document.getElementsByClassName('ball-4')[0];
+    var singleBall5 = document.getElementsByClassName('ball-5')[0];
+    var left = document.getElementsByClassName('left')[0];
+    var right = document.getElementsByClassName('right')[0];
+    var collect = document.getElementsByClassName('collect')[0];
+
+    //点击每个球进入对应单页
+    ball1.onclick = function() {
+      page2.style.display = 'none';
+      page3.style.display = 'block';
+      collect.classList.add('pos1');
+    }
+    ball2.onclick = function() {
+      page2.style.display = 'none';
+      page3.style.display = 'block';
+      collect.classList.add('pos2');
+    }
+    ball3.onclick = function() {
+      page2.style.display = 'none';
+      page3.style.display = 'block';
+      collect.classList.add('pos3');
+    }
+    ball4.onclick = function() {
+      page2.style.display = 'none';
+      page3.style.display = 'block';
+      collect.classList.add('pos4');
+    }
+    ball5.onclick = function() {
+      page2.style.display = 'none';
+      page3.style.display = 'block';
+      collect.classList.add('pos5');
+    }
+
+    //左右切换功能
+    left.onclick = function() {
+      if (collect.classList.contains('pos1')) {
+        collect.classList.remove('pos1');
+        collect.classList.add('pos5');
+      } else {
+        var a = collect.classList[1];
+        var now = Number(a.split('')[a.split('').length - 1]) - 1;
+        collect.classList.remove(a);
+        collect.classList.add('pos' + now);
+      }
+    }
+    right.onclick = function() {
+      if (collect.classList.contains('pos5')) {
+        collect.classList.remove('pos5');
+        collect.classList.add('pos1');
+      } else {
+        var a = collect.classList[1];
+        var now = Number(a.split('')[a.split('').length - 1]) + 1;
+        collect.classList.remove(a);
+        collect.classList.add('pos' + now);
+      }
+    }
+
+    var num1 = document.querySelectorAll('.balls b')[0].innerText;
+    var num2 = document.querySelectorAll('.balls b')[1].innerText;
+    var num3 = document.querySelectorAll('.balls b')[2].innerText;
+    var num4 = document.querySelectorAll('.balls b')[3].innerText;
+    var num5 = document.querySelectorAll('.balls b')[4].innerText;
+    //领取折扣逻辑
+    var alarm = document.getElementsByClassName('err')[0];
+    getDiscount.onclick = function() {
+      //领取折扣券判断数量
+      var numsStrArr = [num1, num2, num3, num4, num5];
+      var numsArr = numsStrArr.map(function(item) {
+        return Number(item);
+      });
+      var meet = numsArr.every(function(item) {
+          return item > 0;
+        })
+        //满足领取条件
+      if (meet) {
+        link.click();
+        //抵扣券面额....暂时未知
+
+        var X = 1000;
+        wx.ready(function() {
+          // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+          wx.onMenuShareTimeline({
+            title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+            link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+            imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+          });
+          // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+          wx.onMenuShareAppMessage({
+            title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+            desc: '我已集齐夏日能量球，成功启动' + X + '元购机折扣券。大牌裸机，击破底价。', // 分享描述
+            link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+            imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+            type: 'link',
+          });
+        });
+
+      } else {
+        alarm.style.display = 'block';
+      }
+    }
+    alarm.onclick = function() {
+      this.style.display = 'none';
+    }
+    invite.onclick = function() {
+      friendCircle.style.display = 'block';
+      wx.ready(function() {
+        // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+        wx.onMenuShareTimeline({
+          title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+          link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+          imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+        });
+        // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+        wx.onMenuShareAppMessage({
+          title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+          desc: '小伙伴，我们并肩参与，快赐予我能量吧。', // 分享描述
+          link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+          imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+          type: 'link',
+        });
+      });
+    }
+    friendCircle.onclick = function() {
+      this.style.display = 'none';
+    }
+
+    //page3
+    var send = document.getElementsByClassName('send')[0];
+    var sendpage = document.getElementsByClassName('sendpage')[0];
+    var help = document.getElementsByClassName('help')[0];
+    var helppage = document.getElementsByClassName('helppage')[0];
+
+    //赠送或求助的球
+    function getBallName() {
+      var ballName;
+      var ballNum;
+      switch (collect.classList[1]) {
+        case 'pos1':
+          ballName = '去瞌球';
+          ballNum = num1;
+          break;
+        case 'pos2':
+          ballName = '抗饿球';
+          ballNum = num2;
+          break;
+        case 'pos3':
+          ballName = '解乏球';
+          ballNum = num3;
+          break;
+        case 'pos4':
+          ballName = '减肥球';
+          ballNum = num4;
+          break;
+        case 'pos5':
+          ballName = '消暑球';
+          ballNum = num5;
+          break;
+        default:
+          ballName = '能量球';
+          ballNum = 0;
+      }
+      return [ballName, ballNum];
+    }
+
+    //赠送与求助
+    send.onclick = function() {
+      //获取当前球
+      var current = getBallName()[0];
+      var num = getBallName()[1];
+      if (num == 0) {
+        alert('无法赠送，目前还没有' + current + '呢!')
+      } else {
+        sendpage.style.display = 'block';
+        //分享
+        wx.ready(function() {
+          // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+          wx.onMenuShareTimeline({
+            title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+            link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+            imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+          });
+          // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+          wx.onMenuShareAppMessage({
+            title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+            desc: "送你一个" + current + "球 ，对抗酷热，轻爽换机！", // 分享描述
+            link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+            imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+            type: 'link',
+          });
+        });
+      }
+    }
+    sendpage.onclick = function() {
+      this.style.display = 'none';
+
+    }
+
+    help.onclick = function() {
+      helppage.style.display = 'block';
+      var current = getBallName()[0];
+      wx.ready(function() {
+        // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+        wx.onMenuShareTimeline({
+          title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+          link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+          imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+        });
+        // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+        wx.onMenuShareAppMessage({
+          title: '集夏日能量球 购机折扣拿走不谢', // 分享标题
+          desc: current + "球不足,快赋予我能量，拯救我的换机计划。", // 分享描述
+          link: 'https://acronyme.github.io/Practice/Intern/EnergyBalls.html', // 分享链接
+          imgUrl: 'https:acronyme.github.io/Practice/images/share/ad.jpg', // 分享图标
+          type: 'link',
+        });
+      });
+    }
+    helppage.onclick = function() {
+      this.style.display = 'none';
+    }
+</script>
+</body>
+</html>
