@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Long Lost Pen Pal</title>
 	<style>
-	    *{margin:0;padding:0;box-sizing: border-box;font-family: 'Microsoft Yahei'}
+	    *{margin:0;padding:0;box-sizing: border-box;font-family: 'Microsoft Yahei';transition: all 0.5s;}
 		html,body{width:100%;height:100%;font-size:15px;}
 		.wrapper{
 			width:100%;
@@ -186,6 +186,9 @@
 	    	border:.2rem solid #4796E9;
 	    	border-radius: .4rem;
 	    }
+	    .func li:hover{
+	    	background-color: #ECAFAF;
+	    }
 	    .control{
 	    	width:8rem;
 	    	height: 8rem;
@@ -226,6 +229,101 @@
 	    }
 	    .download:hover:after{
 	    	content: '下载简历';
+	    }
+	    .func .current{
+	    	background-color: #EA8F8F;
+	    }
+	    .current:hover{
+	    	background-color: #F54141;
+	    }
+	    .production{
+	    	width:100%;
+	    	height:100%;
+	    	background-color: #EC472C;
+	    }
+	    .header{
+	    	position: relative;
+	    	width: 100%;
+	    	height:3rem;
+	    	line-height: 3rem;
+	    	border-bottom: .3rem solid #999797;
+	    	background-color:  #EC8484;
+	    	box-shadow: 0 0.2rem 0.4rem  #595353;
+	    }
+	    .logo{
+	    	width:2.8rem;
+	    	height:2.8rem;
+	    	border-radius:50%;
+	    	margin-left: 12rem;
+	    	border: .2rem solid #7C82A2;
+	    	background-image: url('images/logo.jpg');
+	    	background-size: cover;
+	    }
+	    .logo p{
+	    	font-size: 1.3rem;
+	    	position: absolute;
+	    	padding-left:4rem;
+	    	width:7rem;
+	    	height:2.8rem;
+	    	left:12rem;
+	    	line-height: 2.5rem;
+	    	overflow: hidden;
+	    }
+	    .logo p:hover{
+	    	width:30rem;
+	    }
+	    .connect{
+	    	position: absolute;
+	    	width:30rem;
+	    	height:2.8rem;
+	    	margin-right:5rem;
+	    	right: 0;
+	    	top:0;
+	    }
+	    .wechat{
+	    	margin-top:0.2rem;
+	    	width:2.4rem;
+	    	height:2.4rem;
+	    	background-image: url('images/wechat.png');
+	    	background-size:cover;
+	    }
+	    .wechat:after{
+	    	position: absolute;
+	    	content:'DY_Laputa';
+	    	height:2.8rem;
+	    	line-height: 2.4rem;
+	     	left:3rem;
+	    }
+	    .mail{
+	    	position: absolute;
+	    	right:15rem;
+	    	top:0;
+	    	margin-top:0.2rem;
+	    	width:2.4rem;
+	    	height:2.4rem;
+	    	background-image: url('images/mail.png');
+	    	background-size:cover;
+	    }
+	    .mail:after{
+	    	position: absolute;
+	    	content:'acronyme@163.com';
+	    	height:2.8rem;
+	    	line-height: 2.4rem;
+	     	left:3rem;
+	    }
+	    .back{
+	    	display:block;
+	    	width:6rem;
+	    	height: 3rem;
+	    	margin:-0.1rem auto;
+	    	text-align: center;
+	    	line-height:3rem;
+	    	background-color:  #EC8484;
+	    	border:.3rem solid #999797;
+	    	border-top: none;
+	    	border-radius: .3rem;
+	    	box-shadow: 0 0.2rem 0.2rem  #595353;
+	    	cursor: pointer;
 	    }
 	</style>
 </head>
@@ -269,7 +367,7 @@
 		<div class="controller">
 			<span class="btn"></span>
 			<ul class="func">
-				<li>个人资料</li>
+				<li class='current'>个人资料</li>
 				<li>掌握技能</li>
 				<li>实习经历</li>
 				<li>其他</li>
@@ -278,9 +376,21 @@
 				
 			</div>
 			<div class="more">其他作品</div>
-		</div>
-	</div>
+		</div></div>
+	<!--下载按钮-->
 	<div class="download"></div>
+	<div class="production">
+	    <div class="header">
+	    	<div class="logo">
+	    		<p>万珂希望应聘&lt;job&gt;前端工程师 &lt;/job&gt;</p>
+	    	</div>
+	    	<div class="connect">
+	    		<div class="wechat"></div>
+	    		<div class="mail"></div>
+	    	</div>
+	        <span class="back">回看电视</span>
+	    </div>
+	</div>
 </div>
 </body>
 <script>
