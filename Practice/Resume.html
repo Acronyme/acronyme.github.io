@@ -49,7 +49,7 @@
 			background-color:#59BFEE;
 			border-radius: 50%;
 			border:.4rem solid #D0DAD9;
-			background-image: url('images/myPhoto.png');
+			background-image: url('images/download.png');
 			background-size:cover;
 			background-position: 0 0;
 		}
@@ -218,32 +218,52 @@
 	    	border:4rem solid #7639EC;
 	    	border-radius: 50%;
 	    	cursor: pointer;
-	    	z-index: 10;
-	    	opacity: .2;
 	    }
-	    .dir:hover{
-	    	box-shadow: .3rem .3rem .3rem #DACFCF;
-
+	    .dir span{
+	    	z-index:10;
+	    	text-align: center;
+	    	position: absolute;
+	    	width:3rem;
+	    	height: 3rem;
+	    	line-height:3rem;
+	    	font-size:1.4rem;
+	    	font-weight:600;
+	    	color:#D2CBCB;
 	    }
 	    .dir:nth-of-type(2){
 	    	text-align: top;
-	    	color:#fff;
-	    	border-color: red transparent  transparent  transparent;
+	    	border-color: #EB6868 transparent  transparent  transparent;
 	    }
+	     .dir:nth-of-type(2) span{
+	     	top:-4rem;
+	     	left:-1.6rem;
+	     	opacity: 1;
+	     }
 	    .dir:nth-of-type(3){
 	    	text-align:right;
-	    	color:#fff;
-	    	border-color:  transparent orange transparent  transparent;
+	    	border-color:  transparent #F6775F transparent  transparent;
 	    }
+	    .dir:nth-of-type(3) span{
+            left:1.1rem;
+            top:-1.4rem;
+	     }
+	    .dir:nth-of-type(4) span{
+            left:-1.6rem;
+            top:1rem;
+	     }
+	    .dir:nth-of-type(5) span{
+            left:-4rem;
+            top:-1.4rem;
+	     }
 	    .dir:nth-of-type(4){
 	    	text-align: bottom;
 	    	color:#fff;
-	    	border-color:transparent  transparent  yellow transparent;
+	    	border-color:transparent  transparent  #EAF095 transparent;
 	    }
 	    .dir:nth-of-type(5){
 	    	text-align:left;
 	    	color:#fff;
-	    	border-color:transparent  transparent  transparent  green ;
+	    	border-color:transparent  transparent  transparent #5A976B;
 	    }
 	    .more{
 	    	margin:3rem auto;
@@ -603,10 +623,10 @@
 				</ul>
 				<div class="control">
 				  <div class="confirm">OK</div>
-				  <div class="dir"></div>
-				  <div class="dir"></div>
-				  <div class="dir"></div>
-				  <div class="dir"></div>
+				  <div class="dir"><span>↑</span></div>
+				  <div class="dir"><span>→</span></div>
+				  <div class="dir"><span>↓</span></div>
+				  <div class="dir"><span>←</span></div>
 				</div>
 				<div class="more">其他作品</div>
 			</div>
