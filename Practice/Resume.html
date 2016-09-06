@@ -190,11 +190,60 @@
 	    	background-color: #ECAFAF;
 	    }
 	    .control{
+	    	position: relative;
 	    	width:8rem;
 	    	height: 8rem;
-	    	border-radius: 50%;
-	    	background-color: #C48B8B;
 	    	margin:0 auto;
+	    }
+	    .confirm{
+	    	color:#B9AEAE;
+	    	position: absolute;
+	    	width:4rem;
+	    	height:4rem;
+	    	background-color: #F78383;
+	    	border-radius: 50%;
+	    	text-align: center;
+	    	line-height:4rem;
+	    	left:2rem;
+	    	top:2rem;
+	    	cursor: pointer;
+	    	z-index: 100;
+	    }
+	    .dir{
+	    	width:0;
+	    	height: 0;
+	    	color: #B9AEAE;
+	    	font-weight: 600;
+	    	position: absolute;
+	    	border:4rem solid #7639EC;
+	    	border-radius: 50%;
+	    	cursor: pointer;
+	    	z-index: 10;
+	    	opacity: .2;
+	    }
+	    .dir:hover{
+	    	box-shadow: .3rem .3rem .3rem #DACFCF;
+
+	    }
+	    .dir:nth-of-type(2){
+	    	text-align: top;
+	    	color:#fff;
+	    	border-color: red transparent  transparent  transparent;
+	    }
+	    .dir:nth-of-type(3){
+	    	text-align:right;
+	    	color:#fff;
+	    	border-color:  transparent orange transparent  transparent;
+	    }
+	    .dir:nth-of-type(4){
+	    	text-align: bottom;
+	    	color:#fff;
+	    	border-color:transparent  transparent  yellow transparent;
+	    }
+	    .dir:nth-of-type(5){
+	    	text-align:left;
+	    	color:#fff;
+	    	border-color:transparent  transparent  transparent  green ;
 	    }
 	    .more{
 	    	margin:3rem auto;
@@ -504,172 +553,185 @@
 	</style>
 </head>
 <body>
-<div class="wrapper">
-     <!--电视与遥控器-->
-	<div class="tv_wrapper">
-	    <!--电视-->
-		<div class="tv">
-			<div class="tv_inner">
-			 <div class="myPhoto">
-			 </div>
-			 <div class="icon">
-			   <div class='school'><img src="images/school.png" alt="school"></div>
-			   <div class="edu"><img src="images/edu.png" alt="edu"></div>
-			   <div class="location"><img src="images/location.png" alt="location"></div>
-			   <div class="html"><img src="images/html.png" alt="html"></div>
-			 </div>
+	<div class="wrapper">
+		<!--电视与遥控器-->
+		<div class="tv_wrapper">
+			<!--电视-->
+			<div class="tv">
+				<div class="tv_inner">
+					<div class="myPhoto"></div>
+					<div class="icon">
+						<div class='school'>
+							<img src="images/school.png" alt="school"></div>
+						<div class="edu">
+							<img src="images/edu.png" alt="edu"></div>
+						<div class="location">
+							<img src="images/location.png" alt="location"></div>
+						<div class="html">
+							<img src="images/html.png" alt="html"></div>
+					</div>
+				</div>
+				<!--电视开关按钮-->
+				<span class="btn"></span>
+				<div class="voice">
+					<ol class="circular">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ol>
+				</div>
+
 			</div>
-			<!--电视开关按钮-->
-		    <span class="btn"></span>
-            <div class="voice">
-            	<ol class="circular">
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            	</ol></div>
 
-		    </div>
-
-		 <!--遥控器-->
-		<div class="controller">
-			<span class="btn"></span>
-			<ul class="func">
-				<li class='current'>个人资料</li>
-				<li>掌握技能</li>
-				<li>实习经历</li>
-				<li>其他</li>
-			</ul>
-			<div class="control">
-				
+			<!--遥控器-->
+			<div class="controller">
+				<span class="btn"></span>
+				<ul class="func">
+					<li class='current'>个人资料</li>
+					<li>掌握技能</li>
+					<li>实习经历</li>
+					<li>其他</li>
+				</ul>
+				<div class="control">
+				  <div class="confirm">OK</div>
+				  <div class="dir"></div>
+				  <div class="dir"></div>
+				  <div class="dir"></div>
+				  <div class="dir"></div>
+				</div>
+				<div class="more">其他作品</div>
 			</div>
-			<div class="more">其他作品</div>
-		</div></div>
-	<!--下载按钮-->
-	<div class="download"></div>
+		</div>
+		<!--下载按钮-->
+		<div class="download"></div>
 
-	<!--作品展示区-->
-	<div class="production">
-	    <div class="header">
-	    	<div class="logo">
-	    		<p>万珂应聘的是{&lt;job&gt;前端工程师 &lt;/job&gt;}</p>
-	    	</div>
-	    	<div class="connect">
-	    		<div class="wechat"></div>
-	    		<div class="mail"></div>
-	    	</div>
-	        <span class="back">回看电视</span>
-	    </div>
-	    <div class="works">
-	        <div class="item">
-	        	<div class="title">夏日能量球
-	        	<img src="images/ball1.png" alt="ball" class="item1_pic">
-	        	</div>
-	        	<img src="images/item1_cut1.png" alt="cut1" class="cut">
-	        	<img src="images/item1_cut2.png" alt="cut1" class="cut">
-	        	<img src="images/item1_cut3.png" alt="cut1" class="cut">
-	        	<div class="work_intro">
-	        		<p>查看移动端Demo:
-	        		<a href="http://acronyme.github.io/Practice/Intern/EnergyBalls.html">Energyball.com</a>
-	        		</p>
-	        		<p>
-	        			<span>工作内容:</span>
-	        			<br />
-	        			登录页面/游戏内集球页/单个能量球页
-	        		</p>
-	        		<p>
-	        			<span>工作重点:</span>
-	        			<br />
-	        			CSS动画/移动端首页兼容/集球逻辑
-	        		</p>
-	        	</div>
-	        </div>
-	        <div class="item">
-	        	<div class="title">全家福游戏
-	        	<img src="images/family.png" alt="family" class="item2_pic">
-	        	</div>
-	        	<img src="images/item2_cut1.png" alt="cut1" class="cut">
-	        	<img src="images/item2_cut2.png" alt="cut1" class="cut">
-	        	<img src="images/item2_cut3.png" alt="cut1" class="cut">
-	        	<div class="work_intro">
-	        		<p>查看移动端Demo:
-	        		<a href="https://acronyme.github.io/Practice/InternTask.html">familyPhoto.com</a>
-	        		</p>
-	        		<p>
-	        			<span>工作内容:</span>
-	        			<br />
-	        			开始页面/游戏页/结果页/科普页
-	        		</p>
-	        		<p>
-	        			<span>工作重点:</span>
-	        			<br />
-	        			倒计时动画/错误提示逻辑/结果产生逻辑/正误判断逻辑
-	        		</p>
-	        	</div>
-	        </div>
-	        <div class="item">
-	        	<div class="title">响应式主页
-	        	<img src="images/homePage.png" alt="home" class="item3_pic">
-	        	</div>
-	        	<img src="images/item3_cut3.png" alt="cut3" class="cut">
-	        	<img src="images/item3_cut2.jpg" alt="cut2" class="cut">
-	        	<img src="images/item3_cut1.jpg" alt="cut1" class="cut">
-	        	<div class="work_intro">
-	        		<p>查看Demo:
-	        		<a href="https://acronyme.github.io">acronyme.github.io</a>
-	        		</p>
-	        		<p>
-	        			<span>主要内容:</span>
-	        			<br />
-	        			不同尺寸差异布局/元素、字体大小随分辨率调整
-	        		</p>
-	        		<p>
-	        			<span>重点部分:</span>
-	        			<br />
-	        			媒体查询/Flex布局/随机渐变背景
-	        		</p>
-	        	</div>
-	        </div>
-	        <div class="item">
-	        	<div class="title">PSD转HTML
-	        	<img src="images/psd.png" alt="ball" class="item4_pic_1">
-	        	<img src="images/arrow.png" alt="arrow" class="arrow">
-	        	<img src="images/htmlFile.png" alt="html" class="item4_pic_2">
-	        	</div>
-	        	<span class="psd_title">PSD设计稿</span>
-	        	<img src="images/item4_psd.png" alt="psd" class="psd">
-	        	<span class="html_title">html实现效果</span>
-	        	<img src="images/item4_cut1.png" alt="cut1" class="psd">
-	        	<img src="images/item4_cut2.png" alt="cut2" class="psd">
-	        	<div class="work_intro">
-	        		<p>查看Demo:
-	        		<a href="https://acronyme.github.io/IFE/Task9/Task9.html">IFE/practice.html</a>
-	        		</p>
-	        		<p>
-	        			<span>主要内容:</span>
-	        			<br />
-	        			菜单列表/项目表格/日历
-	        		</p>
-	        		<p>
-	        			<span>练习心得:</span>
-	        			<br />
-	        			首次实现复杂页面，帮助自己了解了页面构造与形成的过程，认识了知识面的欠缺。
-	        		</p>
-	        	</div>
-	        </div>
-	    </div>
+		<!--作品展示区-->
+		<div class="production">
+			<div class="header">
+				<div class="logo">
+					<p>万珂应聘的是{&lt;job&gt;前端工程师 &lt;/job&gt;}</p>
+				</div>
+				<div class="connect">
+					<div class="wechat"></div>
+					<div class="mail"></div>
+				</div>
+				<span class="back">回看电视</span>
+			</div>
+			<div class="works">
+				<div class="item">
+					<div class="title">
+						夏日能量球
+						<img src="images/ball1.png" alt="ball" class="item1_pic"></div>
+					<img src="images/item1_cut1.png" alt="cut1" class="cut">
+					<img src="images/item1_cut2.png" alt="cut1" class="cut">
+					<img src="images/item1_cut3.png" alt="cut1" class="cut">
+					<div class="work_intro">
+						<p>
+							查看移动端Demo:
+							<a href="http://acronyme.github.io/Practice/Intern/EnergyBalls.html">Energyball.com</a>
+						</p>
+						<p>
+							<span>工作内容:</span>
+							<br />
+							登录页面/游戏内集球页/单个能量球页
+						</p>
+						<p>
+							<span>工作重点:</span>
+							<br />
+							CSS动画/移动端首页兼容/集球逻辑
+						</p>
+					</div>
+				</div>
+				<div class="item">
+					<div class="title">
+						全家福游戏
+						<img src="images/family.png" alt="family" class="item2_pic"></div>
+					<img src="images/item2_cut1.png" alt="cut1" class="cut">
+					<img src="images/item2_cut2.png" alt="cut1" class="cut">
+					<img src="images/item2_cut3.png" alt="cut1" class="cut">
+					<div class="work_intro">
+						<p>
+							查看移动端Demo:
+							<a href="https://acronyme.github.io/Practice/InternTask.html">familyPhoto.com</a>
+						</p>
+						<p>
+							<span>工作内容:</span>
+							<br />
+							开始页面/游戏页/结果页/科普页
+						</p>
+						<p>
+							<span>工作重点:</span>
+							<br />
+							倒计时动画/错误提示逻辑/结果产生逻辑/正误判断逻辑
+						</p>
+					</div>
+				</div>
+				<div class="item">
+					<div class="title">
+						响应式主页
+					<img src="images/homePage.png" alt="home" class="item3_pic"></div>
+					<img src="images/item3_cut3.png" alt="cut3" class="cut">
+					<img src="images/item3_cut2.jpg" alt="cut2" class="cut">
+					<img src="images/item3_cut1.jpg" alt="cut1" class="cut">
+					<div class="work_intro">
+						<p>
+							查看Demo:
+							<a href="https://acronyme.github.io">acronyme.github.io</a>
+						</p>
+						<p>
+							<span>主要内容:</span>
+							<br />
+							不同尺寸差异布局/元素、字体大小随分辨率调整
+						</p>
+						<p>
+							<span>重点部分:</span>
+							<br />
+							媒体查询/Flex布局/随机渐变背景
+						</p>
+					</div>
+				</div>
+				<div class="item">
+					<div class="title">
+						PSD转HTML
+						<img src="images/psd.png" alt="ball" class="item4_pic_1">
+						<img src="images/arrow.png" alt="arrow" class="arrow">
+						<img src="images/htmlFile.png" alt="html" class="item4_pic_2"></div>
+					    <span class="psd_title">PSD设计稿</span>
+					    <img src="images/item4_psd.png" alt="psd" class="psd">
+					    <span class="html_title">html实现效果</span>
+					    <img src="images/item4_cut1.png" alt="cut1" class="psd">
+					    <img src="images/item4_cut2.png" alt="cut2" class="psd">
+					    <div class="work_intro">
+					    	<p>
+							查看Demo:
+							<a href="https://acronyme.github.io/IFE/Task9/Task9.html">IFE/practice.html</a>
+						</p>
+						<p>
+							<span>主要内容:</span>
+							<br />
+							菜单列表/项目表格/日历
+						</p>
+						<p>
+							<span>练习心得:</span>
+							<br />
+							首次实现复杂页面，帮助自己了解了页面构造与形成的过程，认识了知识面的欠缺。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
 </body>
-<script>
+	<script>
 	function myrefresh() 
 { 
        window.location.reload(); 
