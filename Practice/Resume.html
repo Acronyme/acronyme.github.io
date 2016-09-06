@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Long Lost Pen Pal</title>
 	<style>
-	    *{margin:0;padding:0;box-sizing: border-box;font-family: 'Microsoft Yahei';transition: all 0.5s;}
+	    *{margin:0;padding:0;box-sizing: border-box;font-family: 'Microsoft Yahei';transition: all 0.5s;text-decoration: none}
 		html,body{width:100%;height:100%;font-size:15px;}
 		.wrapper{
 			width:100%;
@@ -239,6 +239,7 @@
 	    .production{
 	    	width:100%;
 	    	background-color: #AEC0E1;
+	    	padding-bottom: 10rem;
 	    }
 	    .header{
 	    	position: relative;
@@ -327,19 +328,21 @@
 	    .works{
 	    	width:64rem;
 	    	margin:0 auto;
-	    	margin-top:10rem;
+	    	margin-top:12rem;
 	    }
 	    .item{
+	    	position: relative;
 	    	width: 54rem;
 	    	height:30rem;
 	    	background-color: #CFC8C8;
 	    	margin:0 auto;
-	    	margin-top: 5rem;
+	    	margin-top: 10rem;
 	    	border:1rem solid #55CD83;
 	    	border-radius:1rem;
 	    	box-shadow: 0 0.3rem 0.3rem #90B6D5;
 	    }
 	    .title{
+	    	position: relative;
 	    	width:25rem;
 	    	height:7rem;
 	    	border:1rem solid #55CD83;
@@ -351,7 +354,153 @@
 	    	line-height: 5rem;
 	    	font-size:2.5rem;
 	    	font-weight: 500;
-	    }  
+	    } 
+	    .item1_pic{
+	    	position: absolute;
+	    	left:-3rem;
+	    	top:-3rem;
+	    	width: 5rem;
+	    	animation: rotate 5s linear infinite;
+	    	-webkit-animation: rotate 5s linear infinite;
+    	    -moz-animation: rotate 5s linear infinite;
+    	    -o-animation: rotate 5s linear infinite;
+    	    -ms-animation: rotate 5s linear infinite;
+	    }
+	    .item2_pic{
+	    	position: absolute;
+	    	left:7.5rem;
+	    	top:-5rem;
+	    	width: 6rem;
+	    	animation: action 3s linear infinite;
+	    	-webkit-animation: action 3s linear infinite;
+    	    -moz-animation: action 3s linear infinite;
+    	    -o-animation: action 3s linear infinite;
+    	    -ms-animation: action 3s linear infinite;
+	    }
+	    .item3_pic{
+	    	position: absolute;
+	    	left:8rem;
+	    	top:-6rem;
+	    	width:6rem;
+	    	animation: response 3s linear infinite;
+	    }
+	    .item4_pic_1{
+	    	position: absolute;
+	    	width: 5rem;
+	    	top:-6rem;
+	    	left:0;
+	    }
+	    .item4_pic_2{
+	    	position: absolute;
+	    	width:5rem;
+	    	top:-6rem;
+	    	right:0;
+	    	opacity: 0;
+	    	animation: show 2s linear infinite;
+	    }
+
+	    .arrow{
+	    	position: absolute;
+	    	width: 3rem;
+	    	top:-5rem;
+	    	left:6rem;
+	    	animation: move 2s linear infinite;
+	    }
+	    @keyframes show{
+	    	0%{opacity:0}
+	    	100%{opacity:1}
+	    }
+	    @keyframes action{
+	    	0%{left:5rem;}
+	    	25%{left:8rem;}
+	    	50%{left:13rem;}
+	    	75%{left:8rem;}
+	    	100%{left:5rem;}
+	    }
+	    @keyframes response{
+	    	0%{width:6rem;top:-6rem;left:8rem;}
+	    	50%{width:3rem;top:-3rem;left:9rem;}
+	    	100%{width:6rem;top:-6rem;left:8rem;}
+	    }
+	    @keyframes move{
+	    	0%{left:6rem;}
+	    	100%{left:12rem}
+	    }
+	    @keyframes rotate{ 
+           	0% {transform:rotateZ(0deg)}
+            50%{transform:rotateZ(180deg)}
+            100%{transform:rotateZ(360deg)}
+        }        
+           @-webkit-keyframes rotate{
+           	0% {-webkit-transform:rotateZ(0deg)}
+            50% {-webkit-transform:rotateZ(180deg)}
+            100% {-webkit-transform:rotateZ(360deg)}
+        }        
+           @-moz-keyframes rotate{
+           	0% {-moz-transform:rotateZ(0deg)}
+            50% {-moz-transform:rotateZ(180deg)}
+            100% {-moz-transform:rotateZ(360deg)}
+        }        
+           @-ms-keyframes rotate{
+           	0% {-ms-transform:rotateZ(0deg)}
+            50% {-ms-transform:rotateZ(180deg)}
+            100% {-ms-transform:rotateZ(360deg)}
+        }        
+           @-o-keyframes rotate{
+           	0% {-o-transform:rotateZ(0deg)}
+            50% {transform:rotateZ(180deg)}
+            100% {-o-transform:rotateZ(360deg)}
+        } 
+        .cut{
+        	width:8rem;
+        	margin:5rem 0 0 3rem;
+        	box-shadow: 0.7rem 0.7rem 0.6rem #625B5B;
+        }
+        .work_intro{
+        	position: absolute;
+        	width:13rem;
+        	height:80%;
+        	margin:3rem;
+        	right:0;
+        	top:0;
+        }  
+        .work_intro p{
+        	margin-top:3rem;
+        	margin-bottom:3rem;
+        } 
+        .item:nth-of-type(3) img:nth-of-type(2) {
+        	margin-bottom:4rem;
+        }
+
+        .item:nth-of-type(3) img:nth-of-type(3) {
+        	margin-bottom:5rem;
+        }
+
+        .psd:first-of-type{
+        	width: 15rem;
+        	margin-top:7rem;
+        	margin-left:2rem;
+        }
+        .psd:nth-of-type(2){
+        	width: 15rem;
+        	margin-bottom:7.15rem;
+        	margin-left:2rem;
+        }
+        .psd:last-of-type{
+        	width:15rem;
+        	margin-bottom:-1rem;
+        	margin-left:-15.3rem;
+        }
+        .psd_title{
+        	position: absolute;
+        	left:7rem;
+        	top:7rem;
+        }
+        .html_title{
+        	position: absolute;
+        	right:23rem;
+        	top:7rem;
+        }
 	</style>
 </head>
 <body>
@@ -411,7 +560,7 @@
 	<div class="production">
 	    <div class="header">
 	    	<div class="logo">
-	    		<p>万珂希望应聘{&lt;job&gt;前端工程师 &lt;/job&gt;}</p>
+	    		<p>万珂应聘的是{&lt;job&gt;前端工程师 &lt;/job&gt;}</p>
 	    	</div>
 	    	<div class="connect">
 	    		<div class="wechat"></div>
@@ -421,16 +570,100 @@
 	    </div>
 	    <div class="works">
 	        <div class="item">
-	        	<div class="title">夏日能量球</div>
+	        	<div class="title">夏日能量球
+	        	<img src="images/ball1.png" alt="ball" class="item1_pic">
+	        	</div>
+	        	<img src="images/item1_cut1.png" alt="cut1" class="cut">
+	        	<img src="images/item1_cut2.png" alt="cut1" class="cut">
+	        	<img src="images/item1_cut3.png" alt="cut1" class="cut">
+	        	<div class="work_intro">
+	        		<p>查看移动端Demo:
+	        		<a href="http://acronyme.github.io/Practice/Intern/EnergyBalls.html">Energyball.com</a>
+	        		</p>
+	        		<p>
+	        			<span>工作内容:</span>
+	        			<br />
+	        			登录页面/游戏内集球页/单个能量球页
+	        		</p>
+	        		<p>
+	        			<span>工作重点:</span>
+	        			<br />
+	        			CSS动画/移动端首页兼容/集球逻辑
+	        		</p>
+	        	</div>
 	        </div>
 	        <div class="item">
-	        	<div class="title">全家福游戏</div>
+	        	<div class="title">全家福游戏
+	        	<img src="images/family.png" alt="family" class="item2_pic">
+	        	</div>
+	        	<img src="images/item2_cut1.png" alt="cut1" class="cut">
+	        	<img src="images/item2_cut2.png" alt="cut1" class="cut">
+	        	<img src="images/item2_cut3.png" alt="cut1" class="cut">
+	        	<div class="work_intro">
+	        		<p>查看移动端Demo:
+	        		<a href="https://acronyme.github.io/Practice/InternTask.html">familyPhoto.com</a>
+	        		</p>
+	        		<p>
+	        			<span>工作内容:</span>
+	        			<br />
+	        			开始页面/游戏页/结果页/科普页
+	        		</p>
+	        		<p>
+	        			<span>工作重点:</span>
+	        			<br />
+	        			倒计时动画/错误提示逻辑/结果产生逻辑/正误判断逻辑
+	        		</p>
+	        	</div>
 	        </div>
 	        <div class="item">
-	        	<div class="title">响应式主页</div>
+	        	<div class="title">响应式主页
+	        	<img src="images/homePage.png" alt="home" class="item3_pic">
+	        	</div>
+	        	<img src="images/item3_cut3.png" alt="cut3" class="cut">
+	        	<img src="images/item3_cut2.jpg" alt="cut2" class="cut">
+	        	<img src="images/item3_cut1.jpg" alt="cut1" class="cut">
+	        	<div class="work_intro">
+	        		<p>查看Demo:
+	        		<a href="https://acronyme.github.io">acronyme.github.io</a>
+	        		</p>
+	        		<p>
+	        			<span>主要内容:</span>
+	        			<br />
+	        			不同尺寸差异布局/元素、字体大小随分辨率调整
+	        		</p>
+	        		<p>
+	        			<span>重点部分:</span>
+	        			<br />
+	        			媒体查询/Flex布局/随机渐变背景
+	        		</p>
+	        	</div>
 	        </div>
 	        <div class="item">
-	        	<div class="title">PSD转HTML</div>
+	        	<div class="title">PSD转HTML
+	        	<img src="images/psd.png" alt="ball" class="item4_pic_1">
+	        	<img src="images/arrow.png" alt="arrow" class="arrow">
+	        	<img src="images/htmlFile.png" alt="html" class="item4_pic_2">
+	        	</div>
+	        	<span class="psd_title">PSD设计稿</span>
+	        	<img src="images/item4_psd.png" alt="psd" class="psd">
+	        	<span class="html_title">html实现效果</span>
+	        	<img src="images/item4_cut1.png" alt="cut1" class="psd">
+	        	<img src="images/item4_cut2.png" alt="cut2" class="psd">
+	        	<div class="work_intro">
+	        		<p>查看Demo:
+	        		<a href="https://acronyme.github.io/IFE/Task9/Task9.html">IFE/practice.html</a>
+	        		</p>
+	        		<p>
+	        			<span>主要内容:</span>
+	        			<br />
+	        			菜单列表/项目表格/日历
+	        		</p>
+	        		<p>
+	        			<span>练习心得:</span>
+	        			<br />
+	        			首次实现复杂页面，帮助自己了解了页面构造与形成的过程，认识了知识面的欠缺。
+	        		</p>
+	        	</div>
 	        </div>
 	    </div>
 	</div>
