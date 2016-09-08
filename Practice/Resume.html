@@ -51,8 +51,19 @@
 			border:.4rem solid #D0DAD9;
 			background-image: url('images/download.png');
 			background-size:cover;
-			background-position: 0 0;
 		}
+		.myPhoto_moved{
+		    position: relative;
+		    margin:0 0 0 1rem;
+			width:6rem;
+			height: 6rem;
+			background-color:#59BFEE;
+			border-radius: 50%;
+			border:.4rem solid #D0DAD9;
+			background-image: url('images/download.png');
+			background-size:cover;
+		}
+
 		.myPhoto:after{
 			content: '万珂';
 			text-align: center;
@@ -66,6 +77,20 @@
             left:-0.67rem;
             opacity: .7;
 		}
+		.myPhoto_moved:after{
+			content: '万珂';
+			text-align: center;
+			line-height: 1.6rem;
+			position: absolute;
+			width: 8rem;
+			height: 1.6rem;
+			background-color:#73899C;
+			bottom:-3rem;
+			border:.2rem solid #385994;
+            left:-1.3rem;
+            opacity: .7;
+
+        }
 		.icon{
 			position: absolute;
 			width:35rem;
@@ -78,6 +103,178 @@
 			width:6.7rem;
 			height:6.7rem;
 		}
+		.icon_moved{
+			display: none;
+		}
+		[class^='icon_title']{
+			position: absolute;
+			width:7.7rem;
+			height:2rem;
+			background-color: #C5DBC6;
+			border:0.3rem solid #BCC9CC;
+			text-align: center;
+			line-height: 1.4rem;
+			bottom:2rem;
+			transition: all 0.5s;
+		}
+		.icon_title1{
+			left:3rem;
+		}
+		.icon_title2{
+			left:11.5rem;
+		}
+		.icon_title3{
+			bottom: 2rem;
+			left:20rem;
+		}
+		.icon_title4{
+			left:29rem;
+		}
+		.icon_title1_moved{
+             left:3rem;
+             bottom:12rem;
+		}
+		.icon_title2_moved{
+			left:3rem;
+			bottom:9rem;
+		}
+		.icon_title3_moved{
+			left:3rem;
+			bottom:6rem;
+		}
+		.icon_title4_moved{
+			left:3rem;
+			bottom:3rem;
+
+		}
+		.skill{
+			width:18rem;
+			height: 18rem;
+			margin:-3rem 0 0rem 14rem;
+			display: none;
+		}
+		.skill div{
+			display: inline-block;
+			color:#fff;
+		}
+		.skill div:first-of-type{
+			width:4rem;
+			height:4rem;
+			text-align: center;
+			line-height:3.4rem;
+			border-radius:50%;
+			background-color: #DF4D4D;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(2){
+			width:4rem;
+			height:4rem;
+			text-align: center;
+			line-height:3.4rem;
+			border-radius:50%;
+			background-color:#DF5858;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(3){
+			width:6rem;
+			height:6rem;
+			text-align: center;
+			line-height:5.4rem;
+			border-radius:50%;
+			background-color:#E88D8D;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(4){
+			width:3rem;
+			height:3rem;
+			text-align: center;
+			line-height:2.6rem;
+			border-radius:50%;
+			background-color:#B3AAAA;
+			border: .2rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(5){
+			width:4rem;
+			height:4rem;
+			text-align: center;
+			line-height:3.4rem;
+			border-radius:50%;
+			background-color: #B3AAAA;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(6){
+			width:3.5rem;
+			height:3.5rem;
+			text-align: center;
+			line-height:2.9rem;
+			border-radius:50%;
+			background-color: #B3AAAA;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(7){
+			width:3rem;
+			height:3rem;
+			text-align: center;
+			line-height:2.4rem;
+			border-radius:50%;
+			background-color: #B3AAAA;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(8){
+			width:4.5rem;
+			height:4.5rem;
+			text-align: center;
+			line-height:3.9rem;
+			border-radius:50%;
+			background-color:#B2C1EF;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(9){
+			width:5rem;
+			height:5rem;
+			text-align: center;
+			line-height:4.4rem;
+			border-radius:50%;
+			background-color:#B8BEA4;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.skill div:nth-of-type(10){
+			width:5rem;
+			height:5rem;
+			text-align: center;
+			line-height:4.4rem;
+			border-radius:50%;
+			background-color:#879FA4;
+			border: .3rem solid #DBA1A1;
+			margin:.3rem .7rem 0 0;
+		}
+		.intern{
+			text-align: center;
+			width: 23rem;
+			height:20rem;
+			margin:-3rem 0 0rem 12rem;
+			display: none;
+		}
+		.intern h3,.intern h4,.intern span{
+			color:#F04F26;
+			margin:.5rem;
+		}
+		.intern ol{
+			text-align: left;
+		}
+		.intern li{
+			margin:.5rem;
+		}
+		/*
 		.school:after{
 			position: absolute;
 			text-align: center;
@@ -88,6 +285,7 @@
 			border:0.3rem solid #BCC9CC;
 			width:7rem;
 			height: 1.4rem;
+			opacity: 1;
 		}
 		.edu:after{
 			position: absolute;
@@ -122,6 +320,7 @@
 			width:7rem;
 			height: 1.4rem;
 		}
+		*/
 		.circular{
 			padding-top:2rem;
 		}
@@ -234,7 +433,7 @@
 	    	text-align: top;
 	    	border-color: #EB6868 transparent  transparent  transparent;
 	    }
-	     .dir:nth-of-type(2) span{
+	    .dir:nth-of-type(2) span{
 	     	top:-4rem;
 	     	left:-1.6rem;
 	     	opacity: 1;
@@ -306,9 +505,12 @@
 	    	background-color: #F54141;
 	    }
 	    .production{
+	    	position: absolute;
 	    	width:100%;
+	    	top:0;
 	    	background-color: #AEC0E1;
 	    	padding-bottom: 10rem;
+	    	display: none;
 	    }
 	    .header{
 	    	position: relative;
@@ -570,6 +772,7 @@
         	right:23rem;
         	top:7rem;
         }
+        
 	</style>
 </head>
 <body>
@@ -579,8 +782,8 @@
 			<!--电视-->
 			<div class="tv">
 				<div class="tv_inner">
-					<div class="myPhoto"></div>
-					<div class="icon">
+					<div class="myPhoto_moved"></div>
+					<div class="icon_moved">
 						<div class='school'>
 							<img src="images/school.png" alt="school"></div>
 						<div class="edu">
@@ -590,6 +793,33 @@
 						<div class="html">
 							<img src="images/html.png" alt="html"></div>
 					</div>
+				    <div class="icon_title1_moved">重庆邮电大学</div>
+				    <div class="icon_title2_moved">应届毕业生</div>
+				    <div class="icon_title3_moved">期待坐标:西安</div>
+				    <div class="icon_title4_moved">FE</div>
+				    <div class="skill">
+				    	<div>HTML</div>
+				    	<div>CSS</div>
+				    	<div>JavaScript</div>
+				    	<div>PS</div>
+				    	<div>ES5</div>
+				    	<div>CSS3</div>
+				    	<div>ES6</div>
+				    	<div>HTML5</div>
+				    	<div>Ajax</div>
+				    	<div>Sublime</div>
+				    </div>
+				    <div class="intern">
+				    	<h3>前端实习经历</h3>
+				    	<h4>Young&Inspiring-移动前端h5开发实习</h4>
+				    	<span class="time">2016.07-2016.09</span>
+				    	<ol>
+				    		<li>开发了中国联通国际流量广告的移动端页面</li>
+				    		<li>开发了中国联通智慧沃家的全家福游戏以及中国联通暑期能量球游戏</li>
+				    		<li>接触到了与PM以及设计师之间的工作交流，认识到了团队协作的重要性 </li>
+				    		<li>拥有高度的工作激情与专注度，愿意主动加班以达成工作目标，并享受工作给自己的充实感</li>
+				    	</ol>
+				    </div>
 				</div>
 				<!--电视开关按钮-->
 				<span class="btn"></span>
@@ -616,10 +846,10 @@
 			<div class="controller">
 				<span class="btn"></span>
 				<ul class="func">
-					<li class='current'>个人资料</li>
-					<li>掌握技能</li>
-					<li>实习经历</li>
-					<li>其他</li>
+					<li class='myInfo current'>个人资料</li>
+					<li class="myskill">掌握技能</li>
+					<li class="internExp">实习经历</li>
+					<li class="other">其他</li>
 				</ul>
 				<div class="control">
 				  <div class="confirm">OK</div>
@@ -650,7 +880,7 @@
 				<div class="item">
 					<div class="title">
 						夏日能量球
-						<img src="images/ball1.png" alt="ball" class="item1_pic"></div>
+				    <img src="images/ball1.png" alt="ball" class="item1_pic"></div>
 					<img src="images/item1_cut1.png" alt="cut1" class="cut">
 					<img src="images/item1_cut2.png" alt="cut1" class="cut">
 					<img src="images/item1_cut3.png" alt="cut1" class="cut">
@@ -752,10 +982,17 @@
 	</div>
 </body>
 	<script>
-	function myrefresh() 
-{ 
-       window.location.reload(); 
-} 
-//setTimeout('myrefresh()',1000); //指定1秒刷新一次 
+	(function(){
+	var myInfo=document.getElementsByClassName('myInfo')[0];
+	var internExp=document.getElementsByClassName('internExp')[0];
+	var other=document.getElementsByClassName('other')[0];
+	var myskill=document.getElementsByClassName('myskill')[0];
+	var myPhoto=document
+	//个人资料
+	myInfo.onclick=function(){
+
+
+	}
+   })();
 </script>
 </html>
