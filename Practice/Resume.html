@@ -149,10 +149,11 @@
 
 		}
 		.skill{
+			position: absolute;
 			width:18rem;
 			height: 18rem;
 			margin:-3rem 0 0rem 14rem;
-			display: none;
+			opacity:0;
 		}
 		.skill div{
 			display: inline-block;
@@ -458,8 +459,8 @@
 	    	border-radius:1rem;
 	    	right: -2rem;
 	        bottom:6rem; 
-	        opacity: 0;
 	        z-index: 200;
+	        opacity: 0;
 	    }
 	    .close{
 	    	position: absolute;
@@ -1133,6 +1134,10 @@
 	var btn=document.getElementsByClassName('btn');
 	var tv=document.getElementsByClassName('tv')[0];
 	var tips=document.getElementsByClassName('tips')[0];
+    var skillBox=document.getElementsByClassName('skill')[0];
+	var skills=document.querySelectorAll('.skill div');
+	//确认按钮
+	var confirm=document.getElementsByClassName('confirm')[0];
 	//不在个人资料页时
 	function leaveFirstPage(){
 		myPhoto.classList.add('myPhoto_moved');
@@ -1142,9 +1147,6 @@
 			var oriClass=titles[i].classList[0];
 			titles[i].classList.add(oriClass+'_moved');
 		}
-	}
-	function open(){
-		
 	}
     //点击个人资料
     myInfo.onclick=function(){
@@ -1157,7 +1159,10 @@
     	var intern=document.getElementsByClassName('intern')[0];
 		var current=document.getElementsByClassName('current')[0];
     	var skillBox=document.getElementsByClassName('skill')[0];
-    	skillBox.style.display='none';
+    	skillBox.style.opacity=0;
+    	for(var i=0;i<skills.length;i++){
+		skills[i].classList.remove('move');
+           }
 		intern.style.display='none';
 		current.classList.remove('current');
 		myInfo.classList.add('current');
@@ -1187,8 +1192,10 @@
 		}
 		var intern=document.getElementsByClassName('intern')[0];
 		var current=document.getElementsByClassName('current')[0];
-    	var skillBox=document.getElementsByClassName('skill')[0];
-		skillBox.style.display='none';
+		skillBox.style.opacity=0;
+		for(var i=0;i<skills.length;i++){
+		skills[i].classList.remove('move');
+           }
 		current.classList.remove('current');
 		internExp.classList.add('current');
 		leaveFirstPage();
@@ -1202,14 +1209,12 @@
 			return;
 		}
 		var intern=document.getElementsByClassName('intern')[0];
-    	var skillBox=document.getElementsByClassName('skill')[0];
 		var current=document.getElementsByClassName('current')[0];
-		var skills=document.querySelectorAll('.skill div');
 		current.classList.remove('current');
 		mySkill.classList.add('current');
 		intern.style.display='none';
 		leaveFirstPage();
-		skillBox.style.display='block';
+		skillBox.style.opacity=1;
 		for(var i=0;i<skills.length;i++){
 		skills[i].classList.add('move');
 }
@@ -1220,6 +1225,11 @@
          tvWrapper.style.display='none';
          production.style.display='block';
    };
+
+   confirm.onclick=function(){
+   	   var current=document.getElementsByClassName('current')[0];
+   	   current.click();
+   }
    })();
 
   //作品页
