@@ -16,12 +16,11 @@
 			height: 100%;
 			margin:0 auto;
             animation:showDown 1s ease-in-out 0.2s backwards;
-
 		}
-			 @-webkit-keyframes showDown{
-        0%{	-webkit-transform:translateY(-10rem);opacity: 0;}
-        100%{-webkit-transform:translateY(0);opacity: 1;}
-    }
+		@-webkit-keyframes showDown{
+            0%{	-webkit-transform:translateY(-10rem);opacity: 0;}
+            100%{-webkit-transform:translateY(0);opacity: 1;}
+        }
 		.tv{
 			position: relative;
 			float: left;
@@ -29,7 +28,6 @@
 			height:27rem;
 			background-color:#629BD2;
 		    border: .6rem solid #A09DF2;
-		    margin-top:7rem;
 		    border-radius: 1rem;
 
 		}
@@ -575,13 +573,43 @@
 			height:27rem;
 			background-color: #97AFD9;
 			border: .6rem solid #77B9C7;
-			margin-top: 7rem;
 			border-radius:1rem;
 		}
 		.confirm:hover{
 			background-color: #E2B9B9;
 			box-shadow: 0 0 .5rem #F62D2D;
 
+		}
+		.finger{
+			position: absolute;
+			width:3rem;
+			height:3rem;
+			right:1.4rem;
+			bottom:-2rem;
+			background-image: url('images/finger.png');
+			background-size:cover;
+			animation:press 1.6s linear 1s;
+			opacity: 0;
+		}
+		@keyframes press{
+			0%{
+				width:3rem;
+				height:3rem;
+				bottom:-2rem;
+				opacity:0;
+			}
+			80%{
+				width:2.5rem;
+				height:2.5rem;
+				bottom:1.3rem;
+				opacity: 1;
+			}
+			100%{
+				width:3rem;
+				height:3rem;
+				bottom:0;
+				opacity:0;
+			}
 		}
 	    .controller .btn{
 	    	display: block;
@@ -651,6 +679,9 @@
 	    }
 	    .func li:hover{
 	    	background-color:#DCB2B5;
+	    }
+	    .controller .choosed{
+	    	border: .2rem solid #D9D4D4;
 	    }
 	    .control{
 	    	position: relative;
@@ -733,40 +764,44 @@
 	    	width:10rem;
 	    	height:2rem;
 	    	color:#fff;
+	    	border:.3rem solid #F77676;
             background-color: #C58C8C;
             border-radius:.5rem;
             text-align: center;
-            line-height: 2rem;
+            line-height: 1.4rem;
 	    }
 	    .more:hover{
 	    	box-shadow:0 0 1rem #EA3939;
 	    	
 	    }
 	    .download{
-	    	transition: all .5s;
 	    	position: absolute;
-	    	right:23.6rem;
+	    	left:60rem;
 	    	top:2rem;
-	    	width: 3rem;
-	    	height: 3rem;
-	    	border-radius: 50%;
-	    	background-image: url(images/download.png);
-	    	background-size: cover;
+	    	width:3rem;
+	    	height:3rem;
 	    	background-color: #8A95D9;
 	    	border:.3rem solid #4A40DE;
+	    	border-radius:1.5rem;
+	    	overflow:hidden;
+	    }
+	    .download i{
+	    	position: absolute;
+	    	width: 2.45rem;
+	    	height: 2.45rem;
+	    	background-image: url('images/download.png');
+	    	background-size: cover;
+	    }
+	    .download span{
+	    	width:3rem;
+	    	height: 3rem;
+	    	padding-left:3.4rem;
+	    	line-height:2.4rem;
 	    }
 	    .download:hover{
-	    	text-align: center;
-	    	line-height: 1.9rem;
-	    	right: 18.6rem;
-	    	height: 2.5rem;
-	    	background-image:none;
 	    	width:10rem;
-	    	border-radius:.5rem;
 	    }
-	    .download:hover:after{
-	    	content: '下载简历';
-	    }
+
 	    .func .current{
 	    	background-color: #EA8F8F;
 	    }
@@ -1092,7 +1127,7 @@
 				    <div class="icon_title3">期待坐标:西安</div>
 				    <div class="icon_title4">FE</div>
 				    <div class="skill">
-				    	<div class="html">HTML</div>
+				    	<div>HTML</div>
 				    	<div>CSS</div>
 				    	<div>JavaScript</div>
 				    	<div>PS</div>
@@ -1135,6 +1170,7 @@
 				   	     </div>
 				   </div>
 				</div>
+				<div class="finger"></div>
 				<div class="tips">请先按开关按钮，打开电视后操作哦。</div>
 				<!--电视开关按钮-->
 				<span class="btn"></span>
@@ -1161,23 +1197,26 @@
 			<div class="controller">
 				<span class="btn"></span>
 				<ul class="func">
-					<li class='myInfo current'>个人资料</li>
+					<li class='myInfo current choosed'>个人资料</li>
 					<li class="myskill">掌握技能</li>
 					<li class="internExp">实习经历</li>
 					<li class="other">其他</li>
 				</ul>
 				<div class="control">
 				  <div class="confirm">OK</div>
-				  <div class="dir"><span>↑</span></div>
-				  <div class="dir"><span>→</span></div>
-				  <div class="dir"><span>↓</span></div>
-				  <div class="dir"><span>←</span></div>
+				  <div class="dir up"><span>↑</span></div>
+				  <div class="dir right"><span>→</span></div>
+				  <div class="dir down"><span>↓</span></div>
+				  <div class="dir left"><span>←</span></div>
 				</div>
 				<div class="more">其他作品</div>
 			</div>
 		</div>
 		<!--下载按钮-->
-		<div class="download"></div>
+         <a href="http://acronyme.github.io/Resume.pdf" download="Resume" class="download">
+         	<i></i>
+         	<span>下载简历</span>
+         </a>
 
 		<!--作品展示区-->
 		<div class="production">
@@ -1299,13 +1338,20 @@
 	<script>
 	//电视页
 	(function(){
+    //个人资料 按钮
 	var myInfo=document.getElementsByClassName('myInfo')[0];
 	var iconBox=document.getElementsByClassName('icon')[0];
+	//实习经历 按钮
 	var internExp=document.getElementsByClassName('internExp')[0];
+	//其他 按钮
 	var other=document.getElementsByClassName('other')[0];
+	//掌握技能 按钮
 	var mySkill=document.getElementsByClassName('myskill')[0];
-	var myPhoto=document.getElementsByClassName('myPhoto')[0];
+	//遥控器 关闭按钮
+	var closeBtn=document.getElementsByClassName('btn')[1];
+	//更多作品按钮
 	var more=document.getElementsByClassName('more')[0];
+	var myPhoto=document.getElementsByClassName('myPhoto')[0];
 	var tvWrapper=document.getElementsByClassName('tv_wrapper')[0];
 	var production=document.getElementsByClassName('production')[0];
 	var btn=document.getElementsByClassName('btn');
@@ -1315,8 +1361,79 @@
 	var skills=document.querySelectorAll('.skill div');
 	var otherInfo=document.getElementsByClassName('otherInfo')[0];
 	var intern=document.getElementsByClassName('intern')[0];
-	//确认按钮
 	var confirm=document.getElementsByClassName('confirm')[0];
+   
+    var xOrder=[closeBtn,myInfo,mySkill,internExp,other,more];
+    var leftYOrder=[closeBtn,myInfo,internExp,more];
+    var rightYOrder=[closeBtn,mySkill,other,more];
+    var up=document.getElementsByClassName('up')[0];
+    var down=document.getElementsByClassName('down')[0];
+    var right=document.getElementsByClassName('right')[0];
+    var left=document.getElementsByClassName('left')[0];
+    
+
+
+    //设置电视位置
+	(function setPos(){
+		var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		var totleHeight=tv.offsetHeight;
+		tvWrapper.style.paddingTop=((h-totleHeight)/3)+'px';
+	})();
+    up.onclick=function(){
+       var choosed=document.getElementsByClassName('choosed')[0];
+       for(var i=0;i<4;i++){
+       	if(choosed==leftYOrder[i]&&i!==0){
+       		leftYOrder[i].classList.remove('choosed');
+       		leftYOrder[i-1].classList.add('choosed');
+       	}else if(choosed==leftYOrder[0]){
+       		leftYOrder[0].classList.remove('choosed');
+       		leftYOrder[3].classList.add('choosed');
+       	  }else if(choosed==rightYOrder[i]&&(i==1||i==2)){
+       		rightYOrder[i].classList.remove('choosed');
+       		rightYOrder[i-1].classList.add('choosed');
+       	  }
+       }
+    }
+    down.onclick=function(){
+       var choosed=document.getElementsByClassName('choosed')[0];
+       for(var i=0;i<4;i++){
+       	  if(choosed==rightYOrder[i]&&(i==1||i==2)){
+       	  	 rightYOrder[i].classList.remove('choosed');
+       	  	 rightYOrder[i+1].classList.add('choosed');
+       	  }else if(choosed==leftYOrder[i]&&(i!=3)){
+       	  	leftYOrder[i].classList.remove('choosed');
+       	  	leftYOrder[i+1].classList.add('choosed');
+       	  }else if(choosed==leftYOrder[3]){
+       	  	leftYOrder[3].classList.remove('choosed');
+       	  	leftYOrder[0].classList.add('choosed');
+       	  }
+       }
+    }
+    left.onclick=function(){
+        var choosed=document.getElementsByClassName('choosed')[0];
+         for(var i=0;i<xOrder.length;i++){
+         	if(choosed===xOrder[i]&&choosed!==closeBtn){
+         		xOrder[i].classList.remove('choosed');
+         		xOrder[i-1].classList.add('choosed');
+         	}else if(choosed===closeBtn){
+         		closeBtn.classList.remove('choosed');
+         		xOrder[xOrder.length-1].classList.add('choosed');
+         	}
+         }
+    }
+    
+    right.onclick=function(){
+       var choosed=document.getElementsByClassName('choosed')[0];
+         for(var i=0;i<xOrder.length;i++){
+         	if(choosed==xOrder[i]&&i!==xOrder.length){
+         		xOrder[i].classList.remove('choosed');
+         		xOrder[i+1].classList.add('choosed');
+         	}else if(choosed===xOrder[xOrder.length-1]){
+         		xOrder[xOrder.length-1].classList.remove('choosed');
+         		xOrder[0].classList.add('choosed');
+         	}
+         }
+    }
 
 	//不在个人资料页时
 	function leaveFirstPage(){
@@ -1420,12 +1537,13 @@
    more.onclick=function(){
 		 tips.style.opacity=0;
          tvWrapper.style.display='none';
+	     btn[0].click();
          production.style.display='block';
    };
 
    confirm.onclick=function(){
-   	   var current=document.getElementsByClassName('current')[0];
-   	   current.click();
+   	   var choosed=document.getElementsByClassName('choosed')[0];
+   	   choosed.click();
    }
    })();
 
