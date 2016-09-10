@@ -15,7 +15,13 @@
 			width:60rem;
 			height: 100%;
 			margin:0 auto;
+            animation:showDown 1s ease-in-out 0.2s backwards;
+
 		}
+			 @-webkit-keyframes showDown{
+        0%{	-webkit-transform:translateY(-10rem);opacity: 0;}
+        100%{-webkit-transform:translateY(0);opacity: 1;}
+    }
 		.tv{
 			position: relative;
 			float: left;
@@ -25,6 +31,7 @@
 		    border: .6rem solid #A09DF2;
 		    margin-top:7rem;
 		    border-radius: 1rem;
+
 		}
 		.tv_inner{
 		   margin:1rem;
@@ -313,6 +320,146 @@
 		.skill .move{
 			opacity: 1;
 		}
+		.otherInfo{
+			position: absolute;
+			width: 23rem;
+			height:20rem;
+			margin:-5.6rem 0 0rem 12rem;
+			animation: enlarge 1s linear;
+			-webkit-animation:enlarge 1s linear;
+	        -moz-animation:enlarge 1s linear;
+	        -o-animation:enlarge 1s linear;
+	        -ms-animation:enlarge 1s linear;
+			display: none;
+		}
+        .certification{
+        	position: absolute;
+        	width:23rem;
+        	left:-1rem;
+        	height:20rem;
+        	bottom:-1rem;
+        }
+        .certification img{
+        	width:3rem;
+        	margin:0.5rem;
+        }
+        .certification div{
+        	position: relative;
+        	width:22rem;
+        	height:4rem;
+        	margin:1rem 0.5rem;
+        	border-bottom: .2rem dashed #F3371D;
+        	opacity:1;
+        }
+        .certification .blog{
+        	border-bottom: none;
+        }
+        .certification p{
+        	position: absolute;
+        	width:18rem;
+        	height:4rem;
+        	left:4rem;
+        	top:0;
+        	font-size:.9rem;
+        }
+        .note{
+        	animation: appear 1s linear 0.6s backwards;
+        	-webkit-animation:appear 1s linear 0.6s backwards;
+	        -moz-animation:appear 1s linear 0.6s backwards;
+	        -o-animation:appear 1s linear 0.6s backwards;
+	        -ms-animation:appear 1s linear 0.6s backwards;
+        }
+        .github{
+        	animation: appear 1s linear 1.6s backwards; 
+        	-webkit-animation:appear 1s linear 1.6s backwards;
+	        -moz-animation:appear 1s linear 1.6s backwards;
+	        -o-animation:appear 1s linear 1.6s backwards;
+	        -ms-animation:appear 1s linear 1.6s backwards;
+        }
+        .english{
+        	animation: appear 1s linear  2.6s backwards;
+        	-webkit-animation:appear 1s linear 2.6s backwards;
+	        -moz-animation:appear 1s linear 2.6s backwards;
+	        -o-animation:appear 1s linear 2.6s backwards;
+	        -ms-animation:appear 1s linear 2.6s backwards;
+        }
+        .blog{
+        	animation: appear 1s linear 3.6s backwards;
+        	-webkit-animation:appear 1s linear 3.6s backwards;
+	        -moz-animation:appear 1s linear 3.6s backwards;
+	        -o-animation:appear 1s linear 3.6s backwards;
+	        -ms-animation:appear 1s linear 3.6s backwards;
+        }
+
+        @keyframes appear{
+        	0%{opacity: 0}
+        	100%{opacity: 1;}
+        }
+        @-webkit-keyframes appear{
+        	0%{opacity: 0}
+        	100%{opacity: 1;}
+        }
+        @-moz-keyframes appear{
+        	0%{opacity: 0}
+        	100%{opacity: 1;}
+        }
+        @-o-keyframes appear{
+        	0%{opacity: 0}
+        	100%{opacity: 1;}
+        }
+        @-ms-keyframes appear{
+        	0%{opacity: 0}
+        	100%{opacity: 1;}
+        }
+        /*
+        .cerTitle{
+        	position: absolute;
+        	width:18rem;
+        	height:20rem;
+        	bottom:.5rem;
+        	left:4rem;   
+        	  }
+        .cerTitle p{
+        	padding: .3rem;
+        	font-size:1rem;
+        	font-size:.8rem;
+        	width:17rem;
+        	height:4rem;
+        	border:.2rem solid #938D8D;
+        	margin:1.1rem .5rem;
+        }
+       */
+
+
+
+
+
+
+
+
+
+
+
+		@keyframes enlarge{
+			0%{transform:scale(0);}
+			100%{transform: scale(1);}
+		}
+		@-webkit-keyframes enlarge{
+			0%{-webkit-transform:scale(0);}
+			100%{-webkit-transform: scale(1);}
+		}
+		@-o-keyframes enlarge{
+			0%{-o-transform:scale(0);}
+			100%{-o-transform: scale(1);}
+		}
+		@-moz-keyframes enlarge{
+			0%{-moz-transform:scale(0);}
+			100%{-moz-transform: scale(1);}
+		}
+		@-ms-keyframes enlarge{
+			0%{-ms-transform:scale(0);}
+			100%{-ms-transform: scale(1);}
+		}
 		.intern{
 			text-align: center;
 			width: 23rem;
@@ -448,6 +595,7 @@
 			border-radius: 50%;
 			cursor: pointer;
 	    }
+
 	    .tips{
 	    	position:absolute;
 	    	width:10rem;
@@ -502,7 +650,7 @@
 	    	border-radius: .4rem;
 	    }
 	    .func li:hover{
-	    	background-color: #ECAFAF;
+	    	background-color:#DCB2B5;
 	    }
 	    .control{
 	    	position: relative;
@@ -584,10 +732,15 @@
 	    	margin:3rem auto;
 	    	width:10rem;
 	    	height:2rem;
+	    	color:#fff;
             background-color: #C58C8C;
             border-radius:.5rem;
             text-align: center;
             line-height: 2rem;
+	    }
+	    .more:hover{
+	    	box-shadow:0 0 1rem #EA3939;
+	    	
 	    }
 	    .download{
 	    	transition: all .5s;
@@ -882,6 +1035,10 @@
         .item:nth-of-type(3) img:nth-of-type(3) {
         	margin-bottom:5rem;
         }
+        .psd{
+	    	box-shadow:0.7rem 0.7rem 0.6rem #625B5B;
+
+        }
 
         .psd:first-of-type{
         	width: 15rem;
@@ -957,6 +1114,26 @@
 				    		<li>拥有高度的工作激情与专注度，愿意主动加班以达成工作目标，并享受工作给自己的充实感</li>
 				    	</ol>
 				    </div>
+				   <div class="otherInfo">
+				   	     <div class="certification">
+				   	          <div class="note">
+				   	     	  <img src="images/note.png" alt="note">
+				   	     	  <p>阅读文档、书籍等内容会习惯于记录笔记以反复查阅并理解记忆各项知识点，目前已超过百篇笔记。</p>
+				   	     	  </div>
+				   	     	  <div class="github">
+				   	     	  <img src="images/github.png" alt="github">
+				   	     	  <p>在codewars、IFE以及读书等做练习的代码会托管在Github上，自去年至今已提交过近七百次commit.</p>
+				   	     	  </div>
+                              <div class="english">
+				   	     	  <img src="images/english.png" alt="english">
+				   	     	  <p>通过大学英语六级考试(CET6),拥有良好的阅读能力，能够顺利查阅技术文档以解决平时遇到的疑问。</p>
+				   	     	  </div>
+				   	     	  <div class="blog">
+				   	     	  <img src="images/blogger.png" alt="blog">
+				   	     	  <p>善于将自己认为较为重要的内容以及自己对知识点的理解整理后发布到博客，会根据学习进度与时间不时更新。</p>
+				   	     	  </div>
+				   	     </div>
+				   </div>
 				</div>
 				<div class="tips">请先按开关按钮，打开电视后操作哦。</div>
 				<!--电视开关按钮-->
@@ -1136,8 +1313,11 @@
 	var tips=document.getElementsByClassName('tips')[0];
     var skillBox=document.getElementsByClassName('skill')[0];
 	var skills=document.querySelectorAll('.skill div');
+	var otherInfo=document.getElementsByClassName('otherInfo')[0];
+	var intern=document.getElementsByClassName('intern')[0];
 	//确认按钮
 	var confirm=document.getElementsByClassName('confirm')[0];
+
 	//不在个人资料页时
 	function leaveFirstPage(){
 		myPhoto.classList.add('myPhoto_moved');
@@ -1163,6 +1343,7 @@
     	for(var i=0;i<skills.length;i++){
 		skills[i].classList.remove('move');
            }
+    	otherInfo.style.display='none';
 		intern.style.display='none';
 		current.classList.remove('current');
 		myInfo.classList.add('current');
@@ -1196,6 +1377,7 @@
 		for(var i=0;i<skills.length;i++){
 		skills[i].classList.remove('move');
            }
+    	otherInfo.style.display='none';
 		current.classList.remove('current');
 		internExp.classList.add('current');
 		leaveFirstPage();
@@ -1208,10 +1390,10 @@
 			tips.style.opacity=1;
 			return;
 		}
-		var intern=document.getElementsByClassName('intern')[0];
 		var current=document.getElementsByClassName('current')[0];
 		current.classList.remove('current');
 		mySkill.classList.add('current');
+    	otherInfo.style.display='none';
 		intern.style.display='none';
 		leaveFirstPage();
 		skillBox.style.opacity=1;
@@ -1219,6 +1401,21 @@
 		skills[i].classList.add('move');
 }
 }
+
+    //点击other
+    other.onclick=function(){
+    	if(tv.classList.contains('off')){
+			tips.style.opacity=1;
+			return;
+		}
+    	var current=document.getElementsByClassName('current')[0];
+		current.classList.remove('current');
+		other.classList.add('current');
+		intern.style.display='none';
+		leaveFirstPage();
+		skillBox.style.opacity=0;
+    	otherInfo.style.display='block';
+    }
     //其他作品
    more.onclick=function(){
 		 tips.style.opacity=0;
