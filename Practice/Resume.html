@@ -588,8 +588,15 @@
 			bottom:-2rem;
 			background-image: url('images/finger.png');
 			background-size:cover;
-			animation:press 1.6s linear 1s;
 			opacity: 0;
+		}
+		.finger_press{
+			animation:press 1.6s linear ;
+			-webkit-animation:press 1.6s linear ;
+	        -moz-animation:press 1.6s linear ;
+	        -o-animation:press 1.6s linear ;
+	        -ms-animation:press 1.6s linear ;
+            animation:press 1.6s linear ;
 		}
 		@keyframes press{
 			0%{
@@ -784,6 +791,13 @@
 	    	border:.3rem solid #4A40DE;
 	    	border-radius:1.5rem;
 	    	overflow:hidden;
+	    	color:#BEC4E0;
+	    }
+	    a:visited{
+	    	color:#F67474;
+	    }
+	    a:active{
+	    	color:#F65555;
 	    }
 	    .download i{
 	    	position: absolute;
@@ -1535,28 +1549,45 @@
     }
     //其他作品
    more.onclick=function(){
-		 tips.style.opacity=0;
-         tvWrapper.style.display='none';
-	     btn[0].click();
-         production.style.display='block';
+   	     var finger=document.getElementsByClassName('finger')[0];
+   	     function close(){
+	             btn[0].click();
+	             function exc(){
+                 tvWrapper.style.display='none';
+                 production.style.display='block';
+                 finger.classList.remove('finger_press');
+             }
+	             setTimeout(exc,1100);
+            }
+   	     if(!tv.classList.contains('off')){
+   	         finger.classList.add('finger_press');
+   	         setTimeout(close,1300);   	     
+   	     }else{
+   	     	close();
+   	     }
+
    };
 
    confirm.onclick=function(){
    	   var choosed=document.getElementsByClassName('choosed')[0];
    	   choosed.click();
    }
-   })();
-
-  //作品页
-
-  (function(){
-  	var tv=document.getElementsByClassName('tv_wrapper')[0];
+     //作品页
 	var production=document.getElementsByClassName('production')[0];
   	var backToTV=document.getElementsByClassName('back')[0]; 
   	backToTV.onclick=function(){
+   	    var finger=document.getElementsByClassName('finger')[0];
         production.style.display='none';
-  		tv.style.display='block';
+  		tvWrapper.style.display='block';
+  		function open(){
+  			btn[0].click();
+  			finger.classList.remove('finger_press');
+  		}
+  		if(tv.classList.contains('off')){
+   	         finger.classList.add('finger_press');
+   	         setTimeout(open,1300);  
+   	     }
   	}
-  })()
+   })();
 </script>
 </html>
