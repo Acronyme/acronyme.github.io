@@ -991,26 +991,28 @@
 	    	top:0;
 	    }
 	    .wechat{
-	    	margin-top:0.2rem;
-	    	width:2.4rem;
-	    	height:2.4rem;
+	    	margin-top:0.5rem;
+	    	width:2rem;
+	    	height:2rem;
 	    	background-image: url('images/wechat.png');
-	    	background-size:cover;
+	    	background-size:contain;
+	    	background-repeat: no-repeat;
 	    }
 	    .wechat:after{
 	    	position: absolute;
 	    	content:'DY_Laputa';
 	    	height:2.8rem;
 	    	line-height: 2.4rem;
+	    	top:0rem;
 	     	left:3rem;
 	    }
 	    .mail{
 	    	position: absolute;
 	    	right:15rem;
 	    	top:0;
-	    	margin-top:0.2rem;
-	    	width:2.4rem;
-	    	height:2.4rem;
+	    	margin-top:0.4rem;
+	    	width:2rem;
+	    	height:2rem;
 	    	background-image: url('images/mail.png');
 	    	background-size:cover;
 	    }
@@ -1020,6 +1022,7 @@
 	    	height:2.8rem;
 	    	line-height: 2.4rem;
 	     	left:3rem;
+	     	top:-0.4rem;
 	    }
 	    .back{
 	    	display:block;
@@ -1747,20 +1750,20 @@
    more.onclick=function(){
    	     var finger=document.getElementsByClassName('finger')[0];
    	     var wrapper=document.getElementsByClassName('wrapper')[0];
-   	     function close(){
-	             btn[0].click();
-	             function exc(){
+   	     function exc(){
                  tvWrapper.style.display='none';
                  production.style.display='block';
                  finger.classList.remove('finger_press');
              }
+   	     function close(){
+	             btn[0].click();      
 	             setTimeout(exc,1100);
             }
    	     if(!tv.classList.contains('off')){
    	         finger.classList.add('finger_press');
    	         setTimeout(close,1300);   	     
    	     }else{
-   	     	close();
+   	     	exc();
    	     }
 
    };
