@@ -104,12 +104,16 @@
 			height: 8rem;
 			left:50%;
 			transform: translateX(-50%);
+			-webkit-transform: translateX(-50%);
+			-moz-transform: translateX(-50%);
+			-ms-transform: translateX(-50%);
+			-o-transform: translateX(-50%);
 			border-radius: 50%;
 			border:.4rem solid rgb(102, 86, 123);
 			background-image: url('images/myPhoto.png');
 			background-size:cover;
-			z-index: 100;
 			opacity: 0;
+			z-index: 100;
 		}
 		.myPhoto:hover{
 			opacity: 1;
@@ -164,7 +168,7 @@
 			border:.4rem solid rgb(102, 86, 123);
         }
         .shade_moved{
-        	 position: absolute;
+        	position: absolute;
 		    left: 6.7rem;
 			width:6rem;
 			height: 6rem;
@@ -173,9 +177,17 @@
 			border:.4rem solid  rgb(102, 86, 123);
 			background-size:cover;
         }
-        .myPhoto:hover+.shade{
+        .myPhoto:hover + .shade{
         	transform-origin: 0% 20%;
+        	-webkit-transform-origin: 0% 20%;
+        	-moz-transform-origin: 0% 20%;
+        	-ms-transform-origin: 0% 20%;
+        	-o-transform-origin: 0% 20%;
         	transform: rotate(180deg);
+        	-webkit-transform: rotate(180deg);
+        	-moz-transform: rotate(180deg);
+        	-ms-transform: rotate(180deg);
+        	-o-transform: rotate(180deg);
         }
 		.icon{
 			position: absolute;
@@ -243,7 +255,7 @@
 			position: absolute;
 			width:18rem;
 			height: 18rem;
-			margin:3rem 0 0rem 14rem;
+			margin:3rem 0 0 14rem;
 			opacity:0;
 		}
 		.skill div{
@@ -537,7 +549,7 @@
 			text-align: center;
 			width: 23rem;
 			height:20rem;
-			margin:2rem 0 0rem 12rem;
+			margin:2rem 0 0 12rem;
 	        -webkit-animation:moveUp 1s ease-in-out 0.2s backwards;
 	        -moz-animation:moveUp 1s ease-in-out 0.2s backwards;
 	        -o-animation:moveUp 1s ease-in-out 0.2s backwards;
@@ -1115,7 +1127,7 @@
 	    	content:'DY_Laputa';
 	    	height:2.8rem;
 	    	line-height: 2.4rem;
-	    	top:0rem;
+	    	top:0;
 	     	left:3rem;
 	    }
 	    .mail{
