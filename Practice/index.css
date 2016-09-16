@@ -220,6 +220,11 @@
 			line-height: 1.4rem;
 			bottom:2rem;
 			transition: all 0.5s;
+			overflow:hidden;
+			z-index: 10;
+		}
+		[class^='icon_title'] p:hover{
+		   transform: translateY(-1.4rem);
 		}
 		.icon_title1{
 			left:3rem;
@@ -269,7 +274,7 @@
 			text-align: center;
 			line-height:3.4rem;
 			border-radius:50%;
-			background-color: #DF4D4D;
+			background-color:#F08CC9;
 			border: .3rem solid #DBA1A1;
 			margin:.3rem .7rem 0 0;
 			-webkit-transition: all 1s 1.2s;
@@ -284,7 +289,7 @@
 			text-align: center;
 			line-height:3.4rem;
 			border-radius:50%;
-			background-color:#DF5858;
+			background-color:#909AE1;
 			border: .3rem solid #DBA1A1;
 			margin:.3rem .7rem 0 0;
             -webkit-transition: all 2s 0.8s;
@@ -299,7 +304,7 @@
 			text-align: center;
 			line-height:5.4rem;
 			border-radius:50%;
-			background-color:#E88D8D;
+			background-color:#96E289;
 			border: .3rem solid #DBA1A1;
 			margin:.3rem .7rem 0 0;
 		    -webkit-transition: all 2s;
@@ -314,7 +319,7 @@
 			text-align: center;
 			line-height:2.6rem;
 			border-radius:50%;
-			background-color:#B3AAAA;
+			background-color:#E0E48E;
 			border: .2rem solid #DBA1A1;
 			margin:.3rem .7rem 0 0;
 		    -webkit-transition: all 2s 0.8s;
@@ -329,7 +334,7 @@
 			text-align: center;
 			line-height:3.4rem;
 			border-radius:50%;
-			background-color: #B3AAAA;
+			background-color: #E59864;
 			border: .3rem solid #DBA1A1;
 			margin:.3rem .7rem 0 0;
 			-webkit-transition: all 1.8s 1.2s;
@@ -344,7 +349,7 @@
 			text-align: center;
 			line-height:2.9rem;
 			border-radius:50%;
-			background-color: #B3AAAA;
+			background-color: #D8B5A8;
 			border: .3rem solid #DBA1A1;
 			margin:.3rem .7rem 0 0;
 			-webkit-transition: all 2s 1.5s;
@@ -359,7 +364,7 @@
 			text-align: center;
 			line-height:2.4rem;
 			border-radius:50%;
-			background-color: #B3AAAA;
+			background-color: #783F81;
 			border: .3rem solid #DBA1A1;
 			margin:.3rem .7rem 0 0;
 	      	-webkit-transition: all 1.4s 0.9s;
@@ -1090,9 +1095,36 @@
 	    	border-radius:50%;
 	    	margin-left: 12rem;
 	    	border: .2rem solid #7C82A2;
-	    	background-image: url('images/logo.jpg');
+	    	background-image: url('images/shade.jpg');
 	    	background-size: cover;
 	    }
+	    	/*
+	    	animation:bomb 1s linear infinite;
+	    	-webkit-animation:bomb 2s linear infinite;
+	    	-moz-animation:bomb 2s linear infinite;
+	    	-ms-animation:bomb 2s linear infinite;
+	    	-o-animation:bomb 2s linear infinite;
+	    }
+
+	    @keyframes bomb{
+	    	0%{
+	    		width:2.8rem;
+	    		height:2.8rem;
+	    		margin:0 0 0 12rem;
+	    	}
+	    	50%{
+	    		width:2rem;
+	    		height:2rem;
+	    		margin:0.3rem 0 0 12.3rem;
+	    	}
+	    	100%{
+	    		width:2.8rem;
+	    		height: 2.8rem;
+	    		margin:0 0 0 12rem;	    		
+	    	}
+	    }
+	    	*/
+
 	    .logo p{
 	    	font-size: 1.3rem;
 	    	position: absolute;
