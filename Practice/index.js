@@ -2,6 +2,7 @@
 (function() {
   //个人资料 按钮
   var myInfo = document.getElementsByClassName('myInfo')[0];
+  //资料页icon
   var iconBox = document.getElementsByClassName('icon')[0];
   //实习经历 按钮
   var internExp = document.getElementsByClassName('internExp')[0];
@@ -32,6 +33,11 @@
   var right = document.getElementsByClassName('right')[0];
   var left = document.getElementsByClassName('left')[0];
   var shade=document.getElementsByClassName('shade')[0];
+
+  var production = document.getElementsByClassName('production')[0];
+  var backToTV = document.getElementsByClassName('back')[0];
+  var finger = document.getElementsByClassName('finger')[0];
+  var download=document.getElementsByClassName('download')[0];
   //设置电视位置
   (function setPos() {
       //获取当前窗口高度
@@ -200,7 +206,7 @@
         more.onclick = function() {
              var finger = document.getElementsByClassName('finger')[0];
              var wrapper = document.getElementsByClassName('wrapper')[0];
-         
+             download.style.opacity='0';
              function exc() {
                tvWrapper.style.display = 'none';
                production.style.display = 'block';
@@ -224,12 +230,11 @@
             var choosed = document.getElementsByClassName('choosed')[0];
             choosed.click();
           }
-          //作品页
-            var production = document.getElementsByClassName('production')[0];
-            var backToTV = document.getElementsByClassName('back')[0];
-            var finger = document.getElementsByClassName('finger')[0];
-
+            //作品页
+            
+            
             backToTV.onclick = function() {
+            download.style.opacity='1';
             production.style.display = 'none';
             tvWrapper.style.display = 'block';
       
