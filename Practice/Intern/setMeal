@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>商品详情</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				font-family: "微软雅黑";
+			}
+			html,
+			body {
+				overflow-y: scroll;
+				box-sizing: border-box;
+				color: #5C5C5D;
+			}
+			
+			.header {
+				height:9rem;
+			}
+			.header p{
+				margin: 0.6rem 0 0.6rem 0;
+			}
+			.logo {
+				position: relative;
+				width:6rem;
+				height:7rem;
+				margin: 0.8rem 0 1rem 0.6rem;
+				background-image: url(img/logo.png);
+				background-repeat:no-repeat;
+				background-size:100%;
+			}
+			.logo span{
+				display: inline-block;
+				font-size:0.8rem;
+				position: absolute;
+				top:6rem;
+				left:0.6rem;
+			}
+			.intro {
+				position: absolute;
+				top: 0.4rem;
+                left:8rem;
+				width: 63%;
+				font-size: 0.75rem;
+			}
+			.intro b {
+				color: red
+			}			
+			.range {
+				position: relative;
+				width: 100%;
+				font-size: 0.9rem;
+				padding: 0.7rem 0 0 1rem;
+				border-top: 1px solid gainsboro;
+                height: 1.2rem;
+                margin-bottom: 1rem;
+			}
+			.range span{
+				position: relative;
+			}
+			.range p{
+				width:21rem;
+			}
+			.unfold{
+				height:4rem;
+			}
+			#warn {
+				display: inline-block;
+				position: absolute;
+				left: 0;
+                top:0.9rem;
+				width: 1rem;
+				height: 1rem;
+				background-image: url(img/tips.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+			}
+			
+			#unfold b{
+				color: #56abe5;
+			}
+			.hide{
+				display: none;
+			}
+			#unfold:after {
+				content: url(img/down.png);
+				position: absolute;
+				left:2.5rem;
+				top:0.2rem;
+			}
+			#fold{
+				color:#56ABE5;
+			}
+			#fold:after{
+				content: url(img/up.png);
+				position: absolute;
+                top:0.2rem;
+			}
+			.content {
+				width: 100%;
+				padding-bottom: 5rem;
+			}
+			
+			.item {
+				position: relative;
+				padding-top:0.5rem;
+				margin-left: 6%;
+				margin-bottom: 1rem;
+				width: 42%;
+				float: left;
+				height: 4.5rem;
+				border: 1px solid gainsboro;
+				text-align: center;
+			}
+			.checked:after{
+				content: url(img/right.png);
+				position: absolute;
+				right:0;
+				bottom:-0.2rem;
+			}
+			
+			.checked{
+				border:1px solid #ff8700;
+			}
+			.item p {
+				font-size: 0.7rem;
+				padding-top:0.1rem;
+			}
+			.sp{
+				line-height:2rem;
+			}
+			.detail {
+				width:60%;
+				height:3rem;
+				color:#939499;
+				margin:0.5rem auto;
+				text-align: left;
+			}
+			
+			.footer {
+				position: fixed;
+				width: 90%;
+				height: 3rem;
+				line-height: 3rem;
+				left: 5%;
+				bottom: 0;
+				text-align: center;
+				background-color: #56abe5;
+				color: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<div class="logo">
+					<span>4G商旅套餐</span>
+				</div>
+				<div class="intro">
+					<h3>4G商旅套餐</h3>
+					<p>适合用户:全球通 神州行 动感地带</p>
+					<p>生效时间:立即</p>
+					<p>资费:<b>58元/月</b></p>
+					<p>商户:陕西移动。客服电话10086</p>
+				</div>
+			</div>
+			<div class="range">
+				<span id='warn'></span>
+				<p>发布范围 : 陕西省▶西安市、铜川市、宝鸡市<span id='unfold'>...<b>展开</b></span> 、安康市、渭南市、宝鸡市、咸阳市、延安市、汉中市、榆林市。<span id='fold' class="hide">折叠</span> </p>
+			</div>
+			<div class="content">
+				<div class="item">
+					<h5>4G商旅套餐88元</h5>
+					<div class="detail">
+						<p>语音: 220分钟</p>
+						<p>流量: 700M</p>
+					</div>
+				</div>
+				<div class="item">
+					<h5>4G商旅套餐108元</h5>
+					<div class="detail">
+						<p>语音: 300分钟</p>
+						<p>流量: 800M</p>
+					</div>
+				</div>
+				<div class="item">
+					<h5>4G商旅套餐138元</h5>
+					<div class="detail">
+						<p>语音: 500分钟</p>
+						<p>流量: 1G</p>
+					</div>
+				</div>
+				<div class="item">
+					<h5>4G商旅套餐158元</h5>
+					<div class="detail sp">
+						<p>语音: 800分钟</p>
+					</div>
+				</div>
+				<div class="item">
+					<h5>4G商旅套餐238元</h5>
+					<div class="detail">
+						<p>语音: 1000分钟</p>
+						<p>流量: 2G</p>
+					</div>
+				</div>
+				<div class="item">
+					<h5>4G商旅套餐268元</h5>
+					<div class="detail">
+						<p>语音: 1000分钟</p>
+						<p>流量: 3G</p>
+					</div>
+				</div>
+				<div class="item">
+					<h5>4G商旅套餐338元</h5>
+					<div class="detail">
+						<p>语音: 2000分钟</p>
+						<p>流量: 3G</p>
+					</div>
+				</div>
+				<div class="item">
+					<h5>4G商旅套餐588元</h5>
+					<div class="detail">
+						<p>语音: 4000分钟</p>
+						<p>流量: 6G</p>
+					</div>
+				</div>
+				<div class="item">
+					<h5>4G商旅套餐888元</h5>
+					<div class="detail">
+						<p>语音: 5000分钟</p>
+						<p>流量: 10G</p>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				立即办理
+			</div>
+		</div>
+	</body>
+<script type="text/javascript">
+	(function(){
+		//市区范围展开折叠
+		var unfoldBtn=document.getElementById("unfold");
+		var rangeArea=document.getElementsByClassName('range')[0];
+		var foldBtn=document.getElementById("fold");
+		unfoldBtn.onclick=function(){
+		    this.classList.add('hide');
+			rangeArea.classList.add('unfold');
+			foldBtn.classList.remove('hide');
+		}
+		foldBtn.onclick=function(){
+			this.classList.add('hide');
+			unfoldBtn.classList.remove('hide');
+			rangeArea.classList.remove('unfold');
+		}
+		
+		//选中
+		var items=document.getElementsByClassName('item');
+		for(var i=0,len=items.length;i<len;i++){
+			items[i].onclick=function(){
+				this.classList.toggle('checked');
+			}
+		}
+	})();
+</script>
+</html>
