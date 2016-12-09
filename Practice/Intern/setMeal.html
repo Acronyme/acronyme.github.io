@@ -17,68 +17,82 @@
 				overflow: hidden;
 				font-family: "微软雅黑";
 			}
+			
 			html,
 			body {
-				overflow-y: scroll;
+				overflow: scroll;
 				box-sizing: border-box;
 				color: #5C5C5D;
+				font-size:0.9rem;
 			}
 			
 			.header {
-				height:9rem;
+				height: 9rem;
 			}
-			.header p{
+			
+			.header p {
 				margin: 0.6rem 0 0.6rem 0;
 			}
+			
 			.logo {
 				position: relative;
-				width:6rem;
-				height:7rem;
+				width: 6rem;
+				height: 7rem;
 				margin: 0.8rem 0 1rem 0.6rem;
 				background-image: url(img/logo.png);
-				background-repeat:no-repeat;
-				background-size:100%;
+				background-repeat: no-repeat;
+				background-size: 100%;
 			}
-			.logo span{
+			
+			.logo span {
 				display: inline-block;
-				font-size:0.8rem;
+				font-size: 0.8rem;
 				position: absolute;
-				top:6rem;
-				left:0.6rem;
+				top: 6rem;
+				left: 0.6rem;
 			}
+			
 			.intro {
 				position: absolute;
 				top: 0.4rem;
-                left:8rem;
+				left: 8rem;
 				width: 63%;
-				font-size: 0.75rem;
+				font-size: 0.85rem;
+				font-weight:200;
 			}
+			
 			.intro b {
 				color: red
-			}			
+			}
+			
 			.range {
 				position: relative;
 				width: 100%;
 				font-size: 0.9rem;
-				padding: 0.7rem 0 0 1rem;
+				padding: 0.7rem 0 0 1.3rem;
 				border-top: 1px solid gainsboro;
-                height: 1.2rem;
-                margin-bottom: 1rem;
+				height: 1.2rem;
+				margin: 1rem auto;
 			}
-			.range span{
+			
+			.range span {
 				position: relative;
 			}
-			.range p{
-				width:21rem;
+			
+			.range p {
+				position: relative;
+				width: 21rem;
+				padding:0 1.2rem;
+                margin: auto;
 			}
-			.unfold{
-				height:4rem;
+			.unfold {
+				height: 4rem;
 			}
 			#warn {
 				display: inline-block;
 				position: absolute;
-				left: 0;
-                top:0.9rem;
+				left:0;
+				top: 0.1rem;
 				width: 1rem;
 				height: 1rem;
 				background-image: url(img/tips.png);
@@ -86,26 +100,31 @@
 				background-size: 100%;
 			}
 			
-			#unfold b{
+			#unfold b {
 				color: #56abe5;
 			}
-			.hide{
+			
+			.hide {
 				display: none;
 			}
+			
 			#unfold:after {
 				content: url(img/down.png);
 				position: absolute;
-				left:2.5rem;
-				top:0.2rem;
+				left: 2.3rem;
+				top: 0.12rem;
 			}
-			#fold{
-				color:#56ABE5;
+			
+			#fold {
+				color: #56ABE5;
 			}
-			#fold:after{
+			
+			#fold:after {
 				content: url(img/up.png);
 				position: absolute;
-                top:0.2rem;
+				top: 0.2rem;
 			}
+			
 			.content {
 				width: 100%;
 				padding-bottom: 5rem;
@@ -113,7 +132,7 @@
 			
 			.item {
 				position: relative;
-				padding-top:0.5rem;
+				padding-top: 0.5rem;
 				margin-left: 6%;
 				margin-bottom: 1rem;
 				width: 42%;
@@ -122,28 +141,32 @@
 				border: 1px solid gainsboro;
 				text-align: center;
 			}
-			.checked:after{
+			
+			.checked:after {
 				content: url(img/right.png);
 				position: absolute;
-				right:0;
-				bottom:-0.2rem;
+				right: 0;
+				bottom: -0.2rem;
 			}
 			
-			.checked{
-				border:1px solid #ff8700;
+			.checked {
+				border: 1px solid #ff8700;
 			}
+			
 			.item p {
 				font-size: 0.7rem;
-				padding-top:0.1rem;
+				padding-top: 0.1rem;
 			}
-			.sp{
-				line-height:2rem;
+			
+			.sp {
+				line-height: 2rem;
 			}
+			
 			.detail {
-				width:60%;
-				height:3rem;
-				color:#939499;
-				margin:0.5rem auto;
+				width: 60%;
+				height: 3rem;
+				color: #939499;
+				margin: 0.5rem auto;
 				text-align: left;
 			}
 			
@@ -175,10 +198,21 @@
 					<p>商户:陕西移动。客服电话10086</p>
 				</div>
 			</div>
+			
+			<!--
+            	作者：acronyme@163.com
+            	时间：2016-12-09
+            	描述：范围区域怎么保证在不同设备下整体可见....iphone5显示不全。
+            -->
 			<div class="range">
-				<span id='warn'></span>
-				<p>发布范围 : 陕西省▶西安市、铜川市、宝鸡市<span id='unfold'>...<b>展开</b></span> 、安康市、渭南市、宝鸡市、咸阳市、延安市、汉中市、榆林市。<span id='fold' class="hide">折叠</span> </p>
+				<p><span id='warn'></span>发布范围 : 陕西省▶西安市、铜川市、宝鸡市<span id='unfold'>...<b>展开</b></span> 、安康市、渭南市、宝鸡市、咸阳市、延安市、汉中市、榆林市。<span id='fold' class="hide">折叠</span> </p>
 			</div>
+			
+			<!--
+            	作者：acronyme@163.com
+            	时间：2016-12-09
+            	描述：detail部分在尺寸变大时怎么保持居中的同时让语音跟流量对齐..
+            -->
 			<div class="content">
 				<div class="item">
 					<h5>4G商旅套餐88元</h5>
@@ -243,35 +277,56 @@
 					</div>
 				</div>
 			</div>
-			<div class="footer">
+			<div class="footer" id='submit'>
 				立即办理
 			</div>
 		</div>
 	</body>
-<script type="text/javascript">
-	(function(){
-		//市区范围展开折叠
-		var unfoldBtn=document.getElementById("unfold");
-		var rangeArea=document.getElementsByClassName('range')[0];
-		var foldBtn=document.getElementById("fold");
-		unfoldBtn.onclick=function(){
-		    this.classList.add('hide');
-			rangeArea.classList.add('unfold');
-			foldBtn.classList.remove('hide');
-		}
-		foldBtn.onclick=function(){
-			this.classList.add('hide');
-			unfoldBtn.classList.remove('hide');
-			rangeArea.classList.remove('unfold');
-		}
-		
-		//选中
-		var items=document.getElementsByClassName('item');
-		for(var i=0,len=items.length;i<len;i++){
-			items[i].onclick=function(){
-				this.classList.toggle('checked');
+	<script type="text/javascript">
+		(function() {
+			/*
+		   (function adjust(){
+				var dpr=window.devicePixelRatio;
+			})();
+			*/
+			
+			//市区范围展开折叠
+			var unfoldBtn = document.getElementById("unfold");
+			var rangeArea = document.getElementsByClassName('range')[0];
+			var foldBtn = document.getElementById("fold");
+			unfoldBtn.onclick = function() {
+				this.classList.add('hide');
+				rangeArea.classList.add('unfold');
+				foldBtn.classList.remove('hide');
 			}
-		}
-	})();
-</script>
+			foldBtn.onclick = function() {
+				this.classList.add('hide');
+				unfoldBtn.classList.remove('hide');
+				rangeArea.classList.remove('unfold');
+			}
+			//选中
+			var items = document.getElementsByClassName('item');
+			var itemsArr = [].slice.call(items);
+			itemsArr.forEach(function(item) {
+				item.onclick = function() {
+					var checkedItem = document.getElementsByClassName('checked')[0];
+					if (checkedItem && checkedItem !== this) {
+						checkedItem.classList.remove('checked');
+					}
+					this.classList.toggle('checked');
+				}
+			})
+			//办理
+			var submitBtn = document.getElementById("submit");
+			submitBtn.onclick = function() {
+				var checkedItem = document.getElementsByClassName('checked')[0];
+				if (checkedItem) {
+					alert('办理中...');
+				} else {
+					alert('请选择需要的套餐');
+				}
+			}
+		})();
+	</script>
+
 </html>
