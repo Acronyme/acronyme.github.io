@@ -21,7 +21,7 @@
 			.logo {
 				position: relative;
 				width: 6rem;
-				height: 7rem;
+				height: 7.5rem;
 				margin: 0.8rem 0 1rem 0.6rem;
 				background-image:url(../img/logo.png);
 				background-repeat: no-repeat;
@@ -65,7 +65,7 @@
                 margin: auto;
 			}
 			.unfold {
-				height: 5rem;
+				height: 4.5rem;
 			}
 			#warn {
 				display: inline-block;
