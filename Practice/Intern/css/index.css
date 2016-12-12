@@ -60,8 +60,9 @@
 			.range p {
 				position: relative;
 				width: 21rem;
+				line-height:1.4rem;
 				padding:0 1rem;
-                margin: auto;
+                                margin: auto;
 			}
 			.unfold {
 				height: 5rem;
