@@ -1,0 +1,147 @@
+			* {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				font-family: "微软雅黑";
+			}	
+			html,
+			body {
+				box-sizing: border-box;
+				color: #5C5C5D;
+				font-size:0.9rem;
+				overflow-y: scroll;
+			}
+			
+			.header {
+				height: 9rem;
+			}
+			.header p {
+				margin: 0.6rem 0 0.6rem 0;
+			}
+			.logo {
+				position: relative;
+				width: 6rem;
+				height: 7.5rem;
+				margin: 0.8rem 0 1rem 0.6rem;
+				background-image:url(../img/logo.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+			}
+			.logo span {
+				display: inline-block;
+				font-size: 0.72rem;
+				position: absolute;
+				top: 6.5rem;
+				left: 1rem;
+			}
+			.intro {
+				position: absolute;
+				top: 0.4rem;
+				left: 8rem;
+				width: 63%;
+				font-size: 0.85rem;
+			}
+			.intro b {
+				color: red;
+				font-weight: 100;
+			}
+			.range {
+				position: relative;
+				width: 100%;
+				font-size: 0.9rem;
+				padding-top: 0.7rem;
+				border-top: 1px solid gainsboro;
+				height: 1.2rem;
+				margin: 1rem auto;
+			}
+			.range span {
+				position: relative;
+			}
+			.range p {
+				position: relative;
+				width: 21rem;
+				padding:0 1rem;
+                margin: auto;
+			}
+			.unfold {
+				height: 5rem;
+			}
+			#warn {
+				display: inline-block;
+				position: absolute;
+				left:0;
+				top: 0.1rem;
+				width: 1rem;
+				height: 1rem;
+				background-image:url(../img/tips.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+			}
+			#unfold b {
+				color: #56abe5;
+			}
+			.hide {
+				display: none;
+			}
+			#unfold:after {
+				content: url(../img/down.png);
+				position: absolute;
+				left: 2.3rem;
+				top: 0.12rem;
+			}
+			#fold {
+				color: #56ABE5;
+			}
+			#fold:after {
+				content: url(../img/up.png);
+				position: absolute;
+				top: 1.3rem;
+			}
+			.content {
+				width: 100%;
+				padding-bottom: 5rem;
+			}
+			.item {
+				position: relative;
+				padding-top: 0.5rem;
+				margin-left: 5%;
+				margin-bottom: 1rem;
+				width: 42%;
+				float: left;
+				height: 4.5rem;
+				border: 1px solid gainsboro;
+				text-align: center;
+			}
+			.checked:after {
+				content: url(../img/right.png);
+				position: absolute;
+				right: 0;
+				bottom: -0.24rem;
+			}
+			.checked {
+				border: 1px solid #ff8700;
+			}
+			.item p {
+				font-size: 0.7rem;
+				padding-top: 0.1rem;
+			}
+			.sp {
+				line-height: 2rem;
+			}
+			.detail {
+				width:6rem;
+				color: #939499;
+				margin: 0.3rem auto;
+				text-align: left;
+			}
+			.footer {
+				position: fixed;
+				width: 90%;
+				height: 3rem;
+				line-height: 3rem;
+				left: 5%;
+				bottom: 0;
+				text-align: center;
+				background-color: #56abe5;
+				color: #fff;
+			}
