@@ -88,7 +88,7 @@
 				content: url(../img/down.png);
 				position: absolute;
 				left: 2.3rem;
-				top: 0.12rem;
+				top: 0;
 			}
 			#fold {
 				color: #56ABE5;
