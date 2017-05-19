@@ -149,12 +149,11 @@ for (var i = 0; i < bgs.length; i++) {
 }
 }
  function audioAutoPlay(){
-    var audio = document.getElementById("music"),
-        play = function(){
-            audio.play();
-            document.removeEventListener("touchstart",play, false);
-        };
-    audio.play();
+    play = function(){
+        music.play();
+        document.removeEventListener("touchstart",play, false);
+     };
+    music.play();
     document.addEventListener("WeixinJSBridgeReady", function () {
         play();
     }, false);
