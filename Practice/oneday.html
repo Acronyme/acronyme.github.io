@@ -148,8 +148,8 @@ for (var i = 0; i < bgs.length; i++) {
   }
 }
 }
- function audioAutoPlay(id){
-    var audio = document.getElementById(id),
+ function audioAutoPlay(){
+    var audio = document.getElementById("music"),
         play = function(){
             audio.play();
             document.removeEventListener("touchstart",play, false);
@@ -163,7 +163,7 @@ for (var i = 0; i < bgs.length; i++) {
     }, false);
     document.addEventListener("touchstart",play, false);
 }
-audioAutoPlay('music');
+audioAutoPlay();
 </script>
 </body>
 </html>
