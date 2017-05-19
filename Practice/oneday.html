@@ -99,7 +99,7 @@
 			</li>
 			<li class="content">
 				<h1>小仙女</h1>
-				<h2>“520快乐~提前祝我们一百天快乐~  ☂”</h2>
+				<h2>“520快乐~提前祝我们一百天快乐~”    ————你的☂</h2>
 				<a class="up" href="#"><img src="pic/up.png"></a>
 			</li>
 		</ul>
@@ -150,6 +150,16 @@ for (var i = 0; i < bgs.length; i++) {
 }
 
  music.play();
+
+
+function audioAutoPlay(id){
+    var audio = document.getElementById(id);
+    audio.play();
+    document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+    }, false);
+}
+audioAutoPlay('music');
 </script>
 </body>
 </html>
