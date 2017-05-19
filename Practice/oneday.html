@@ -17,7 +17,8 @@
 
 </head>
 <body>
-
+ <div id="music">♫</div>
+  <audio id="audio" src="http://sc1.111ttt.com/2015/1/02/25/95252048503.mp3" autoplay="true" loop="true"></audio>
 	<div class="stage">
 	    <ul>
 			<li>
@@ -104,12 +105,6 @@
 		</ul>
 		
 	</div>
-
-
-
-
-
-
 <script>
 	
 var bgs = document.querySelectorAll('.bg');
@@ -128,7 +123,31 @@ for (var i = 0; i < bgs.length; i++) {
 			easing: "swing"
 		});
 		return false;
-	});
+	});	
+</script>
+<script>
+  var musicIcon=document.getElementById("music");	
+  var core = navigator.userAgent.toLowerCase();
+  musicIcon.onclick = function() {
+    var music = document.getElementById("audio");
+    if (core.indexOf('mobile') == -1){
+    if (this.style.animationPlayState != "paused") {
+      music.pause();
+      this.style.animationPlayState = "paused";
+    } else {
+      this.style.animationPlayState = "running";
+      music.play();
+    }
+  }else{
+     if (this.style.webkitAnimationPlayState != "paused") {
+      music.pause();
+      this.style.webkitAnimationPlayState = "paused";
+    } else {
+      this.style.webkitAnimationPlayState = "running";
+      music.play();
+  }
+}
+}
 </script>
 </body>
 </html>
