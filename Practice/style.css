@@ -109,7 +109,7 @@ a:hover{
     text-align: center;
     right:.6em;
     top:.6em;
-    font-size: 3em;
+    font-size: 1.8em;
     background-color: #9AA7E9;
 }
 }
@@ -122,7 +122,7 @@ a:hover{
     text-align: center;
     right:.2em;
     top:.2em;
-    font-size: 3em;
+    font-size: 1.8em;
  }
  }
  @media screen and (max-width: 26em){
@@ -133,7 +133,7 @@ a:hover{
     text-align: center;
     right:0.4em;
     top:0.6em;
-    font-size: 2em;
+    font-size: 1.3em;
     z-index: 100;
 }
 }
