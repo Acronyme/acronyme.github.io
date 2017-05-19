@@ -1,0 +1,135 @@
+
+<!doctype html>
+<html>
+<!-- <html manifest="example.appcache" > -->
+<head>
+	<meta charset="UTF-8">
+	<title>Happy520.</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-144x144-precomposed.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script   src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+	<div class="stage">
+	    <ul>
+			<li>
+				<div class="bg" data-url="pic/moon.jpg"></div>
+			</li>
+			<li class="content" id="item">
+				<h1>“你去看今晚的月亮。”</h1>
+				<h2>1月31号晚上，你让我去看看月亮，我穿着毛衣跑了出去，我觉得那是我看到过最美的月亮。</h2>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<div class="bg" data-url="pic/movie.jpg"></div>
+			</li>
+			<li class="content">
+				<h1>"走，一起呗"</h1>
+				<h2>2月3号，周五。下午还在上班，你第一次约我看电影，我笑的像个一百多斤的孩子。 </h2>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<div class="bg" data-url="pic/wall.jpg"></div>
+			</li>
+			<li class="content">
+				<h1>“去城墙上走走”</h1>
+				<h2>2月11号，跟你走了三万多步，一点都不觉得累。</h2>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<div class="bg" data-url="pic/shadow.jpg"></div>
+			</li>
+			<li class="content">
+				<h1>“我们照影子吧。”</h1>
+				<h2>下班后找你玩，然后送你回家再一起照影子是我冬天最幸福的时候，你的丸子头真好看。</h2>
+			</li>
+		</ul>
+
+		<ul>
+			<li>
+				<div class="bg" data-url="pic/night.jpg"></div>
+			</li>
+			<li class="content">
+				<h1>“我出站了。”</h1>
+				<h2>3月26号，从学校回到西安见你。到了的时候已经晚上了，天特别蓝，出站后想到马上能见你，心情像天一样蓝。</h2>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<div class="bg" data-url="pic/ofo.jpg"></div>
+			</li>
+			<li class="content">
+				<h1>“骑小黄车去交大~！”</h1>
+				<h2>3月27号。天气真好，在广场看了一会鸽子，之后骑小黄车去了交大，特别喜欢跟你骑车玩的感觉。</h2>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<div class="bg" data-url="pic/cq.jpg"></div>
+			</li>
+			<li class="content">
+				<h1>“早上见！”</h1>
+				<h2>5月2号，你坐上k1002来找我。辛苦你一个人坐火车跑那么远，还是第一次。</h2>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<div class="bg" data-url="pic/tongue.jpg"></div>
+			</li>
+			<li class="content">
+				<h1>“略略略~~”</h1>
+				<h2>你是我见过最可爱的姑娘。吐舌头的样子特别调皮，略略略~我也会~~ </h2>
+			</li>
+		</ul>
+		<ul class="last">
+			<li>
+				<div class="bg" data-url="pic/mi.jpg"></div>
+			</li>
+			<li class="content">
+				<h1>小仙女</h1>
+				<h2>“520快乐~提前祝我们一百天快乐~”</h2>
+				<a class="up" href="#"><img src="pic/up.png"></a>
+			</li>
+		</ul>
+		
+	</div>
+
+
+
+
+
+
+<script>
+	
+var bgs = document.querySelectorAll('.bg');
+
+for (var i = 0; i < bgs.length; i++) {
+	var url = bgs[i].getAttribute("data-url");
+	bgs[i].style.backgroundImage = "url("+ url +")";
+};
+
+//ScrollTop
+	$(".up").click(function() {
+		$(".stage").animate({
+			scrollTop: 0
+		}, {
+			duration: 500,
+			easing: "swing"
+		});
+		return false;
+	});
+</script>
+</body>
+</html>
+
