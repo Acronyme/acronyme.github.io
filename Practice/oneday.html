@@ -4,7 +4,7 @@
 <!-- <html manifest="example.appcache" > -->
 <head>
 	<meta charset="UTF-8">
-	<title>Happy520.</title>
+	<title>祝我的小仙女5.20快乐~.</title>
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-114x114-precomposed.png">
@@ -26,7 +26,7 @@
 			</li>
 			<li class="content" id="item">
 				<h1>“你去看今晚的月亮。”</h1>
-				<h2>1月31号晚上，你让我去看看月亮，我穿着毛衣跑了出去，我觉得那是我看到过最美的月亮。</h2>
+				<h2>1月31号晚上，你让我去看看月亮，我穿着毛衣跑了出去，那是我看到过最美的月亮。</h2>
 			</li>
 		</ul>
 		<ul>
@@ -72,7 +72,7 @@
 			</li>
 			<li class="content">
 				<h1>“骑小黄车去交大~”</h1>
-				<h2>3月27号。天气真好，在广场看了一会鸽子，之后骑小黄车去了交大，特别喜欢跟你骑车玩的感觉。</h2>
+				<h2>3月27号。阳光灿烂的日子，在广场看了鸽子，骑小黄车去交大，很享受跟你在一起的每一刻。</h2>
 			</li>
 		</ul>
 		<ul>
@@ -80,7 +80,7 @@
 				<div class="bg" data-url="pic/cq.jpg"></div>
 			</li>
 			<li class="content">
-				<h1>“早上见！”</h1>
+				<h1>“早上见~”</h1>
 				<h2>5月2号，你坐上k1002来找我。辛苦你一个人坐火车跑那么远，还是第一次。</h2>
 			</li>
 		</ul>
@@ -99,7 +99,7 @@
 			</li>
 			<li class="content">
 				<h1>小仙女</h1>
-				<h2>“520快乐~提前祝我们一百天快乐~”</h2>
+				<h2>“520快乐~提前祝我们一百天快乐~  ☂”</h2>
 				<a class="up" href="#"><img src="pic/up.png"></a>
 			</li>
 		</ul>
@@ -126,10 +126,11 @@ for (var i = 0; i < bgs.length; i++) {
 	});	
 </script>
 <script>
-  var musicIcon=document.getElementById("music");	
+  var musicIcon=document.getElementById("music");
+  var music = document.getElementById("audio");
   var core = navigator.userAgent.toLowerCase();
+  music.play();
   musicIcon.onclick = function() {
-    var music = document.getElementById("audio");
     if (core.indexOf('mobile') == -1){
     if (this.style.animationPlayState != "paused") {
       music.pause();
