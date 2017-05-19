@@ -139,27 +139,30 @@ for (var i = 0; i < bgs.length; i++) {
       music.play();
     }
   }else{
-     if (this.style.webkitAnimationPlayState != "paused") {
+     if (this.style.WebkitAnimationPlayState != "paused") {
       music.pause();
-      this.style.webkitAnimationPlayState = "paused";
+      this.style.WebkitAnimationPlayState = "paused";
     } else {
-      this.style.webkitAnimationPlayState = "running";
+      this.style.WebkitAnimationPlayState = "running";
       music.play();
   }
 }
 }
-function audioAutoPlay(id){
-    var audio = document.getElementById(id);
-    audio.play();
-    document.addEventListener("WeixinJSBridgeReady", function () {
-            audio.play();
-    }, false);
-    document.addEventListener('YixinJSBridgeReady', function() {  
-            audio.play();  
-    }, false);  
-}  
-audioAutoPlay('music');
-music.play();
+ function autoPlayAudio() {
+        wx.config({
+            // 配置信息, 即使不正确也能使用 wx.ready
+            debug: false,
+            appId: '',
+            timestamp: 1,
+            nonceStr: '',
+            signature: '',
+            jsApiList: []
+        });
+        wx.ready(function() {
+            document.getElementById('music').play();
+        });
+    }
+autoPlayAudio();
 </script>
 </body>
 </html>
