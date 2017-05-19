@@ -4,7 +4,7 @@
 <!-- <html manifest="example.appcache" > -->
 <head>
 	<meta charset="UTF-8">
-	<title>祝我的小仙女5.20快乐~.</title>
+	<title>祝我的小仙女5.20快乐~</title>
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-114x114-precomposed.png">
@@ -129,7 +129,6 @@ for (var i = 0; i < bgs.length; i++) {
   var musicIcon=document.getElementById("music");
   var music = document.getElementById("audio");
   var core = navigator.userAgent.toLowerCase();
-  music.play();
   musicIcon.onclick = function() {
     if (core.indexOf('mobile') == -1){
     if (this.style.animationPlayState != "paused") {
@@ -149,6 +148,9 @@ for (var i = 0; i < bgs.length; i++) {
   }
 }
 }
+
+ musicIcon.click();
+ music.play();
 </script>
 </body>
 </html>
