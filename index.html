@@ -5,6 +5,7 @@
   <title>Ardeur de la vie by Acronyme</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen"></head>
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>  
 <body>
   <article id="music">♫</article>
   <audio id="audio" src="http://cc.stream.qqmusic.qq.com/C200000Rw7MW27aaoc.m4a?vkey=F79C7129F7499FB7A860FCD96639C03B2ACCDFCC738AB4B24D7E76526B3A5DDFF3D458C130D97D115C58F2DC7306142DE78C6A32AA06107E&guid=6476073164&fromtag=30" autoplay="true" loop="true"></audio>
@@ -86,5 +87,16 @@
     </section>
   </section>
   <script src="script/script.js"></script>
+  <script>
+      var wxConfig = { "debug": false, "beta": false, "jsApiList": ["onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "onMenuShareQZone"], "appId": "wxb110e1de6e249524", "nonceStr": "i8oaqH4V3P", "timestamp": 1527515141, "url": "https:\/\/http://acronyme.github.io/\/", "signature": "21e9f4daf239d890c9bc9890c84a9486f8bf1990" };
+    wx.config(wxConfig);
+    var h5_config = {
+        baseUrl: "http://acronyme.github.io/",
+        baseLink: "http://acronyme.github.io/",
+        para: "",
+        titleArr: ["为爱行走-空港新城"], // 分享语标题 随机获取
+        descArr: ["我在空港新城为爱行走。"] // 分享语内容
+    };
+  </script>
 </body>
 </html>
