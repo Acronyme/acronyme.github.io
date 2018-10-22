@@ -130,7 +130,7 @@
 			background-size:cover;
 		}
 		.myPhoto:after{
-			content: '';
+			content: '**';
 			text-align: center;
 			line-height: 2rem;
 			position: absolute;
