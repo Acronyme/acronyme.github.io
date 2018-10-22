@@ -130,7 +130,7 @@
 			background-size:cover;
 		}
 		.myPhoto:after{
-			content: '万珂';
+			content: '';
 			text-align: center;
 			line-height: 2rem;
 			position: absolute;
@@ -143,7 +143,7 @@
             opacity: .7;
 		}
 		.myPhoto_moved:after{
-			content: '万珂';
+			content: 'me';
 			text-align: center;
 			line-height: 1.6rem;
 			position: absolute;
@@ -644,7 +644,7 @@
 			text-align: center;
 			left:18rem;
 			bottom: .5rem;
-		    content: '期待坐标:西安';
+		    content: '期待坐标:**';
 		    background-color: #C5DBC6;
 			border:0.3rem solid #BCC9CC;
 			width:7rem;
